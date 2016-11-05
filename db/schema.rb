@@ -12,41 +12,41 @@
 
 ActiveRecord::Schema.define(version: 20161104221705) do
 
-  create_table "meetings", force: :cascade do |t|
+  create_table "meetings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "knockee_id_id"
     t.integer  "knocker_id_id"
     t.integer  "type"
     t.string   "meeting_time"
-    t.float    "meeting_price"
+    t.float    "meeting_price",   limit: 24
     t.integer  "status"
     t.string   "reject_reasons"
     t.string   "reschedule_time"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["knockee_id_id"], name: "index_meetings_on_knockee_id_id"
-    t.index ["knocker_id_id"], name: "index_meetings_on_knocker_id_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["knockee_id_id"], name: "index_meetings_on_knockee_id_id", using: :btree
+    t.index ["knocker_id_id"], name: "index_meetings_on_knocker_id_id", using: :btree
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "knocker_id_id"
     t.integer  "knockee_id_id"
     t.integer  "status"
     t.string   "description"
-    t.float    "duration"
-    t.float    "price"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["knockee_id_id"], name: "index_transactions_on_knockee_id_id"
-    t.index ["knocker_id_id"], name: "index_transactions_on_knocker_id_id"
+    t.float    "duration",      limit: 24
+    t.float    "price",         limit: 24
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["knockee_id_id"], name: "index_transactions_on_knockee_id_id", using: :btree
+    t.index ["knocker_id_id"], name: "index_transactions_on_knocker_id_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",                             default: "", null: false
+    t.string   "encrypted_password",                default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                     default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -56,23 +56,23 @@ ActiveRecord::Schema.define(version: 20161104221705) do
     t.string   "student_status"
     t.string   "activities"
     t.string   "personal_description"
-    t.float    "philanthropy_percent"
+    t.float    "philanthropy_percent",   limit: 24
     t.string   "cell_phone"
     t.string   "school"
     t.string   "major"
-    t.float    "phone_call_price"
+    t.float    "phone_call_price",       limit: 24
     t.string   "avaliability"
-    t.float    "meeting_price"
-    t.float    "video_price"
+    t.float    "meeting_price",          limit: 24
+    t.float    "video_price",            limit: 24
     t.string   "venmo"
     t.string   "avatar_path"
     t.string   "resume_path"
     t.string   "common_essay_path"
     t.string   "college_essay_path"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
