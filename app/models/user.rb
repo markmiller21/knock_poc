@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :knockee_meetings, :class_name => 'Meeting', :foreign_key => 'knockee_id'
-  has_many :knocker_meetings, :class_name => 'Meeting', :foreign_key => 'knocker_id'
+  has_many :knockee_meetings, :class_name => 'Meeting', :foreign_key => 'knockee'
+  has_many :knocker_meetings, :class_name => 'Meeting', :foreign_key => 'knocker'
 
-  has_many :knockee_transactions, :class_name => 'Transaction', :foreign_key => 'knockee_id'
-  has_many :knocker_transactions, :class_name => 'Transaction', :foreign_key => 'knocker_id'
+  has_many :knockee_transactions, :class_name => 'Transaction', :foreign_key => 'knockee'
+  has_many :knocker_transactions, :class_name => 'Transaction', :foreign_key => 'knocker'
 end
