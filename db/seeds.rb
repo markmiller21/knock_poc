@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "yu.song@georgetown.edu", password: "yusong_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "yahya@georgetown.edu", password: "yahya_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "ivy@georgetown.edu", password: "ivy_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "joe@georgetown.edu", password: "joe_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "kat@georgetown.edu", password: "kat_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "gavin@georgetown.edu", password: "gavin_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "gretta@georgetown.edu", password: "gretta_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "tiffany@georgetown.edu", password: "tiffany_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+User.create(email: "michael@georgetown.edu", password: "michael_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
+# User.create(email: "ryan@georgetown.edu", password: "ryan_2016", first_name: "Ryan", last_name: "Merlini", student_status: "college_student", cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00)
