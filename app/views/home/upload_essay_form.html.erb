@@ -1,0 +1,313 @@
+<div id="upload-essay-image">
+</div>
+<br/><br/><br/>
+<div class="container" style="height: 60%;max-width: 60%;">
+  <center style="margin-top: -100px;color: #5AA7B4;">
+    <h4>Upload your college essay and get paid when prospective students view it.</h4>
+  </center>
+  <hr/>
+
+  <h4>Share Your Wisdom</h4>
+  <p>You did it! You're accepted. Now go help others!</p>
+  <br/>
+  <p>Disclaimer: Georgetown has plagiarism checks for every application submitted. Highschoolers are made well aware that any copying will be easily detected and they alone are responsible resulting in a rejected application. Your essay is merely a storytelling template.</p>
+
+  <hr/><br/>
+  <% @essay.errors.full_messages.each do |e|%>
+      <p><span style="color: red;"><%=e%></span></p>
+  <%end%>
+  <%=form_for @essay, url: home_upload_essay_form_path do |f|%>
+      <div class="form-group row">
+        <label for="example-search-input" class="col-md-1 col-form-label">Name:</label>
+        <div class="col-md-3">
+          <%=f.text_field :first_name, class: "form-control", placeholder: "First Name", required: true%>
+        </div>
+        <div class="col-md-3">
+          <%=f.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true%>
+        </div>
+        <div class="col-md-3">
+          <%=f.hidden_field :password, value:"123123123", class: "form-control", placeholder: "Last Name", required: true%>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-search-input" class="col-md-6 col-form-label">Email (only georgetown.edu addresses validated) *</label>
+        <div class="col-md-6">
+          <%=f.email_field :email, class: "form-control", placeholder: "@georgetown.edu", required: true%>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-email-input" class="col-md-2 col-form-label">High School </label>
+        <div class="col-md-6">
+          <%=f.text_field :school, class: "form-control", placeholder: ""%>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-email-input" class="col-md-2 col-form-label">School: </label>
+        <div class="col-md-6">
+          <select class="form-control" name="essay[school]" id="essay_school">
+            <option value="Georgetown College" selected="selected">
+              Georgetown College
+            </option>
+            <option value="McDonough School of Business">
+              McDonough School of Business
+            </option>
+            <option value="Walsh School of Foreign Service">
+              Walsh School of Foreign Service
+            </option>
+            <option value="School of Nursing and Health Studies">
+              School of Nursing and Health Studies
+            </option>
+            <option value="Graduate">
+              Graduate
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-email-input" class="col-md-2 col-form-label">Major: </label>
+        <div class="col-md-6">
+          <%=f.text_field :major, class: "form-control", placeholder: "Major"%>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-url-input" class="col-md-2 col-form-label">Activity in high school</label>
+        <div class="col-md-6">
+          <select class="form-control" name="essay[activity_did]" id="essay_activity_did">
+            <option value="Academic (General)" selected="selected">
+              Academic (General)
+            </option>
+            <option value="Art">
+              Art
+            </option>
+            <option value="Athletics: Club">
+              Athletics: Club
+            </option>
+            <option value="Athletics: Junior Varsity">
+              Athletics: Junior Varsity
+            </option>
+            <option value="Athletics: Varsity">
+              Athletics: Varsity
+            </option>
+            <option value="Career Oriented">
+              Career Oriented
+            </option>
+            <option value="Community Service">
+              Community Service
+            </option>
+            <option value="Computer/ Tech">
+              Computer/ Tech
+            </option>
+            <option value="Cultural">
+              Cultural
+            </option>
+            <option value="Dance">
+              Dance
+            </option>
+            <option value="Debate">
+              Debate
+            </option>
+            <option value="Environmental">
+              Environmental
+            </option>
+            <option value="Family Responsibilities">
+              Family Responsibilities
+            </option>
+            <option value="Foreign Language">
+              Foreign Language
+            </option>
+            <option value="Foreign Exchange">
+              Foreign Exchange
+            </option>
+            <option value="Journalism/ Publication">
+              Journalism/ Publication
+            </option>
+            <option value="LGBT">
+              LGBT
+            </option>
+            <option value="Music: Instrumental">
+              Music: Instrumental
+            </option>
+            <option value="Music: Vocal">
+              Music: Vocal
+            </option>
+            <option value="Religious">
+              Religious
+            </option>
+            <option value="Research">
+              Research
+            </option>
+            <option value="Robotics">
+              Robotics
+            </option>
+            <option value="ROTC">
+              ROTC
+            </option>
+            <option value="School Spirit">
+              School Spirit
+            </option>
+            <option value="Math">
+              Math
+            </option>
+            <option value="Science">
+              Science
+            </option>
+            <option value="Student Government">
+              Student Government
+            </option>
+            <option value="Theater">
+              Theater
+            </option>
+            <option value="Work">
+              Work
+            </option>
+            <option value="Other">
+              Other
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-tel-input" class="col-xs-4 col-form-label">Specifically what activity was this (CLUB OR SPORT NAME, No need for positions) </label>
+        <div class="col-md-6">
+          <%=f.text_field :personal_description, class: "form-control"%>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-password-input" class="col-xs-12 col-form-label">Would you like a percentage of your earnings to go toward aiding Georgetown Scholarships of prospective students? *</label>
+        <div class="col-md-1">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%=f.radio_button :philanthropy_percent, "0"%>&nbsp;0%
+            </label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%=f.radio_button :philanthropy_percent, "5"%>&nbsp;5%
+            </label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%=f.radio_button :philanthropy_percent, "10"%>&nbsp;10%
+            </label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%=f.radio_button :philanthropy_percent, "25"%>&nbsp;25%
+            </label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%=f.radio_button :philanthropy_percent, "50"%>&nbsp;50%
+            </label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%=f.radio_button :philanthropy_percent, "75"%>&nbsp;75%
+            </label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-check">
+            <label class="form-check-label">
+              <%=f.radio_button :philanthropy_percent, "100"%>&nbsp;100%
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+      <div class="form-group row">
+        <label for="example-tel-input" class="col-xs-12 col-form-label">Resume Upload</label>
+        <label for="example-tel-input" class="col-xs-12 col-form-label"> </label>
+        <div class="col-xs-7">
+          <%= f.file_field :resume_path, class: "form-control"%>
+        </div>
+      </div>
+      <br/>
+      <div class="form-group row">
+        <label for="example-tel-input" class="col-xs-12 col-form-label">Common Essay Upload</label>
+        <label for="example-tel-input" class="col-xs-12 col-form-label"> </label>
+        <div class="col-xs-7">
+          <%= f.file_field :common_essay_path, class: "form-control"%>
+        </div>
+      </div>
+      <br/>
+      <div class="form-group row">
+        <label for="example-tel-input" class="col-xs-12 col-form-label">College Essay Upload</label>
+        <label for="example-tel-input" class="col-xs-12 col-form-label"></label>
+        <div class="col-xs-7">
+          <%= f.file_field :college_essay_path, class: "form-control"%>
+        </div>
+      </div>
+      <br/>
+
+      <!-- Offer College Application Essays -->
+      <div id="college_application_essays">
+        <div class="form-group row">
+          <label for="example-search-input" class="col-md-4 col-form-label">Venmo Profile (this is how you'll get paid)</label>
+          <div class="col-md-6">
+            <%=f.text_field :venmo, class: "form-control", placeholder: ""%>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-tel-input" class="col-xs-12 col-form-label">Avatar Upload</label>
+          <label for="example-tel-input" class="col-xs-12 col-form-label"></label>
+          <div class="col-md-7">
+            <%=f.file_field :avatar_path, class: "form-control"%>
+          </div>
+        </div>
+      </div>
+      <!-- End College Application Essays -->
+
+      <div id="accept_phone_calls" class="<%=show_content(params[:essay][:accept_phone_calls]) rescue 'hide-content'%>">
+        <div class="form-group row">
+          <label for="example-search-input" class="col-md-12 col-form-label">Phone Calls: My price per 15 minutes is:</label>
+          <div class="col-md-4">
+            <%=f.text_field :phone_call_price, class: "form-control", placeholder: "e.g. 0.00, No dollar sign"%>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-tel-input" class="col-md-12 col-form-label">Phone Number</label>
+          <div class="col-md-3">
+            <%=f.text_field :cell_phone, class: "form-control", placeholder: "###-###-####" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-search-input" class="col-md-12     col-form-label">In general the best time to contact me on a weekend is:
+            (This is subject to change for each call)</label>
+          <div class="col-md-3">
+            <%=f.text_field :avaliability, class: "form-control", placeholder: "HH:MM:SS"%>
+          </div>
+          <div class="col-md-2">
+            <%#=f.select :best_time_call_weekend_meridiem, [['AM','AM'],['PM','PM']], {}, class: "form-control", placeholder: ""%>
+          </div>
+        </div>
+      </div>
+
+      <div id="in_person_meeting" class="<%=show_content(params[:essay][:meetup_inperson]) rescue 'hide-content'%>">
+        <div class="form-group row">
+          <label for="example-search-input" class="col-md-12 col-form-label">In-person Meeting: My price per 1 hour:</label>
+          <div class="col-md-4">
+            <%=f.text_field :meeting_price, class: "form-control", placeholder: "e.g. 0.00, No dollar sign"%>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <%=hidden_field_tag :submit_form, "yes"%>
+          <center><%=f.submit :Submit, class: "btn btn-lg upload-essay-form-submit-button"%></center>
+        </div>
+      </div>
+  <%end%>
+</div>
