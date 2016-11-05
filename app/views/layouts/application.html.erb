@@ -8,48 +8,17 @@
 </head>
 
 <body class="<%="#{controller_name}-#{action_name}"%>">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid" style="margin-top: 15px;">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        <img src="/images/photos/knock.jpg" width="60" height="80" class="knock-logo img-circle">
-      </a>
-      <%=link_to "Knock", home_index_path, class: "navbar-brand brand-font-info knock-brand-text", id: "logo" %>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About <span class="sr-only">(current)</span></a></li>
-        <li><%=link_to "Home", home_index_path %></li>
-        <li><%=link_to "Upload Your Essay", "" %></li>
-        <li><%=link_to "View Current Georgetown Students", view_application_essays_index_path, class: "" %> <!--btn btn-success btn-lg button-radius button-theme-color -->
-        </li>
-      </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<% if session[:cart].present? %>
-    <div class="cart shopping-cart-margin"><span class="glyphicon glyphicon-shopping-cart pull-left"></span><%=link_to "#{show_cart(session[:cart])} item(s) in cart", cart_index_path, style: "color: white;"%></div>
-<%end%>
-<%= yield %>
-<br/><br/><br/><br/>
-<%unless @nofooter%>
-    <footer class="footer">
-      <!--<div class="container-fluid" id="footer-upper"></div>-->
-      <div class="container">
-        <p id="footer-text">Powered by Knock, LLC</p>
-      </div>
-    </footer>
-<%end%>
+	<% if session[:cart].present? %>
+	<%= render partial: "layouts/shopping_cart" %>
+	<%end%>
+	<%= render partial: "layouts/header" %>
+	<%= yield %>
+	
+	<br/><br/><br/><br/>
+	
+	<%unless @nofooter%>
+	  <%= render partial: "layouts/footer" %>
+	<%end%>
 </body>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
