@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :email, :uniqueness => true, :presence => true
   validates :first_name, :presence => true
   validates :last_name, :presence => true
+  validates :highschool, presence: true
 
   # Associations
   has_many :knockee_meetings, :class_name => 'Meeting', :foreign_key => 'knockee'
