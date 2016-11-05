@@ -1,3 +1,4 @@
+
 User.destroy_all
 
 User.create(id: 12, email: "ryan@georgetown.edu", password: "123123123",
@@ -48,3 +49,16 @@ User.create(id: 20, email: "michael@georgetown.edu", password: "123123123",
             cell_phone: "2156920921", phone_call_price: 12.56, meeting_price: 20.00, video_price: 15.00,
             avatar_path: 'michael.png', resume_path: 'resume.txt', common_essay_path: "common_college_essay.txt",
             college_essay_path: "application_essay.txt")
+
+
+mark = User.new(:email => "mark@gmail.com", :password => 'password', :password_confirmation => 'password', :first_name => 'Mark', :last_name => 'Miller', :student_status => 'College', :activities => 'Football, Chess Team, Basketball, and Entrepreneurship', :personal_description => 'Great guy with a better personality', :philanthropy_percent => 21.12, :cell_phone => '2024365781', :school => 'Salisbury School', :major => 'Quantitative Finance', :phone_call_price => 50, :avaliability => 'Afternoons 6 PM - 9 PM', :meeting_price => 50, :video_price => 50, :venmo => 'markmiller21', :avatar_path => '', :resume_path => '' , :common_essay_path => '', :college_essay_path => '')
+mark.save
+
+ryan = User.new(:email => "ryan@georgetown.edu", :password => 'password', :password_confirmation => 'password', :first_name => 'Mark', :last_name => 'Merlini', :student_status => 'College', :activities => 'Football, Chess Team, Basketball, and Entrepreneurship', :personal_description => 'Great guy with a better personality', :philanthropy_percent => 21.12, :cell_phone => '2024365781', :school => 'Salisbury School', :major => 'Quantitative Finance', :phone_call_price => 50, :avaliability => 'Afternoons 6 PM - 9 PM', :meeting_price => 50, :video_price => 50, :venmo => 'ryanMerlini', :avatar_path => '', :resume_path => '' , :common_essay_path => '', :college_essay_path => '')
+ryan.save
+
+song = User.new(:email => "yu.song@georgetown.edu", :password => 'password', :password_confirmation => 'password', :first_name => 'Mark', :last_name => 'Merlini', :student_status => 'College', :activities => 'Football, Chess Team, Basketball, and Entrepreneurship', :personal_description => 'Great guy with a better personality', :philanthropy_percent => 21.12, :cell_phone => '2024365781', :school => 'Salisbury School', :major => 'Quantitative Finance', :phone_call_price => 50, :avaliability => 'Afternoons 6 PM - 9 PM', :meeting_price => 50, :video_price => 50, :venmo => 'yuSong', :avatar_path => '', :resume_path => '' , :common_essay_path => '', :college_essay_path => '')
+song.save
+
+yahya = User.new(:email => "yahya@georgetown.edu", :password => 'password', :password_confirmation => 'password', :first_name => 'Mark', :last_name => 'Merlini', :student_status => 'College', :activities => 'Football, Chess Team, Basketball, and Entrepreneurship', :personal_description => 'Great guy with a better personality', :philanthropy_percent => 21.12, :cell_phone => '2024365781', :school => 'Salisbury School', :major => 'Quantitative Finance', :phone_call_price => 50, :avaliability => 'Afternoons 6 PM - 9 PM', :meeting_price => 50, :video_price => 50, :venmo => 'yayaya', :avatar_path => '', :resume_path => '' , :common_essay_path => '', :college_essay_path => '')
+yahya.save
