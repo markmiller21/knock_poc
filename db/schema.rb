@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104221705) do
+ActiveRecord::Schema.define(version: 20161105234147) do
 
   create_table "meetings", force: :cascade do |t|
     t.integer  "knockee_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20161104221705) do
     t.string   "personal_description"
     t.float    "philanthropy_percent"
     t.string   "cell_phone"
-    t.string   "school"
+    t.string   "highschool"
     t.string   "major"
     t.float    "phone_call_price"
     t.string   "avaliability"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161104221705) do
     t.string   "college_essay_path"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "college"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
