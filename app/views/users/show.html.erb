@@ -1,11 +1,5 @@
-<style>
-    .img-profile{
-        height: 65%;
-        width: 65%;
-    }
-</style>
 <div class="container">
-  <div class="row" style="display: none;" id="setup_call_request_alert">
+  <div class="row" id="setup_call_request_alert">
     <div class="col-md-8">
       <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -13,7 +7,7 @@
       </div>
     </div>
   </div>
-  <div class="row" style="display: none;" id="setup_meeting_request_alert">
+  <div class="row" id="setup_meeting_request_alert">
     <div class="col-md-8">
       <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -45,19 +39,19 @@
       <p><span class="knock-text-color">School:</span> <%=@essay.college%></p>
 
       <p><span class="knock-text-color">High School Activities: </span><span><%=@essay.personal_description.present? ? @essay.personal_description : "N/A"%></span></p>
-      <br/>
-      <br/>
+
+      <br/><br/>
+      
       <p><span class="knock-text-color"> Knock to schedule a: </span></p>
 
       <%if @essay.cell_phone.present? %>
-          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" style="border-style: none;" id='call-btn'>Call</a>
+          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="call-btn">Call</a>
       <%else%>
           <%#=link_to "Call setup", "#", class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;", data: {toggle: "tooltip", placement: "bottom"}, disabled: true%>
       <%end%>
-          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" style="border-style: none;" id='meeting-btn'>Meeting</a>
-      <%=link_to "Add Essay to Cart", '', class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;height: 35px;"%>
+      <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="meeting-btn">Meeting</a>
+      <%=link_to "Add Essay to Cart", "", class: "btn btn-info no-rounded-corner global-knock-button add-cart-button" %>
       <br/>
-      <!--<a>Share</a>-->
     </div>
   </div>
 </div>
