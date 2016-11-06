@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def index
-  	# returns 10 users per 'page'.  We should change @esssays to @users
+  	# returns 10 users per 'page'  
+  	# TODO We should change @esssays to @users
     @essays = User.all.page(params[:page]).per(10)
   end
 end

@@ -27,7 +27,7 @@
   <br/><br/><br/>
   <div class="row">
     <div class="col-md-5">
-      <img src="<%=real_img_or_gu_logo @essay.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
+      <img src="<%=get_user_avatar @essay.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
     </div>
     <div class="col-md-7 offset-profile">
       <h2><%=@essay.display_name%></h2>
