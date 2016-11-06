@@ -23,7 +23,7 @@
   </div>
 
   <br/><br/>
-  <small><%=link_to "← BACK TO VIEW GEORGETOWN APPLICATION ESSAYS", view_application_essays_index_path%></small>
+  <small><%=link_to "← BACK TO VIEW GEORGETOWN APPLICATION ESSAYS", users_path%></small>
   <br/><br/><br/>
   <div class="row">
     <div class="col-md-5">
@@ -70,7 +70,7 @@
 <div class="modal fade" id="call-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="setup_call_request_modal_content">
-      <%#=render partial: "view_application_essays/setup_call_form"%>
+      <%= render partial: "users/setup_call_form"%>
     </div>
   </div>
 </div>
@@ -79,7 +79,7 @@
 <div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="setup_meeting_request_modal_content">
-      <%#=render partial: "view_application_essays/setup_in_person_meeting_form"%>
+      <%=render partial: "users/setup_in_person_meeting_form"%>
     </div>
   </div>
 </div>
