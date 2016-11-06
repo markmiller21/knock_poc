@@ -23,12 +23,15 @@
     border: none;
 }
 
+.navbar.navbar-inverse .header-container {
+    margin-top: 15px;
+}
+
 .button-radius {
     border-radius: 50px;
 }
 
 .button-theme-color {
-    /*background-color: #36BCA8; */
     background-color: black;
     border-color: black;
 }
