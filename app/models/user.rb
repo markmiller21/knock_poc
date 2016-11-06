@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # Validations
-  validates :email, uniqueness: true, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :highschool, presence: true
 
   ##Carrierwave Uploaders
   mount_uploader :avatar_path, AvatarUploader
