@@ -5,14 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # Validations
-  validates :email, :uniqueness => true, :presence => true
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
+  validates :email, uniqueness: true, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   # Associations
-  has_many :knockee_meetings, :class_name => 'Meeting', :foreign_key => 'knockee'
-  has_many :knocker_meetings, :class_name => 'Meeting', :foreign_key => 'knocker'
+  has_many :knockee_meetings, class_name: 'Meeting', foreign_key: 'knockee'
+  has_many :knocker_meetings, class_name: 'Meeting', foreign_key: 'knocker'
 
-  has_many :knockee_transactions, :class_name => 'Transaction', :foreign_key => 'knockee'
-  has_many :knocker_transactions, :class_name => 'Transaction', :foreign_key => 'knocker'
+  has_many :knockee_transactions, class_name: 'Transaction', foreign_key: 'knockee'
+  has_many :knocker_transactions, class_name: 'Transaction', foreign_key: 'knocker'
 end
