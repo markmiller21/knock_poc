@@ -1,0 +1,85 @@
+<style>
+    .img-profile{
+        height: 65%;
+        width: 65%;
+    }
+</style>
+<div class="container">
+  <div class="row" style="display: none;" id="setup_call_request_alert">
+    <div class="col-md-8">
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Schedule request and email sent please wait for <%=@essay.display_name%> to accept.
+      </div>
+    </div>
+  </div>
+  <div class="row" style="display: none;" id="setup_meeting_request_alert">
+    <div class="col-md-8">
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Schedule meeting and email sent please wait for <%=@essay.display_name%> to accept.
+      </div>
+    </div>
+  </div>
+
+  <br/><br/>
+  <small><%=link_to "← BACK TO VIEW GEORGETOWN APPLICATION ESSAYS", view_application_essays_index_path%></small>
+  <br/><br/><br/>
+  <div class="row">
+    <div class="col-md-5">
+      <img src="<%=real_img_or_gu_logo @essay.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
+    </div>
+    <div class="col-md-7 offset-profile">
+      <h2><%=@essay.display_name%></h2>
+      <p><span class="knock-text-color">Essay:</span> $5.00</p>
+
+      <% if @essay.phone_call_price %>
+          <p><span class="knock-text-color"><%=@essay.first_name%>'s call price per 15 minutes:</span> $<%=@essay.phone_call_price%></p>
+      <%else%>
+          <p><span class="knock-text-color">Calls: </span>This student does not accept calls.</p>
+      <%end%>
+
+      <% if @essay.philanthropy_percent.present? && @essay.philanthropy_percent != 0%>
+          <p><span class="knock-text-color">Philanthropic Option:</span> A portion of this student's earnings go to the Georgetown Scholarship Fund</p>
+      <%end%>
+      <p><span class="knock-text-color">School:</span> <%=@essay.college%></p>
+
+      <p><span class="knock-text-color">High School Activities: </span><span><%=@essay.personal_description.present? ? @essay.personal_description : "N/A"%></span></p>
+      <!--<span>Student Government President,</span>-->
+      <!--<span>Varsity Tennis,</span>-->
+      <!--<span>Theater</span>-->
+      <br/>
+      <br/>
+      <p><span class="knock-text-color"> Knock to schedule a: </span></p>
+
+      <%if @essay.cell_phone.present? %>
+          <%=link_to "Call", "#", class: "btn btn-info no-rounded-corner global-knock-button profile-button-size", :style=>"border-style: none;", data: {toggle: "modal", target: "#call-modal"} %>
+      <%else%>
+          <%#=link_to "Call setup", "#", class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;", data: {toggle: "tooltip", placement: "bottom"}, disabled: true%>
+      <%end%>
+      <%=link_to "Meeting", "#", class: "btn btn-info no-rounded-corner global-knock-button profile-button-size", :style=>"border-style: none;", data: {toggle: "modal", target: "#meeting-modal"} %>
+      <%=link_to "Add Essay to Cart", '', class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;height: 35px;"%>
+      <br/>
+      <!--<a>Share</a>-->
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="call-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="setup_call_request_modal_content">
+      <%#=render partial: "view_application_essays/setup_call_form"%>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="setup_meeting_request_modal_content">
+      <%#=render partial: "view_application_essays/setup_in_person_meeting_form"%>
+    </div>
+  </div>
+</div>
