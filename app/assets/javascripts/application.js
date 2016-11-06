@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require jqueryui-timepicker-addon
 //= require underscore
 //= require_tree .
