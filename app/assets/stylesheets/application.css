@@ -17,24 +17,27 @@
 
 
 .navbar.navbar-inverse {
-    height: 80px;
-    border-radius: 0 !important;
-    background-color: #FFFEF2;
-    border: none;
+  height: 80px;
+  border-radius: 0 !important;
+  background-color: #FFFEF2;
+  border: none;
+}
+
+.navbar.navbar-inverse .header-container {
+  margin-top: 15px;
 }
 
 .button-radius {
-    border-radius: 50px;
+  border-radius: 50px;
 }
 
 .button-theme-color {
-    /*background-color: #36BCA8; */
-    background-color: black;
-    border-color: black;
+  background-color: black;
+  border-color: black;
 }
 
 .nav.navbar-nav.navbar-right li a {
-    color: #5AA7B4;
+  color: #5AA7B4;
 }
 
 .button-theme-color:hover {
@@ -42,68 +45,68 @@
 }
 
 .brand-font-info {
-    font-size: 150%;
+  font-size: 150%;
 }
 
 .footer {
-    position: relative;
-    height: 80px;
-    clear:both;
-    background-color: black;
-    padding-top:0px;
-    color: white;
-    text-align: center;
+  position: relative;
+  height: 80px;
+  clear:both;
+  background-color: black;
+  padding-top:0px;
+  color: white;
+  text-align: center;
 }
 #footer-upper {
-    margin-top: -50px;
-    background-color: #666666;
-    height: 60px;
+  margin-top: -50px;
+  background-color: #666666;
+  height: 60px;
 }
 
 #footer-text {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .no-rounded-corner {
-    border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 .knock-logo {
-    padding: 3px;
-    margin-top: -33px;
+  padding: 3px;
+  margin-top: -33px;
 }
 
 .knock-brand-text, .knock-brand-text:hover, .knock-brand-text:visited, .knock-brand-text:link {
-    font-size: 40px;
-    color: #5AA7B4;
+  font-size: 40px;
+  color: #5AA7B4;
 }
 
 #logo, #logo:hover{
-    font-size: 40px;
-    color: #5AA7B4;
+  font-size: 40px;
+  color: #5AA7B4;
 }
 
 .global-knock-button {
-    background-color: #5AA7B4;
-    color: white;
+  background-color: #5AA7B4;
+  color: white;
 }
 
 .global-disclaimer {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 .knock-text-color {
-    color: #5AA7B4;
+  color: #5AA7B4;
 }
 
 @font-face {
-    font-family: knock-global-font;
-    src: url("/fonts/AvenirNextLTPro-Regular.otf");
+  font-family: knock-global-font;
+  src: url("/fonts/AvenirNextLTPro-Regular.otf");
 }
 
 body {
-    background-color: #FFFEF2;
-    font-family: 'knock-global-font', serif;
+  background-color: #FFFEF2;
+  font-family: 'knock-global-font', serif;
 }
 
 body li {
@@ -111,41 +114,41 @@ body li {
 }
 
 .show-content {
-    display: block;
+  display: block;
 }
 
 .hide-content {
-    display: none;
+  display: none;
 }
 
 @media only screen and (min-device-width: 100px) {
-    .shopping-cart-margin{
-        width: 200px;
-        height: 40px;
-        background-color: black;
-        text-align: center;
-        font-size: 11px;
-        padding: 12px;
-        color: white;
-        border-radius: 35px;
-        z-index: 2;
-        margin-left: auto;
-        position: absolute;
-    }
+  .shopping-cart-margin{
+    width: 200px;
+    height: 40px;
+    background-color: black;
+    text-align: center;
+    font-size: 11px;
+    padding: 12px;
+    color: white;
+    border-radius: 35px;
+    z-index: 2;
+    margin-left: auto;
+    position: absolute;
+  }
 }
 
 @media only screen and (min-device-width: 1224px) {
-    .cart {
-        width: 200px;
-        height: 40px;
-        background-color: black;
-        text-align: center;
-        font-size: 11px;
-        padding: 12px;
-        color: white;
-        border-radius: 35px;
-        z-index: 2;
-        margin-left: 1020px;
-        position: absolute;
-    }
+  .cart {
+    width: 200px;
+    height: 40px;
+    background-color: black;
+    text-align: center;
+    font-size: 11px;
+    padding: 12px;
+    color: white;
+    border-radius: 35px;
+    z-index: 2;
+    margin-left: 1020px;
+    position: absolute;
+  }
 }

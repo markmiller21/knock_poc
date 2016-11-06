@@ -88,3 +88,29 @@ and (min-device-width: 1224px) {
   color: white;
 }
 
+.img-profile{
+  height: 65%;
+  width: 65%;
+}
+
+.add-cart-button{
+  border-style: none;
+  height: 35px;
+}
+
+#setup_call_request_alert {
+  display: none;
+}
+
+#setup_meeting_request_alert{
+  display: none;
+}
+
+#call-btn {
+  border-style: none;
+}
+
+#meeting-btn {
+  border-style: none;
+}
+
