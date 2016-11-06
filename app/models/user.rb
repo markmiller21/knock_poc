@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # Validations
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :highschool, presence: true
 
   ##Carrierwave Uploaders
   mount_uploader :avatar_path, AvatarUploader
@@ -15,11 +16,10 @@ class User < ApplicationRecord
   mount_uploader :college_essay_path, CollegeEssayUploader
 
   # Associations
-  has_many :knockee_meetings, :class_name => 'Meeting', :foreign_key => 'knockee'
-  has_many :knocker_meetings, :class_name => 'Meeting', :foreign_key => 'knocker'
-
-  has_many :knockee_transactions, :class_name => 'Transaction', :foreign_key => 'knockee'
-  has_many :knocker_transactions, :class_name => 'Transaction', :foreign_key => 'knocker'
+  has_many :knockee_meetings, class_name: 'Meeting', foreign_key: 'knockee'
+  has_many :knocker_meetings, class_name: 'Meeting', foreign_key: 'knocker'
+  has_many :knockee_transactions, class_name: 'Transaction', foreign_key: 'knockee'
+  has_many :knocker_transactions, class_name: 'Transaction', foreign_key: 'knocker'
 
   def self.permitted(params)
     params.require(:user).permit!
@@ -27,5 +27,9 @@ class User < ApplicationRecord
 
   def self.default_avatar_path
     '/images/photos/gu-logo.jpg'
+  end
+
+  def display_name
+    "#{self.first_name} #{self.last_name}"
   end
 end
