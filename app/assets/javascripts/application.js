@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jqueryui-timepicker-addon
 //= require bootstrap
 //= require underscore
 //= require_tree .

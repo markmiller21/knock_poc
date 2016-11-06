@@ -1,0 +1,6 @@
+<% if @meeting.persisted? %>
+  $("#meeting-modal").modal('hide');
+  $("#setup_meeting_request_alert").show();
+<%else%>
+  $("#setup_meeting_request_modal_content").html("<%=j render partial: 'users/meeting_form'%>");
+<%end%>

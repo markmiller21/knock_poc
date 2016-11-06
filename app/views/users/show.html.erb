@@ -45,32 +45,19 @@
       <p><span class="knock-text-color">School:</span> <%=@essay.college%></p>
 
       <p><span class="knock-text-color">High School Activities: </span><span><%=@essay.personal_description.present? ? @essay.personal_description : "N/A"%></span></p>
-      <!--<span>Student Government President,</span>-->
-      <!--<span>Varsity Tennis,</span>-->
-      <!--<span>Theater</span>-->
       <br/>
       <br/>
       <p><span class="knock-text-color"> Knock to schedule a: </span></p>
 
       <%if @essay.cell_phone.present? %>
-          <%=link_to "Call", "#", class: "btn btn-info no-rounded-corner global-knock-button profile-button-size", :style=>"border-style: none;", data: {toggle: "modal", target: "#call-modal"} %>
+          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" style="border-style: none;" id='call-btn'>Call</a>
       <%else%>
           <%#=link_to "Call setup", "#", class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;", data: {toggle: "tooltip", placement: "bottom"}, disabled: true%>
       <%end%>
-      <%=link_to "Meeting", "#", class: "btn btn-info no-rounded-corner global-knock-button profile-button-size", :style=>"border-style: none;", data: {toggle: "modal", target: "#meeting-modal"} %>
+          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" style="border-style: none;" id='meeting-btn'>Meeting</a>
       <%=link_to "Add Essay to Cart", '', class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;height: 35px;"%>
       <br/>
       <!--<a>Share</a>-->
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="call-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" id="setup_call_request_modal_content">
-      <%= render partial: "users/setup_call_form"%>
     </div>
   </div>
 </div>
@@ -79,7 +66,7 @@
 <div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="setup_meeting_request_modal_content">
-      <%=render partial: "users/setup_in_person_meeting_form"%>
+      <%=render partial: "users/meeting_form"%>
     </div>
   </div>
 </div>
