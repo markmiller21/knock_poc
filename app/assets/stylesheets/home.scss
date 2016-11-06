@@ -1,0 +1,85 @@
+#home-index-image {
+  background-image: url("/images/photos/home_index.jpg");
+  height: 700px;
+  width: auto;
+  background-repeat: no-repeat;
+  background-size:100% 90%;
+  margin-top: -20px;
+  z-index: -10;
+  font-family: AvenirNextLTPro-Bold;
+}
+
+ul {
+  list-style-type: disc;
+  display: block;
+}
+li {
+  display: list-item;
+}
+
+.home-essay-list-item {
+  //box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 20px;
+  width: 80%;
+}
+
+.home-essay-list-item:hover {
+  //box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.home-image-list-image {
+  max-width:100%;
+  max-height:100%;
+  width: 150px;
+  height: auto;
+}
+
+.home-image-padding {
+  padding: 20px;
+}
+
+
+body.home-index{
+  #slides-container{
+    padding-left: 0;
+    padding-right: 0;
+    .page-content{
+      padding: 0;
+    }
+    margin-top: -20px;
+  }
+  .item {
+    width: 100%;
+    height: 550px;
+    background: center no-repeat;
+    background-size: cover;
+
+    &#connect-slide {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+        //image-url('home/city-road-street-buildings.jpg');
+        //url('/images/city-road-street-buildings.jpg');
+      url('/images/photos/our_essays.jpg');
+      background-size: cover;
+    }
+
+    &#knock-slide {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+        //image-url('home/skyline.jpg');
+
+      url('/images/photos/home_index.jpg');
+      //url('/images/landing/green_door.jpg');
+      background-size: cover;
+    }
+
+    &#announcements-slide {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+        //image-url('home/bright-city.jpg');
+      url('/images/photos/healy_tower.jpg');
+      //url('/images/landing/brown_door.jpg');
+      background-size: cover;
+    }
+  }
+
+
+}
