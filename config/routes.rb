@@ -7,6 +7,4 @@ Rails.application.routes.draw do
   match 'home/upload_essay_form', via: [:get, :post]
 
   devise_for :users
-
-
 end
