@@ -21,4 +21,4 @@
 .byebug_history
 
 # ignore all ruby mine changes
-/.idea/*
+.idea/*
