@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # Validations
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :highschool, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :highschool, presence: true
 
   
   # Associations
