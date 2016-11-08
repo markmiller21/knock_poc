@@ -5,7 +5,7 @@ class Meeting < ApplicationRecord
 	# Validation
 	validates :knocker_id, presence: true
 	validates :knockee_id, presence: true
-	validates :type, presence: true
+	validates :meeting_type, presence: true
 
 	# Associations
 	belongs_to :knockee, class_name: 'User'
@@ -19,5 +19,9 @@ class Meeting < ApplicationRecord
   # 2: rejected
 	def set_default_status
 	  self.status = 0 
+	end
+
+	def self.schedule_meeting()
+
 	end
 end

@@ -3,8 +3,8 @@ $(document).ready ->
     e.preventDefault()
     $('#meeting-modal').modal 'show'
     if $(this).attr('id') == 'call-btn'
-      $('#meeting_type').val 'call'
+      $('#meeting_meeting_type').val 'call'
     else
-      $('#meeting_type').val 'in_person'
+      $('#meeting_meeting_type').val 'in_person'
     return
   return

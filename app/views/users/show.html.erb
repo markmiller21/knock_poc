@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success!</strong> Schedule request and email sent please wait for <%=@essay.display_name%> to accept.
+        <strong>Success!</strong> Schedule request and email sent please wait for <%=@knockee.display_name%> to accept.
       </div>
     </div>
   </div>
@@ -11,7 +11,7 @@
     <div class="col-md-8">
       <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success!</strong> Schedule meeting and email sent please wait for <%=@essay.display_name%> to accept.
+        <strong>Success!</strong> Schedule meeting and email sent please wait for <%=@knockee.display_name%> to accept.
       </div>
     </div>
   </div>
@@ -21,30 +21,30 @@
   <br/><br/><br/>
   <div class="row">
     <div class="col-md-5">
-      <img src="<%=get_user_avatar @essay.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
+      <img src="<%=get_user_avatar @knockee.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
     </div>
     <div class="col-md-7 offset-profile">
-      <h2><%=@essay.display_name%></h2>
+      <h2><%=@knockee.display_name%></h2>
       <p><span class="knock-text-color">Essay:</span> $5.00</p>
 
-      <% if @essay.phone_call_price %>
-          <p><span class="knock-text-color"><%=@essay.first_name%>'s call price per 15 minutes:</span> $<%=@essay.phone_call_price%></p>
+      <% if @knockee.phone_call_price %>
+          <p><span class="knock-text-color"><%=@knockee.first_name%>'s call price per 15 minutes:</span> $<%=@knockee.phone_call_price%></p>
       <%else%>
           <p><span class="knock-text-color">Calls: </span>This student does not accept calls.</p>
       <%end%>
 
-      <% if @essay.philanthropy_percent.present? && @essay.philanthropy_percent != 0%>
+      <% if @knockee.philanthropy_percent.present? && @knockee.philanthropy_percent != 0%>
           <p><span class="knock-text-color">Philanthropic Option:</span> A portion of this student's earnings go to the Georgetown Scholarship Fund</p>
       <%end%>
-      <p><span class="knock-text-color">School:</span> <%=@essay.college%></p>
+      <p><span class="knock-text-color">School:</span> <%=@knockee.college%></p>
 
-      <p><span class="knock-text-color">High School Activities: </span><span><%=@essay.personal_description.present? ? @essay.personal_description : "N/A"%></span></p>
+      <p><span class="knock-text-color">High School Activities: </span><span><%=@knockee.personal_description.present? ? @knockee.personal_description : "N/A"%></span></p>
 
       <br/><br/>
       
       <p><span class="knock-text-color"> Knock to schedule a: </span></p>
 
-      <%if @essay.cell_phone.present? %>
+      <%if @knockee.cell_phone.present? %>
           <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="call-btn">Call</a>
       <%else%>
           <%#=link_to "Call setup", "#", class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;", data: {toggle: "tooltip", placement: "bottom"}, disabled: true%>
