@@ -7,6 +7,8 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  #TODO I comment this just for now since we need to let user switch their roles when they signup
   #validates :highschool, presence: true
 
   ##Carrierwave Uploaders
