@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: 'home#index'
   get 'home/index'
-  get 'view_application_essays/index'
 
   #TODO will be removed since it's just a form for inserting fake data
   match 'home/upload_essay_form', via: [:get, :post]
@@ -10,5 +9,8 @@ Rails.application.routes.draw do
       sessions: 'users/sessions',
       registrations: 'users/registrations'
   }
-  resources :users, only: [:show]
+
+  resources :users, only: [:show, :index]
+  resources :meetings, except: [:destroy]
+
 end

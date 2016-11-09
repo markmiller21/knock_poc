@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid" style="margin-top: 15px;">
+  <div class="container-fluid header-container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%=link_to "Upload Your Essay", "" %></li>
-        <li><%=link_to "View Current Georgetown Students", view_application_essays_index_path, class: "" %></li>
+        <li><%=link_to "View Current Georgetown Students", users_path, class: "" %></li>
         <li>
           <% if user_signed_in? %>
               <%=link_to "Logout", destroy_user_session_path, method: :delete %>
@@ -26,7 +26,6 @@
           <%end%>
         </li>
       </ul>
-
     </div>
   </div>
 </nav>

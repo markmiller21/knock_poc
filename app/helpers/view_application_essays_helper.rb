@@ -1,3 +1,0 @@
-module ViewApplicationEssaysHelper
-
-end

@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready ->
+  $('#meeting-btn, #call-btn').click (e) ->
+    e.preventDefault()
+    $('#meeting-modal').modal 'show'
+    if $(this).attr('id') == 'call-btn'
+      $('#meeting_type').val 'call'
+    else
+      $('#meeting_type').val 'in_person'
+    return
+  return
