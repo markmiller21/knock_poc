@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :highschool, presence: true
+  #validates :highschool, presence: true
 
   ##Carrierwave Uploaders
   mount_uploader :avatar_path, AvatarUploader
