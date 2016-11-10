@@ -20,8 +20,4 @@ class Meeting < ApplicationRecord
 	def set_default_status
 	  self.status = 0 
 	end
-
-	def self.schedule_meeting()
-
-	end
 end
