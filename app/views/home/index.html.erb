@@ -133,5 +133,14 @@
 
   <br/><br/>
 
-  <p class="global-disclaimer">Disclaimer: Georgetown has plagiarism checks for every application submitted. Highschoolers are made well aware that any copying will be easily detected and they alone are responsible resulting in a rejected application. Your essay is merely a storytelling template.</p>
+  <div class="row user-card-container">
+    <% @users.each do |user| %>
+      <%= render partial: "home/user_card", locals: { user: user } %>
+    <% end %>
+  </div>
+  <br/><br/>
+
+  <div class="row">
+    <p class="global-disclaimer">Disclaimer: Georgetown has plagiarism checks for every application submitted. Highschoolers are made well aware that any copying will be easily detected and they alone are responsible resulting in a rejected application. Your essay is merely a storytelling template.</p>
+  </div>
 </div>
