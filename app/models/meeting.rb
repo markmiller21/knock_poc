@@ -5,7 +5,7 @@ class Meeting < ApplicationRecord
 	# Validation
 	validates :knocker_id, presence: true
 	validates :knockee_id, presence: true
-	validates :type, presence: true
+	validates :meeting_type, presence: true
 
 	# Associations
 	belongs_to :knockee, class_name: 'User'
