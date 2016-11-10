@@ -48,23 +48,18 @@
   font-size: 150%;
 }
 
-.footer {
-  position: relative;
-  height: 80px;
+#knock-footer {
+  height: 60px;
   clear:both;
   background-color: black;
   padding-top:0px;
   color: white;
   text-align: center;
 }
-#footer-upper {
-  margin-top: -50px;
-  background-color: #666666;
-  height: 60px;
-}
 
 #footer-text {
   margin-top: 20px;
+  font-size: 24px;
 }
 
 .no-rounded-corner {
