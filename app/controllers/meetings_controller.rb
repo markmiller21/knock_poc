@@ -21,21 +21,24 @@ class MeetingsController < ApplicationController
     end
   end
 
+  #basically all below actions need to pass 3 params by the URL queries, which is by GET or POST method:
+  #1, knocker_id
+  #2, knockee_id
+  #3, meeting_id
   def accept_call
-    if params[:meeting_id].present? && params[:knockee_id].present? && params[:knocker_id].present?
-      @meeting.update_column('status', 1)
+    @meeting.update_column('status', 1)
 
-      time_to_call = Time.zone.parse("#{@meeting.meeting_time} -0400") - Time.zone.now
-      puts "----------#{time_to_call}"
-      #MeetingSetupJob.set(wait: time_to_call.seconds).perform_later("+1#{@knockee.cell_phone}", "+1#{knocker.cell_phone}", @meeting.id)
+    time_to_call = Time.zone.parse("#{@meeting.meeting_time} -0400") - Time.zone.now
+    puts "----------#{time_to_call}"
+    #MeetingSetupJob.set(wait: time_to_call.seconds).perform_later("+1#{@knockee.cell_phone}", "+1#{knocker.cell_phone}", @meeting.id)
 
-      MeetingSetupMailer.accept_call_for_knocker_confirmation(@knocker, @knockee, @meeting).deliver_now
-      MeetingSetupMailer.accept_call_for_knockee_confirmation(@knocker, @knockee, @meeting).deliver_now
-    end
+    MeetingSetupMailer.accept_call_for_knocker_confirmation(@knocker, @knockee, @meeting).deliver_now
+    MeetingSetupMailer.accept_call_for_knockee_confirmation(@knocker, @knockee, @meeting).deliver_now
   end
 
 
   def alternative_time
+    #only if the form_action is present, then we do the action that needed, same as in reject_reason
     if params[:form_action]
       @meeting.update_column('reschedule_time', params[:reschedule_time])
       MeetingSetupMailer.alternative_call_for_knocker(@knocker, @knockee, @meeting, params[:alternative_time]).deliver_now
@@ -60,9 +63,13 @@ class MeetingsController < ApplicationController
     params.require(:meeting).permit!
   end
 
+  #like mentioned above, here to make sure all 3 params are present
+  # in other words, @knocker, @knockee and @meeting must be present in those actions
   def set_knocker_knockee_meeting
-    @knocker = User.find(params[:knocker_id]) if params[:knocker_id].present?
-    @knockee = User.find(params[:knockee_id]) if params[:knockee_id].present?
-    @meeting = Meeting.find(params[:meeting_id]) if params[:meeting_id].present?
+    if params[:meeting_id].present? && params[:knockee_id].present? && params[:knocker_id].present?
+      @knocker = User.find(params[:knocker_id])
+      @knockee = User.find(params[:knockee_id])
+      @meeting = Meeting.find(params[:meeting_id])
+    end
   end
 end

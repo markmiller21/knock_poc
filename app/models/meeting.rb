@@ -6,6 +6,7 @@ class Meeting < ApplicationRecord
 	validates :knocker_id, presence: true
 	validates :knockee_id, presence: true
 	validates :meeting_type, presence: true
+	validates :meeting_location, presence: true, if: "self.meeting_type='#{Constants::IN_PERSON_TYPE}'"
 
 	# Associations
 	belongs_to :knockee, class_name: 'User'
