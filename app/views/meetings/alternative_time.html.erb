@@ -1,0 +1,11 @@
+<div class="container">
+  <%=form_tag alternative_time_meetings_path do %>
+    <div class="form-group">
+      <label for="exampleTextarea">Provide your alternative time by describe it purely in text:</label>
+      <%=text_area_tag :alternative_time, '', class: 'form-control', rows: 10%>
+      <%=render partial: "meetings/common_hidden_fields"%>
+      <%=hidden_field_tag :form_action, true %>
+    </div>
+    <center><button type="submit" class="btn btn-primary global-knock-button">Submit</button></center>
+  <%end%>
+</div>

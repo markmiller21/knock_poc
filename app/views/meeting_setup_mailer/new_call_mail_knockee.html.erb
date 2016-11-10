@@ -1,0 +1,19 @@
+Congrats <%=@knockee.display_name%>,<br/><br/>
+
+<p><%=@knocker.display_name%> just requested a Knock call for the following time:</p>
+<p><%=call_time @meeting.meeting_time%></p>
+<p>You will be paid your price of $<%=@knockee.phone_call_price%> per 15 minutes. Remember that the first 3 minutes will be granted free to ensure you both can get acquainted with each other. Your earnings will start accruing immediately after.</p>
+
+<p>
+  Would you like to accept this call?
+  <%=link_to 'Sure thing.', accept_call_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-success'%>
+</p>
+
+<br/>
+
+<p>You can provide another alternative time <%=link_to 'here.', alternative_time_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-warning'%></p>
+<br/>
+
+<p>Or, you can <%=link_to 'reject this Knock.', reject_reason_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-danger'%>.</p>
+<br/>
+Happy Knocking!

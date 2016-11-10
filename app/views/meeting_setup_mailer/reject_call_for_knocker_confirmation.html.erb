@@ -1,0 +1,11 @@
+Hi <%=@knocker.display_name%>,
+<br/>
+<p>It looks like <%=@knockee.display_name%> will not be available to take your call. Try again or with another student <%=link_to 'here.', users_url %></p>
+<fieldset style="padding:30px;">
+  <div>
+    <%=@reject_reason%>
+  </div>
+</fieldset>
+<br/>
+<p>Happy Knocking!</p>
+<p>The Knock Team</p>

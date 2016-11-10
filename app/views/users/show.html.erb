@@ -42,25 +42,36 @@
 
       <br/><br/>
       
-      <p><span class="knock-text-color"> Knock to schedule a: </span></p>
 
-      <%if @knockee.cell_phone.present? %>
-          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="call-btn">Call</a>
-      <%else%>
-          <%#=link_to "Call setup", "#", class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;", data: {toggle: "tooltip", placement: "bottom"}, disabled: true%>
-      <%end%>
-      <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="meeting-btn">Meeting</a>
-      <%=link_to "Add Essay to Cart", "", class: "btn btn-info no-rounded-corner global-knock-button add-cart-button" %>
+
+      <!-- only if user signed in then we allow them to schedule call or meetings with college students. The modal
+       is also depends on whether user signed in.-->
+      <% if user_signed_in? %>
+
+          <p><span class="knock-text-color"> Knock to schedule a: </span></p>
+          <% if @knockee.cell_phone.present? %>
+              <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="call-btn">Call</a>
+          <% else %>
+              <%#=link_to "Call setup", "#", class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;", data: {toggle: "tooltip", placement: "bottom"}, disabled: true%>
+          <% end %>
+          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="meeting-btn">Meeting</a>
+          <%=link_to "Add Essay to Cart", "", class: "btn btn-info no-rounded-corner global-knock-button add-cart-button" %>
+
+          <!-- Modal -->
+          <div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" id="setup_meeting_request_modal_content">
+                <%=render partial: "users/meeting_form"%>
+              </div>
+            </div>
+          </div>
+          <!-- End Modal -->
+
+      <% else %>
+          <p style="color: red;">You haven't login, please login or signup <%= link_to "here", new_user_registration_path %> to schedule a call or meeting with GU college students!</p>
+      <% end %>
+
       <br/>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" id="setup_meeting_request_modal_content">
-      <%=render partial: "users/meeting_form"%>
     </div>
   </div>
 </div>

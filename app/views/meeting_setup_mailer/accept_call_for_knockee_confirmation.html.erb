@@ -1,0 +1,12 @@
+Hi <%=@knockee.display_name%>,
+<br/>
+<p>You are on your way to making passive income... your Knock call has been scheduled!</p>
+<br/>
+<p>Your call with <%=@knocker.display_name%> will happen on <%=call_time @meeting.meeting_time%> and you will be making $<%=price(@knockee.phone_call_price, 15)%> per minute.</p>
+<br/>
+<p>Remember the first three minutes are granted free and your price per minute will begin accruing immediately after.</p>
+
+
+<br/>
+<p>Happy Knocking!</p>
+<p>The Knock Team</p>
