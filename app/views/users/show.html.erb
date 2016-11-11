@@ -44,8 +44,7 @@
       
 
 
-      <!-- only if user signed in then we allow them to schedule call or meetings with college students. The modal
-       is also depends on whether user signed in.-->
+      <!-- only if user signed in then we allow them to schedule call or meetings with college students. The modal is also depends on whether user signed in.-->
       <% if user_signed_in? %>
 
           <p><span class="knock-text-color"> Knock to schedule a: </span></p>
@@ -68,7 +67,7 @@
           <!-- End Modal -->
 
       <% else %>
-          <p style="color: red;">You haven't login, please login or signup <%= link_to "here", new_user_registration_path %> to schedule a call or meeting with GU college students!</p>
+          <p class="cant-schedule-error-msg">You haven't login, please login or signup <%= link_to "here", new_user_registration_path %> to schedule a call or meeting with GU college students!</p>
       <% end %>
 
       <br/>

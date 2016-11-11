@@ -114,3 +114,8 @@ and (min-device-width: 1224px) {
   border-style: none;
 }
 
+/* I like to make css more self-described, we can add more styles in this class */
+.cant-schedule-error-msg {
+  color: red;
+}
+
