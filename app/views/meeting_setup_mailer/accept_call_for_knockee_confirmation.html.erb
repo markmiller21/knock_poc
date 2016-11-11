@@ -1,8 +1,12 @@
 Hi <%=@knockee.display_name%>,
 <br/>
-<p>You are on your way to making passive income... your Knock call has been scheduled!</p>
+<p>You are on your way to making passive income... your Knock <%= toggle_meeting_type(@meeting)%> has been scheduled!</p>
 <br/>
-<p>Your call with <%=@knocker.display_name%> will happen on <%=call_time @meeting.meeting_time%> and you will be making $<%=price(@knockee.phone_call_price, 15)%> per minute.</p>
+<p>Your <%=toggle_meeting_type(@meeting)%> with <%=@knocker.display_name%> will happen on <%=call_time @meeting.meeting_time%>
+  <% if @meeting.meeting_type == Constants::IN_PERSON_TYPE %>
+    and the location would be <%= @meeting.meeting_location %>
+  <%end%>
+  and you will be making $<%=price(toggle_price(@meeting, @knockee), 15)%> per minute.</p>
 <br/>
 <p>Remember the first three minutes are granted free and your price per minute will begin accruing immediately after.</p>
 

@@ -12,12 +12,8 @@ class MeetingsController < ApplicationController
 
     #only if the meeting saved, then schedule the call if its type is 'call'
     if @meeting.save
-      if @meeting.meeting_type == Constants::CALL_TYPE
-        MeetingSetupMailer.new_call_mail_knockee(knocker, @knockee, @meeting).deliver_now
-        MeetingSetupMailer.new_call_mail_knocker(knocker, @knockee, @meeting).deliver_now
-      else
-
-      end
+      MeetingSetupMailer.new_call_mail_knockee(knocker, @knockee, @meeting).deliver_now
+      MeetingSetupMailer.new_call_mail_knocker(knocker, @knockee, @meeting).deliver_now
     end
   end
 
@@ -30,7 +26,9 @@ class MeetingsController < ApplicationController
 
     time_to_call = Time.zone.parse("#{@meeting.meeting_time} -0400") - Time.zone.now
     puts "----------#{time_to_call}"
-    #MeetingSetupJob.set(wait: time_to_call.seconds).perform_later("+1#{@knockee.cell_phone}", "+1#{knocker.cell_phone}", @meeting.id)
+    MeetingSetupJob.set(wait: time_to_call.seconds).
+        perform_later("+1#{@knockee.cell_phone}",
+                      "+1#{knocker.cell_phone}", @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
 
     MeetingSetupMailer.accept_call_for_knocker_confirmation(@knocker, @knockee, @meeting).deliver_now
     MeetingSetupMailer.accept_call_for_knockee_confirmation(@knocker, @knockee, @meeting).deliver_now

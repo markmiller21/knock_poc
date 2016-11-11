@@ -1,5 +1,5 @@
 class MeetingSetupMailer < ApplicationMailer
-  helper_method :price, :call_time
+  helper_method :price, :call_time, :toggle_meeting_type, :toggle_price
   default from: "terrorgeek@gmail.com"
 
   def new_call_mail_knockee(knocker, knockee, meeting)
@@ -43,5 +43,15 @@ class MeetingSetupMailer < ApplicationMailer
 
   def call_time(time)
     time.to_s[0..-7]
+  end
+
+  #returns the text just for easily used in the mail view template
+  def toggle_meeting_type(meeting)
+    meeting.meeting_type == Constants::CALL_TYPE ? "call" : 'in-person meeting'
+  end
+
+  #this returns money, the dollar
+  def toggle_price(meeting, knockee)
+    meeting.meeting_type == Constants::CALL_TYPE ? knockee.phone_call_price : knockee.meeting_price
   end
 end
