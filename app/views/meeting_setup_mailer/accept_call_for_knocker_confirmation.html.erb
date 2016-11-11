@@ -1,8 +1,13 @@
 Congrats <%=@knocker.display_name%>,
 <br/>
-<p>Your call has been accepted!</p>
+<p>Your <%= toggle_meeting_type(@meeting)%> has been accepted!</p>
 <br/>
-<p>Knock will automatically call you on <%=call_time @meeting.meeting_time%>.</p>
+<% if @meeting.meeting_type == Constants::CALL_TYPE %>
+    <p>Knock will automatically call you on <%=call_time @meeting.meeting_time%>.</p>
+<%else%>
+    <p>The location of the meeting would be <%=@meeting.meeting_location%>, and don't forget to attend it!</p>
+<%end%>
+
 <br/>
 <p>You will be paying "<%=@knockee.display_name%>'s price of" $<%=price(@knockee.phone_call_price, 15)%> per minute.</p>
 <p>Remember the first three minutes are granted free and your price per minute will begin accruing immediately after.</p>
