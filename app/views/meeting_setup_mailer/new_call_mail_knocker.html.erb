@@ -1,0 +1,15 @@
+Hi <%=@knocker.display_name%>,<br/><br/>
+
+<p>Your knock has been sent! We’ll send a confirmation for your call when <%=@knockee.display_name%> accepts.</p>
+<br/>
+<% if @meeting.meeting_type == Constants::CALL_TYPE %>
+    <p> Knock will automatically call your phone at your scheduled time. </p>
+<%else%>
+    <p> Please remember to attend the meeting with your knockee :) </p>
+<%end%>
+
+<br/>
+<p>Remember, the first three minutes are granted free, and your call will last as long as you'd like. </p>
+
+<p>Happy Knocking!</p>
+<p>The Knock Team</p>

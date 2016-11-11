@@ -11,6 +11,15 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:show, :index]
-  resources :meetings, except: [:destroy]
+  resources :meetings, except: [:destroy] do
+    collection do
+      post 'disconnect_call_back'
+      get 'accept_call'
+      get 'reject_call'
+      get 'alternative_time_confirm'
+      match 'alternative_time', via: [:get, :post]
+      match 'reject_reason', via: [:get, :post]
+    end
+  end
 
 end

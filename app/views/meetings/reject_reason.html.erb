@@ -1,0 +1,11 @@
+<div class="container">
+  <%=form_tag reject_reason_meetings_path do %>
+      <div class="form-group">
+        <label for="exampleTextarea">Reject reason:</label>
+        <%=text_area_tag :reject_reasons, '', class: 'form-control', rows: 10%>
+        <%=render partial: "meetings/common_hidden_fields"%>
+        <%=hidden_field_tag :form_action, true %>
+      </div>
+      <center><button type="submit" class="btn btn-primary global-knock-button">Submit</button></center>
+  <%end%>
+</div>

@@ -83,4 +83,24 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+
+  #production's email config is same as in development
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => '52.24.41.20:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "127.0.0.1", :port => 1025 }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            'knocknetworking@gmail.com',
+      password:             'knock219!',
+      authentication:       'plain',
+      enable_starttls_auto: true
+  }
 end
