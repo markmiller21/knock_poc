@@ -7,6 +7,12 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates_format_of :cell_phone, with: Constants::VALID_PHONE_NUMBER_REGEX, message: "is invalid."
+
+  #since 3 prices are all in same format, we validate them by same regex
+  validates_each :phone_call_price, :meeting_price, :video_price do |record, attr, value|
+    record.errors.add(attr, ' is invalid, price should be between 0 and 999.99, no dollar sign please.') if value.present? &&  !(value =~ Constants::VALID_US_CURRENCY)
+  end
 
   #TODO I comment this just for now since we need to let user switch their roles when they signup
   #validates :highschool, presence: true

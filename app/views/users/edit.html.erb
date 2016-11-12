@@ -1,13 +1,13 @@
 <!-- How about put the form into a BS container? :) -->
 <div class="container">
-  <%= form_for @user do |f| %>
+  <%= simple_form_for @user do |f| %>
     <!-- fields for all users -->
 
     <div class="form-group row">
       <!-- first name field -->
       <label for="first_name" class="col-xs-2 col-form-label">First Name:</label>
       <div class="col-xs-10">
-        <%= f.text_field :first_name, class: "form-control"%>
+        <%= f.input :first_name, input_html: { class: "form-control" }, label: false %>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
       <!-- last name field -->
       <label for="last_name" class="col-xs-2 col-form-label">Last Name:</label>
       <div class="col-xs-10">
-        <%= f.text_field :last_name, class: "form-control"%>
+        <%= f.input :last_name, input_html: { class: "form-control" }, label: false %>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
       <!-- email field -->
       <label for="email" class="col-xs-2 col-form-label">Email</label>
       <div class="col-xs-10">
-        <%= f.email_field :email, class: "form-control", placeholder: "Email", required: true%>
+        <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "Email", required: true, label: false %>
       </div>
     </div>
 
@@ -68,7 +68,7 @@
       <!-- cell phone field -->
       <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone:</label>
       <div class="col-xs-10">
-        <%= f.telephone_field :cell_phone, class: "form-control"%>
+        <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" } %>
       </div>
     </div>
 
@@ -76,7 +76,7 @@
       <!-- High School field -->
       <label for="highschool" class="col-xs-2 col-form-label">High School:</label>
       <div class="col-xs-10">
-        <%= f.text_field :highschool, class: "form-control"%>
+        <%= f.input :highschool, input_html: { class: "form-control" } %>
       </div>
     </div>
 
@@ -100,7 +100,7 @@
       <!-- phone call price field -->
       <label for="meeting_price" class="col-xs-2 col-form-label">In person meeting Price:</label>
       <div class="col-xs-10">
-        <%= f.number_field :meeting_price , class: "form-control", step: 0.5 %>
+        <%= f.input :meeting_price , input_html: { class: "form-control" } %>
       </div>
     </div>
 
@@ -108,7 +108,7 @@
       <!-- phone call price field -->
       <label for="phone_call_price" class="col-xs-2 col-form-label">Phone Meeting Price:</label>
       <div class="col-xs-10">
-        <%= f.number_field :phone_call_price , class: "form-control", step: 0.5 %>
+        <%= f.input :phone_call_price , input_html: { class: "form-control"} %>
       </div>
     </div>
 
@@ -116,7 +116,7 @@
       <!-- video call price field -->
       <label for="video_price" class="col-xs-2 col-form-label">Video Call Price:</label>
       <div class="col-xs-10">
-        <%= f.number_field :video_price , class: "form-control", step: 0.5 %>
+        <%= f.input :video_price , input_html: { class: "form-control" } %>
       </div>
     </div>
 
@@ -124,7 +124,7 @@
       <!-- venmo account field -->
       <label for="venmo" class="col-xs-2 col-form-label">Venmo username:</label>
       <div class="col-xs-10">
-        <%= f.text_field :venmo , class: "form-control" %>
+        <%= f.input :venmo , input_html: { class: "form-control" } %>
       </div>
     </div>
 

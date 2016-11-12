@@ -168,6 +168,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (~> 1.5)
       redis (~> 3.2, >= 3.2.1)
+    simple_form (3.3.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     spring (2.0.0)
       activesupport (>= 4.2)
@@ -226,6 +229,7 @@ DEPENDENCIES
   rest-client
   sass-rails (~> 5.0)
   sidekiq
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

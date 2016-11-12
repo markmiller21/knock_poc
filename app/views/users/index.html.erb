@@ -10,7 +10,7 @@
         <% users.each do |user| %>
             <div class="col-md-4 essays">
               <div class="card">
-                <%=link_to '' do %>
+                <%=link_to user_path(user) do %>
                     <img class="card-img-top" src="<%=get_user_avatar user.avatar_path.url%>">
                 <%end%>
 

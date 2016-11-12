@@ -2,7 +2,7 @@
 class Constants
   VALID_PHONE_NUMBER_REGEX = /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/
   VALID_EMAIL_REGEX = /\A([^@\s]+)@georgetown.edu\Z/i
-  VALID_US_CURRENCY = /\A^\d{1,6}(\.\d{0,2})?$\Z/
+  VALID_US_CURRENCY = /\A^\d{1,3}(\.\d{0,2})?$\Z/
   VALID_TIME = /\A^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$\Z/
 
   #keep this, maybe we need it later

@@ -23,8 +23,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(User::permitted(params))
-    redirect_to :back
+    if @user.update(User::permitted(params))
+      redirect_to :back
+    else
+      render :edit
+    end
   end
 
   private
