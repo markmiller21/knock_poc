@@ -6,8 +6,21 @@ module UsersHelper
 
   # returns true is student is a college student
   def is_college_student?(user)
-  	if (user.college)
-  		return true
-  	end
+    binding.pry;
+    # new logic
+    # Make this a ternary you meat head
+    if (user.student_status == "college_student")
+      return true
+    else
+      return false
+    end
+
+
+
+    # old logic
+    if (user.college)
+      return true
+    end
+
   end
 end
