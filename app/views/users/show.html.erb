@@ -48,12 +48,16 @@
       <% if user_signed_in? %>
 
           <p><span class="knock-text-color"> Knock to schedule a: </span></p>
-          <% if @knockee.cell_phone.present? %>
-              <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="call-btn">Call</a>
-          <% else %>
-              <%#=link_to "Call setup", "#", class: "btn btn-info no-rounded-corner global-knock-button", :style=>"border-style: none;", data: {toggle: "tooltip", placement: "bottom"}, disabled: true%>
+          <!-- For now, I assume that if the ***_price is present, then the knockee accpet the corresponding type of meeting. which means highschoolers can schedule it with them.  -->
+          <% if @knockee.phone_call_price.present? %>
+              <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="call-btn">Phone Call</a><!-- I will just puts the text for now, Mark will do the style or button title later, the same as in-person meeting and video call. -->
           <% end %>
-          <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="meeting-btn">Meeting</a>
+          <% if @knockee.meeting_price.present? %>
+              <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="meeting-btn">In-Person Meeting</a>
+          <% end %>
+          <% if @knockee.video_price.present? %>
+              <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="video-call-btn">Video Call</a>
+          <% end %>
           <%=link_to "Add Essay to Cart", "", class: "btn btn-info no-rounded-corner global-knock-button add-cart-button" %>
 
           <!-- Modal -->

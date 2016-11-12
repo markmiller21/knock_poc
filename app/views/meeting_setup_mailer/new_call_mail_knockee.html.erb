@@ -1,10 +1,8 @@
 <!--Here we are gonna use bunch of if to show different messages according to the meeting type -->
 Congrats <%=@knockee.display_name%>,<br/><br/>
-<% if @meeting.meeting_type == Constants::CALL_TYPE %>
-    <p><%=@knocker.display_name%> just requested a Knock Call for the following time:</p>
-<%else%>
-    <p><%=@knocker.display_name%> just requested a In Person Meeting for the following time:</p>
-<%end%>
+
+<p><%=@knocker.display_name%> just requested a <%= Constants::MEETING_TYPES[@meeting.meeting_type]%> for the following time:</p>
+
 <p><%=call_time @meeting.meeting_time%></p>
 
 <!-- show location if it's in-person -->
@@ -15,7 +13,7 @@ Congrats <%=@knockee.display_name%>,<br/><br/>
 <p>You will be paid your price of $<%= toggle_price(@meeting, @knockee) %> per 15 minutes. Remember that the first 3 minutes will be granted free to ensure you both can get acquainted with each other. Your earnings will start accruing immediately after.</p>
 
 <p>
-  Would you like to accept this <%= toggle_meeting_type(@meeting) %>?
+  Would you like to accept this <%= Constants::MEETING_TYPES[@meeting.meeting_type] %>?
   <%=link_to 'Sure thing.', accept_call_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-success'%>
 </p>
 

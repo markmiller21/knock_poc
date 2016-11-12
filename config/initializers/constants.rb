@@ -8,4 +8,7 @@ class Constants
   #keep this, maybe we need it later
   CALL_TYPE = 'call'
   IN_PERSON_TYPE = 'in_person'
+  VIDEO_TYPE = 'video'
+
+  MEETING_TYPES = {CALL_TYPE => 'Phone Call', IN_PERSON_TYPE => 'In-Person Meeting', VIDEO_TYPE => 'Video Call'}
 end
