@@ -19,20 +19,21 @@
           <li><a href="#">About</a></li>
           <li>
             <% if user_signed_in? %>
-                <%=link_to "Upload Your Essay", edit_user_path(current_user) %>
+              <%=link_to "Edit Profile", edit_user_path(current_user) %>
             <%end%>
           </li>
-          <li><%=link_to "View Current Georgetown Students", users_path %></li>
+          <li>
+            <%=link_to "View Students", users_path %>
+          </li>
           <li>
             <% if user_signed_in? %>
-                <%=link_to "Sign out", destroy_user_session_path, method: :delete %>
+              <%=link_to "Sign out", destroy_user_session_path, method: :delete %>
             <% else %>
-                <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
-          <%end%>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+            <%end%>
           </li>
         </ul>
 
-        <!-- turned Mark's original pure html login form for into devise login form -->
         <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
           <%= form_for :user, url: user_session_path, html: {class: "navbar-form navbar-right form-inline", role: "form"}  do |f| %>
               <div class="form-group">
