@@ -54,6 +54,12 @@ class MeetingSetupMailer < ApplicationMailer
 
   #this returns money, the dollar
   def toggle_price(meeting, knockee)
-    meeting.meeting_type == Constants::CALL_TYPE ? knockee.phone_call_price : knockee.meeting_price
+    if meeting.meeting_type == Constants::CALL_TYPE
+      knockee.phone_call_price
+    elsif meeting.meeting_type == Constants::IN_PERSON_TYPE
+      knockee.meeting_price
+    else
+      knockee.video_price
+    end
   end
 end

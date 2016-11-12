@@ -1,10 +1,11 @@
 class MeetingSetupJob < ApplicationJob
   queue_as :default
 
-  SINCH_API_URL = 'https://callingapi.sinch.com/v1/callouts'
-  SINCH_API_KEY = '23caec4e-467a-486a-92f0-43c08b06ad56'
-  SINCH_SECRET = 'nvxCFgLcgkuqkHxFqwXJEg=='
-  SINCH_CALL_METHOD = 'conferenceCallout'
+  #TODO When we make sure everything still works with putting into these in Constants, then we remove them.
+  # SINCH_API_URL = 'https://callingapi.sinch.com/v1/callouts'
+  # SINCH_API_KEY = '23caec4e-467a-486a-92f0-43c08b06ad56'
+  # SINCH_SECRET = 'nvxCFgLcgkuqkHxFqwXJEg=='
+  # SINCH_CALL_METHOD = 'conferenceCallout'
 
   #params:
   # 1, person1's phone, callee
@@ -26,7 +27,7 @@ class MeetingSetupJob < ApplicationJob
   def send_request(conference_id, phone_number, db_call_id)
     #for rest_params, just care about those 3 passed params, forget about others for now.
     rest_params = {
-        "method" => SINCH_CALL_METHOD,
+        "method" => Constants::SINCH_CALL_METHOD,
         "conferenceCallout" =>
             {
                 "destination" => {"type" => "number", "endpoint" => phone_number},
@@ -39,7 +40,7 @@ class MeetingSetupJob < ApplicationJob
                 "enableDice" => true
             }
     }
-    res = RestClient.post SINCH_API_URL, JSON.generate(rest_params), {content_type: :json, :Authorization => 'Basic MjNjYWVjNGUtNDY3YS00ODZhLTkyZjAtNDNjMDhiMDZhZDU2Om52eENGZ0xjZ2t1cWtIeEZxd1hKRWc9PQ=='}
+    res = RestClient.post Constants::SINCH_API_URL, JSON.generate(rest_params), {content_type: :json, :Authorization => 'Basic MjNjYWVjNGUtNDY3YS00ODZhLTkyZjAtNDNjMDhiMDZhZDU2Om52eENGZ0xjZ2t1cWtIeEZxd1hKRWc9PQ=='}
     #TODO will remove this when we launch
     puts "=======#{res.body}"
     puts "=======#{res.code}"

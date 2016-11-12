@@ -4,7 +4,7 @@ class Meeting < ApplicationRecord
 
 	# Validation
 	validates :knocker_id, :meeting_time, :knockee_id, :meeting_type, presence: true
-	validates :meeting_location, presence: true, if: "self.meeting_type='#{Constants::IN_PERSON_TYPE}'"
+	validates :meeting_location, presence: true, if: "self.meeting_type=='#{Constants::IN_PERSON_TYPE}'"
 	validate :meeting_time_later_than_now?
 
 	# Associations

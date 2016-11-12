@@ -1,10 +1,10 @@
 Hi <%=@knocker.display_name%>,
 <br/>
 <p>It looks like <%=@knockee.display_name%> will not be available to
-  <% if @meeting.meeting_type == Constants::CALL_TYPE %>
+  <% if @meeting.meeting_type == Constants::CALL_TYPE || @meeting.meeting_type == Constants::VIDEO_TYPE %>
       take your call.
   <%else%>
-      meeting with you.
+      meet with you.
   <%end%>
 
   Try again or with another student <%=link_to 'here.', users_url %></p>

@@ -23,12 +23,10 @@ class MeetingsController < ApplicationController
   #3, meeting_id
   def accept_call
     @meeting.update_column('status', 1)
-
     time_to_call = Time.zone.parse("#{@meeting.meeting_time} -0400") - Time.zone.now
-    puts "----------#{time_to_call}"
     MeetingSetupJob.set(wait: time_to_call.seconds).
         perform_later("+1#{@knockee.cell_phone}",
-                      "+1#{knocker.cell_phone}", @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
+                      "+1#{@knocker.cell_phone}", @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
 
     MeetingSetupMailer.accept_call_for_knocker_confirmation(@knocker, @knockee, @meeting).deliver_now
     MeetingSetupMailer.accept_call_for_knockee_confirmation(@knocker, @knockee, @meeting).deliver_now

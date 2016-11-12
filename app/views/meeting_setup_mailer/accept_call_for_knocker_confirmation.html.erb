@@ -1,8 +1,10 @@
 Congrats <%=@knocker.display_name%>,
 <br/>
-<p>Your <%= toggle_meeting_type(@meeting)%> has been accepted!</p>
+<p>Your <%= Constants::MEETING_TYPES[@meeting.meeting_type] %> has been accepted!</p>
 <br/>
-<% if @meeting.meeting_type == Constants::CALL_TYPE %>
+
+<!-- I just want to have phone and video call using the same confirmation message in email, the same would be happen on lots of other email views. -->
+<% if @meeting.meeting_type == Constants::CALL_TYPE || @meeting.meeting_type == Constants::VIDEO_TYPE %>
     <p>Knock will automatically call you on <%=call_time @meeting.meeting_time%>.</p>
 <%else%>
     <p>The location of the meeting would be <%=@meeting.meeting_location%>, and don't forget to attend it!</p>
