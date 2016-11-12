@@ -17,26 +17,34 @@
         
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">About</a></li>
-          <li><%=link_to "Upload Your Essay", "" %></li>
+          <li>
+            <% if user_signed_in? %>
+                <%=link_to "Upload Your Essay", edit_user_path(current_user) %>
+            <%end%>
+          </li>
           <li><%=link_to "View Current Georgetown Students", users_path %></li>
           <li>
-            <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+            <% if user_signed_in? %>
+                <%=link_to "Sign out", destroy_user_session_path, method: :delete %>
+            <% else %>
+                <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+          <%end%>
           </li>
         </ul>
 
-
+        <!-- turned Mark's original pure html login form for into devise login form -->
         <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-          <form class="navbar-form navbar-right form-inline" role="form">
-            <div class="form-group">
-              <label class="sr-only" for="Email">Email</label>
-              <input type="email" class="form-control" id="Email" placeholder="Email" autofocus required />
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="Password">Password</label>
-              <input type="password" class="form-control" id="Password" placeholder="Password" required />
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+          <%= form_for :user, url: user_session_path, html: {class: "navbar-form navbar-right form-inline", role: "form"}  do |f| %>
+              <div class="form-group">
+                <label class="sr-only" for="Email">Email</label>
+                <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder: "Email" %>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="Password">Password</label>
+                <%= f.password_field :password, autocomplete: "off", class: "form-control", required: true, placeholder: "Password" %>
+              </div>
+              <%=f.submit "Sign in", class: "btn btn-success"%>
+          <%end%>
         </div>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
