@@ -1,0 +1,12 @@
+<div class="row user-registration-container">
+	<h2>Signup for Knock</h2>
+	<br />
+	<%= bootstrap_form_for(user, layout: :horizontal, label_col: "col-xs-4", control_col: "col-xs-8") do |f| %>
+	  <%= f.text_field  :first_name %>
+	  <%= f.text_field  :last_name %>
+	  <%= f.email_field :email %>
+	  <%= f.password_field :password %>
+	  <%= f.text_field  :student_status %>
+	  <%= f.submit "Join Knock", class: "btn btn-success" %>
+	<% end %>
+</div>

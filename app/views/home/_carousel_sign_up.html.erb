@@ -1,14 +1,19 @@
 <div id="page-content">
-  <div class="carousel summaries-carousel slide" data-ride="carousel" id="home-main-carousel">
+  <div class="carousel summaries-carousel slide" data-ride="carousel" data-interval="false" id="home-main-carousel">
     <div class="carousel-inner" role="listbox">
       <div class="item" id="connect-slide">
         <div class="container">
           <div class="carousel-caption">
-            <div class="col-md-8 col-sm-10">
-              <h2 class="display-message">Georgetown students make passive income by uploading their actual application essays they used and meeting in real-time with you.</h2>
+            <!-- User Message -->
+            <div class="col-md-5 hidden-sm hidden-xs">
+              <h3>Georgetown students make passive income by uploading their actual application essays they used and meeting in real-time with you.</h3>
               <div class="spaced-row">
                 <%= link_to "Student Sign Up", new_user_registration_path, class: "btn btn-lg btn-primary global-knock-button"%>
               </div>
+            </div>
+            <!-- Form -->
+            <div class="col-md-5 col-md-offset-2 col-sm-10 col-sm-offset-1">
+              <%= render partial: "users/new", locals: {user: @user} %>
             </div>
           </div>
         </div>
@@ -17,11 +22,16 @@
       <div class="item active" id="knock-slide">
         <div class="container">
           <div class="carousel-caption">
-            <div class="col-md-8 col-sm-10">
-              <h2 class="display-message"> Knock on a student's virtual front door to request an in-person, video, or phone meeting.</h2>
+            <!-- User Message -->
+            <div class="col-md-5 hidden-sm hidden-xs">
+              <h3 class="display-message"> Knock on a student's virtual front door to request an in-person, video, or phone meeting.</h3>
               <div class="spaced-row">
                 <%= link_to "Start Knocking", users_path, class: "btn btn-lg btn-primary global-knock-button"%>
               </div>
+            </div>
+            <!-- Form -->
+            <div class="col-md-5 col-md-offset-2 col-sm-10 col-sm-offset-1">
+              <%= render partial: "users/new", locals: {user: @user} %>
             </div>
           </div>
         </div>
@@ -30,11 +40,17 @@
       <div class="item" id="announcements-slide">
         <div class="container">
           <div class="carousel-caption">
-            <div class="col-md-8 col-sm-10">
-              <h2 class="display-message">90% of students have chosen to donate a portion of their earnings to the 1789 Scholarship Fund</h2>
+            <!-- User Message -->
+            <div class="col-md-5 hidden-sm hidden-xs">
+              <h3 class="display-message">90% of students have chosen to donate a portion of their earnings to the 1789 Scholarship Fund</h3>
               <div class="spaced-row">
                 <a class="btn btn-lg btn-primary global-knock-button" href="http://giving.georgetown.edu/what-to-support/1789-scholarship-imperative">Learn More</a>
               </div>
+            </div>
+
+            <!-- Form -->
+            <div class="col-md-5 col-md-offset-2 col-sm-10 col-sm-offset-1">
+              <%= render partial: "users/new", locals: {user: @user} %>
             </div>
           </div>
         </div>
@@ -49,7 +65,7 @@
           <div class="notch"></div>
           <div class="notch-margin right"></div>
           <div class="row">
-            <div class="col-xs-10 text-center col-xs-offset-1">
+            <div class="col-sm-10 text-center col-sm-offset-1">
               <h3>Passive-Income</h3>
               <p>Make passive income by uploading essays and connecting with prospective students.</p>
               <div class="spaced-row">
@@ -64,7 +80,7 @@
           <div class="notch"></div>
           <div class="notch-margin right"></div>
           <div class="row">
-            <div class="col-xs-10 text-center col-xs-offset-1">
+            <div class="col-sm-10 text-center col-sm-offset-1">
               <h3>What is Knock?</h3>
               <p>Doors will be opened to those who are bold enough to knock.</p>
               <div class="spaced-row">
@@ -79,7 +95,7 @@
           <div class="notch"></div>
           <div class="notch-margin right"></div>
           <div class="row">
-            <div class="col-xs-10 text-center col-xs-offset-1">
+            <div class="col-sm-10 text-center col-sm-offset-1">
               <h3>Philanthropy</h3>
               <p>Students have a civic-minded option to donate a portion of earnings to those with financial need.</p>
               <div class="spaced-row">

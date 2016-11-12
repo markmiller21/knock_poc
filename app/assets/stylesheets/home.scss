@@ -9,6 +9,11 @@
   font-family: AvenirNextLTPro-Bold;
 }
 
+.display-message-container {
+  float: left;
+  margin-left: 0px;
+}
+
 ul {
   list-style-type: disc;
   display: block;
@@ -76,6 +81,5 @@ body.home-index{
       background-size: cover;
     }
   }
-
-
 }
+

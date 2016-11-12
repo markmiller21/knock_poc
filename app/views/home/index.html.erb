@@ -1,7 +1,8 @@
 <div class="container-fluid" id="slides-container" xmlns="http://www.w3.org/1999/html">
   <% if user_signed_in? %>
-    <%= render partial: "home/user_card", locals: { user: user } %>
-    <%=link_to "Edit Profile", edit_user_path(current_user) %>
+    <%= render partial: "home/carousel_logged_in" %>
+  <% else %>
+    <%= render partial: "home/carousel_sign_up"%>
   <% end %>
 </div>
 
