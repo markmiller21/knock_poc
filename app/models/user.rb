@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates_format_of :cell_phone, with: Constants::VALID_PHONE_NUMBER_REGEX, message: "is invalid."
+  validates_format_of :cell_phone, with: Constants::VALID_PHONE_NUMBER_REGEX, message: "is invalid.", if: "self.cell_phone.present?"
 
   #since 3 prices are all in same format, we validate them by same regex
   validates_each :phone_call_price, :meeting_price, :video_price do |record, attr, value|
