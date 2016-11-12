@@ -13,3 +13,4 @@ $(document).ready ->
       $('#meeting_location').css 'display', 'none'
     return
   return
+

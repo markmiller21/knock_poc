@@ -11,4 +11,9 @@ class Constants
   VIDEO_TYPE = 'video'
 
   MEETING_TYPES = {CALL_TYPE => 'Phone Call', IN_PERSON_TYPE => 'In-Person Meeting', VIDEO_TYPE => 'Video Call'}
+
+  SINCH_API_URL = 'https://callingapi.sinch.com/v1/callouts'
+  SINCH_API_KEY = '23caec4e-467a-486a-92f0-43c08b06ad56'
+  SINCH_SECRET = 'nvxCFgLcgkuqkHxFqwXJEg=='
+  SINCH_CALL_METHOD = 'conferenceCallout'
 end

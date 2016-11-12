@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     @knockee = User.find(params[:id])
     #build a new instance of meeting according to the association of user-meeting
     @meeting = @knockee.knocker_meetings.build
+
+    #TODO I temproraly put this in here, once we get video design done, I will move this.
+    #------   Sinch Video call code   ------
+    #below code are from since official gem 'sinch_auth', SinchAuth class and get_auth_ticket method are provided by the gem.
+    sinchAuth = SinchAuth.new
+    @ticket = sinchAuth.get_auth_ticket(current_user.email, 3600, Constants::SINCH_API_KEY, Constants::SINCH_SECRET)
   end
 
   def index
@@ -18,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-
     @user = User.find(params[:id])
   end
 
