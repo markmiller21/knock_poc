@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :edit, :update]
   resources :meetings, except: [:destroy] do
     collection do
       post 'disconnect_call_back'

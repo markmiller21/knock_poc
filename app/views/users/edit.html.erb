@@ -1,0 +1,153 @@
+<form>
+	<!-- fields for all users -->
+
+	<div class="form-group row">
+		<!-- first name field -->
+	  <label for="first_name" class="col-xs-2 col-form-label">First Name:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.first_name%>" id="first_name">
+	  </div>
+	</div>
+	
+	<div class="form-group row">
+		<!-- last name field -->
+	  <label for="last_name" class="col-xs-2 col-form-label">Last Name:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.last_name%>" id="last_name">
+	  </div>
+	</div>
+
+
+	<div class="form-group row">
+		<!-- user avatar field -->
+    <label for="avatar_path" class="col-xs-2 col-form-label">Avatar</label>
+    <div class="col-xs-10">
+    	<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" id="avatar_path">
+  	</div>
+  </div>
+
+
+  <div class="form-group row">
+  	<!-- email field -->
+	  <label for="email" class="col-xs-2 col-form-label">Email</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="email" value="<%=@user.email%>" id="email">
+	  </div>
+	</div>
+
+
+	<!-- fields that are not uniformly needed - will change -->
+	<div class="form-group row">
+		<!-- student status -->
+	  <label for="student_status" class="col-xs-2 col-form-label">Student Status:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.student_status%>" id="student_status">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- first name field -->
+	  <label for="activities" class="col-xs-2 col-form-label">Activities:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.activities%>" id="activities">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- philanthropy percentage field -->
+	  <label for="philanthropy_percent" class="col-xs-2 col-form-label">Philanthropy percentage:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="number" value="<%=@user.philanthropy_percent%>" id="philanthropy_percent">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- cell phone field -->
+	  <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="tel" value="<%=@user.cell_phone%>" id="cell_phone">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- High School field -->
+	  <label for="highschool" class="col-xs-2 col-form-label">High School:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.highschool%>" id="highschool">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- College field -->
+	  <label for="college" class="col-xs-2 col-form-label">College:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.college%>" id="college">
+	  </div>
+	</div>
+	
+	<div class="form-group row">
+		<!-- Availability field -->
+	  <label for="avaliability" class="col-xs-2 col-form-label">Availability:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.avaliability%>" id="avaliability">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- phone call price field -->
+	  <label for="meeting_price" class="col-xs-2 col-form-label">In person meeting Price:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="number" value="<%=@user.meeting_price%>" id="meeting_price">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- phone call price field -->
+	  <label for="phone_call_price" class="col-xs-2 col-form-label">Phone Meeting Price:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="number" value="<%=@user.phone_call_price%>" id="phone_call_price">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- video call price field -->
+	  <label for="video_price" class="col-xs-2 col-form-label">Video Call Price:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="number" value="<%=@user.video_price%>" id="video_price">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- venmo account field -->
+	  <label for="venmo" class="col-xs-2 col-form-label">Venmo username:</label>
+	  <div class="col-xs-10">
+	    <input class="form-control" type="text" value="<%=@user.venmo%>" id="venmo">
+	  </div>
+	</div>
+
+	<div class="form-group row">
+		<!-- common_essay_path field -->
+    <label for="common_essay_path" class="col-xs-2 col-form-label">Common Application Essay:</label>
+    <div class="col-xs-10">
+    	<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" id="common_essay_path">
+  	</div>
+  </div>
+	
+	<div class="form-group row">
+		<!-- college_essay_path field -->
+    <label for="college_essay_path" class="col-xs-2 col-form-label">College Specific Essay:</label>
+    <div class="col-xs-10">
+    	<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" id="college_essay_path">
+  	</div>
+  </div>
+	
+	<div class="form-group row">
+		<!-- resume_path field -->
+    <label for="resume_path" class="col-xs-2 col-form-label">Resume</label>
+    <div class="col-xs-10">
+    	<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" id="resume_path">
+  	</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
