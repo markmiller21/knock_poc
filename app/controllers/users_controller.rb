@@ -12,4 +12,14 @@ class UsersController < ApplicationController
   	# TODO We should change @esssays to @users
     @essays = User.all.page(params[:page]).per(10)
   end
+
+  def damn_form
+    @user = User.find(22)
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(User::permitted(params))
+    redirect_to :back
+  end
 end
