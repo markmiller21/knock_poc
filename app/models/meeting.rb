@@ -3,10 +3,9 @@ class Meeting < ApplicationRecord
 	before_save :set_default_status
 
 	# Validation
-	validates :knocker_id, presence: true
-	validates :knockee_id, presence: true
-	validates :meeting_type, presence: true
+	validates :knocker_id, :meeting_time, :knockee_id, :meeting_type, presence: true
 	validates :meeting_location, presence: true, if: "self.meeting_type='#{Constants::IN_PERSON_TYPE}'"
+	validate :meeting_time_later_than_now?
 
 	# Associations
 	belongs_to :knockee, class_name: 'User'
@@ -20,5 +19,12 @@ class Meeting < ApplicationRecord
   # 2: rejected
 	def set_default_status
 	  self.status = 0 
+	end
+
+	#we need to make sure the teh meeting time is later than now so that it make sense
+	def meeting_time_later_than_now?
+		if self.meeting_time < DateTime.now
+      errors.add(:meeting_time, "Meeting time must be later than now!")
+		end
 	end
 end

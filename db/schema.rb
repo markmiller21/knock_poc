@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111005435) do
+ActiveRecord::Schema.define(version: 20161112041050) do
 
   create_table "meetings", force: :cascade do |t|
     t.integer  "knockee_id"
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 20161111005435) do
     t.string   "cell_phone"
     t.string   "highschool"
     t.string   "major"
-    t.float    "phone_call_price"
+    t.string   "phone_call_price"
     t.string   "avaliability"
-    t.float    "meeting_price"
-    t.float    "video_price"
+    t.string   "meeting_price"
+    t.string   "video_price"
     t.string   "venmo"
     t.string   "avatar_path"
     t.string   "resume_path"
