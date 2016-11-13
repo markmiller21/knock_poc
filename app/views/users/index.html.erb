@@ -5,24 +5,26 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 hidden-lg hidden-md">
+  <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 hidden-lg hidden-md">
     <h1 class="users-index-title-small">Current Students, waiting to connect</h1>
   </div>  
 </div>
 
-<br/><br/><br/>
+<br/>
 <div class="container" id="essays">
   <% @essays.each_slice(3) do |users|%>
       <div class="row">
         <% users.each do |user| %>
-            <div class="col-md-4 essays">
+            <div class="col-md-4 col-md-offset-0 col-sm-offset-0  col-xs-5 col-xs-offset-1 essays">
               <div class="card">
                 <%=link_to user_path(user) do %>
                     <img class="card-img-top" src="<%=get_user_avatar user.avatar_path.url%>">
                 <%end%>
 
                 <div class="card-block">
-                  <h4 class="card-title"><%=link_to user.display_name, user_path(user)%></h4>
+                  <h4 class="card-title"><%= link_to user.display_name, user_path(user) %></h4>
+                  <h5 class="card-title"><%= user.college %></h5>
+                  <h5 class="card-title"><%= user.major %></h5>
                 </div>
               </div>
             </div>

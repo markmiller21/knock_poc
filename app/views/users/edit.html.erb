@@ -35,21 +35,20 @@
             </div>
           </div>
 
+          <div class="form-group row">
+            <!-- student status -->
+            <label for="student_status" class="col-xs-2 col-form-label">Student Status:</label>
+            <div class="col-xs-10">
+              <%=f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
+            </div>
+          </div>
+
 
           <div class="form-group row">
             <!-- email field -->
             <label for="email" class="col-xs-2 col-form-label">Email:</label>
             <div class="col-xs-10">
               <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "Email", required: true, label: false %>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <!-- student status -->
-            <label for="student_status" class="col-xs-2 col-form-label">Student Status:</label>
-            <div class="col-xs-10">
-              <!--<input class="form-control" type="text" value="<%#=@user.student_status%>" id="student_status">-->
-              <%=f.select :student_status, [['College Student', 'college_student'],['Highschooler', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
             </div>
           </div>
         </div>
