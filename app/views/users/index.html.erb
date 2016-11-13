@@ -1,8 +1,15 @@
 <div id="upload-essay-image" >
   <div class="image-text-container">
-    <h1 class="upload-essay-background-image-text">Current Georgetown Students, waiting to connect</h1>
+    <h1 class="upload-essay-background-image-text hidden-xs hidden-sm">Current Students, waiting to connect</h1>
+    <h1 class="upload-essay-background-image-text hidden-lg hidden-md"></h1>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 hidden-lg hidden-md">
+    <h1 class="users-index-title-small">Current Students, waiting to connect</h1>
+  </div>  
+</div>
+
 <br/><br/><br/>
 <div class="container" id="essays">
   <% @essays.each_slice(3) do |users|%>
@@ -16,7 +23,6 @@
 
                 <div class="card-block">
                   <h4 class="card-title"><%=link_to user.display_name, user_path(user)%></h4>
-                  <!--<h6 class="card-title">$5</h6>-->
                 </div>
               </div>
             </div>

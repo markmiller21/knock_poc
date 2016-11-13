@@ -56,7 +56,6 @@ and (min-device-width: 1224px) {
 
 #upload-essay-image{
   background-image: url("/images/photos/skyline2.jpg");
-  height: 500px;
   background-repeat: no-repeat;
   background-size:100% auto;
   margin-top: -65px;
@@ -72,7 +71,6 @@ and (min-device-width: 1224px) {
 }
 
 .image-text-container {
-  background-color: #000000;
   opacity: 0.5;
   height: 89%;
   filter: alpha(opacity=60); /* For IE8 and earlier */
@@ -163,5 +161,11 @@ and (min-device-width: 1224px) {
 .user-profile-name {
   color: #5AA7B4;
   font-weight: bold;
+}
+
+.users-index-title-small{
+  color: #5AA7B4;
+  font-weight: bold;
+  text-align: center;
 }
 
