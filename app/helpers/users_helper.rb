@@ -6,8 +6,6 @@ module UsersHelper
 
   # returns true is student is a college student
   def is_college_student?(user)
-  	if (user.college)
-  		return true
-  	end
+    user.student_status == "college_student" ? true : false
   end
 end
