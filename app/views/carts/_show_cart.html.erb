@@ -1,0 +1,34 @@
+<% if session[:cart].present? %>
+    <% total = 0 %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% session[:cart].each do |item| %>
+          <% total += item["price"] * item["quantity"]%>
+          <tr>
+            <td><img src="<%=item["essay_path"] %>" height="100" width="100" class="cart-item-image img-rounded img-thumbnail" /> <p><%="#{item["name"]} 's Essay"%></p></td>
+            <td><%=item["quantity"]%></td>
+            <td>$<%=item["price"] * item["quantity"]%></td>
+          </tr>
+      <%end%>
+      </tbody>
+      <br/>
+      <hr/>
+    </table>
+    <div class="row">
+      <div class="col-md-12"><p class="pull-right"><strong>Subtotal: $<%=total%></strong></p><br/></div>
+      <% unless params[:action] == 'checkout' %>
+          <div class="col-md-12"><p><%=link_to "CHECKOUT", carts_checkout_path, class: "btn btn-lg black-btn pull-right"%></p></div>
+      <%end%>
+
+    </div>
+<%else%>
+    <h2>You have no essays in cart now.</h2>
+
+<%end%>

@@ -56,7 +56,8 @@
           <% if @knockee.video_price.present? %>
               <a class="btn btn-info no-rounded-corner global-knock-button profile-button-size" id="video-call-btn">Video Call</a>
           <% end %>
-          <%=link_to "Add Essay to Cart", "", class: "btn btn-info no-rounded-corner global-knock-button add-cart-button" %>
+          <!-- we need to know what do we need to add to cart, common essay? college application essay? or resume? -->
+          <%=link_to "Add Essay to Cart", carts_add_to_cart_path(user_id: @knockee.id), class: "btn btn-info no-rounded-corner global-knock-button add-cart-button" %>
 
           <div id="clientStart" style="display:none;">
             Sinch client started!
@@ -144,7 +145,7 @@
         sinchClient.start({"userTicket":"<%=@ticket%>"})
                 .then(function() {
                     $("#clientStart").css("display", "inline");
-                    afterStartSinchClient();
+                    //afterStartSinchClient();
                 });
     });
 </script>
