@@ -16,4 +16,11 @@ class Constants
   SINCH_API_KEY = '23caec4e-467a-486a-92f0-43c08b06ad56'
   SINCH_SECRET = 'nvxCFgLcgkuqkHxFqwXJEg=='
   SINCH_CALL_METHOD = 'conferenceCallout'
+
+  #we temporoaly set all essay price to $5, if there is some changes, we can remove this
+  ESSAY_DEFAULT_PRICE = 5
+
+  #Stripe API KEYs
+  STRIPE_API_PUBLISHABLE_KEY = 'pk_test_nIplpPKMZLX2RsglbSfcHY6H'
+  STRIPE_API_SECRET_KEY = 'sk_test_Qe3pGLNi0JcT9scG6Au6cs7O'
 end
