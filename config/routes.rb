@@ -26,4 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'carts/index' => "carts#index"
+  get 'carts/checkout' => "carts#checkout"
+  get 'carts/add_to_cart' => "carts#add_to_cart"
+
 end

@@ -88,6 +88,51 @@
                 sinchClient.terminate();
             }
         });
+
+        var incomingCallListener = {
+            onIncomingCall: function(incomingCall) {
+                $("div#status").append("<div>Incoming Call</div>");
+                call = incomingCall;
+                call.addEventListener(callListeners);
+            }
+        }
+
+        var callListeners = {
+            //call is "ringing"
+            onCallProgressing: function(call) {
+                $("div#status").append("<div>Ringing</div>");
+            },
+            //they picked up the call!
+            onCallEstablished: function(call) {
+                $("div#status").append("<div>Call established</div>");
+                $("video#outgoing").attr("src", call.outgoingStreamURL);
+                $("video#incoming").attr("src", call.incomingStreamURL);
+            },
+            //ended by either party
+            onCallEnded: function(call) {
+                $("div#status").append("<div>Call ended</div>");
+                $("video#outgoing").attr("src", "");
+                $("video#incoming").attr("src", "");
+                call = null;
+            }
+        }
+
+        function afterStartSinchClient() {
+            // hide auth form
+            $("form#authForm").css("display", "none");
+            // show logged-in view
+            $("div#sinch").css("display", "inline");
+            // start listening for incoming calls
+            sinchClient.startActiveConnection();
+            // define call client (to handle incoming/outgoing calls)
+            callClient = sinchClient.getCallClient();
+            //initialize media streams, asks for microphone & video permission
+            callClient.initStream();
+            //what to do when there is an incoming call
+            callClient.addEventListener(incomingCallListener);
+        }
+
+
         sinchClient = new SinchClient({
             applicationKey: "<%=Constants::SINCH_API_KEY%>",
             capabilities: {messaging: true, calling: true, video: true},
@@ -99,6 +144,7 @@
         sinchClient.start({"userTicket":"<%=@ticket%>"})
                 .then(function() {
                     $("#clientStart").css("display", "inline");
+                    afterStartSinchClient();
                 });
     });
 </script>
