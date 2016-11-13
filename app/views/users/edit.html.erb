@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="user-preview-container col-md-4 hidden-sm hidden-xs">
-      <h2><%= @user.display_name %></h2>
+      <h2 class="user-profile-name"><%= @user.display_name %></h2>
       <img src="<%=get_user_avatar @user.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
     </div>
 
@@ -14,7 +14,7 @@
           <h2 class="edit-profile-titles">Account Information</h2>
           <div class="form-group row">
             <!-- first name field -->
-            <label for="firxst_name" class="col-xs-2 col-form-label">First Name:</label>
+            <label for="first_name" class="col-xs-2 col-form-label">First Name:</label>
             <div class="col-xs-4">
               <%= f.input :first_name, input_html: { class: "form-control" }, label: false %>
             </div>
