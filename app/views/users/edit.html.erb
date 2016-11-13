@@ -68,13 +68,15 @@
             </div>
           </div>
 
-          <div class="form-group row">
-            <!-- philanthropy percentage field -->
-            <label for="philanthropy_percent" class="col-xs-2 col-form-label">Philanthropy percentage:</label>
-            <div class="col-xs-10">
-              <input class="form-control" type="number" value="<%=@user.philanthropy_percent%>" id="philanthropy_percent">
+          <% if is_college_student?(@user) %>
+            <div class="form-group row">
+              <!-- philanthropy percentage field -->
+              <label for="philanthropy_percent" class="col-xs-2 col-form-label">Philanthropy percentage:</label>
+              <div class="col-xs-10">
+                <input class="form-control" type="number" value="<%=@user.philanthropy_percent%>" id="philanthropy_percent">
+              </div>
             </div>
-          </div>
+          <% end %>
 
           <div class="form-group row">
             <!-- cell phone field -->
@@ -92,13 +94,15 @@
             </div>
           </div>
 
-          <div class="form-group row">
-            <!-- College field -->
-            <label for="college" class="col-xs-2 col-form-label">College:</label>
-            <div class="col-xs-10">
-              <%= f.text_field :college, class: "form-control"%>
+          <% if is_college_student?(@user) %>
+            <div class="form-group row">
+              <!-- College field -->
+              <label for="college" class="col-xs-2 col-form-label">College:</label>
+              <div class="col-xs-10">
+                <%= f.text_field :college, class: "form-control"%>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
         
 
