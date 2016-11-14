@@ -4,8 +4,18 @@ class MeetingsController < ApplicationController
     @knockee_meetings = Meeting.where(knockee_id: current_user.id)
     @knocker_meetings = Meeting.where(knocker_id: current_user.id)
 
-    binding.pry
-    @meetings = Meeting.all()
+    @meetings = Meeting.all
+  end
+
+  def show
+    @meeting = Meeting.find(params[:id])
+    @knockee = @meeting.knockee
+    @knocker = @meeting.knocker
+    #TODO I temproraly put this in here, once we get video design done, I will move this.
+    #------   Sinch Video call code   ------
+    #below code are from since official gem 'sinch_auth', SinchAuth class and get_auth_ticket method are provided by the gem.
+    sinchAuth = SinchAuth.new
+    @ticket = sinchAuth.get_auth_ticket(current_user.email, 3600, Constants::SINCH_API_KEY, Constants::SINCH_SECRET)
   end
 
   def create
