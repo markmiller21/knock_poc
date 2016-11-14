@@ -1,5 +1,13 @@
 class MeetingsController < ApplicationController
   before_action :set_knocker_knockee_meeting, except: [:create]
+  def index
+    @knockee_meetings = Meeting.where(knockee_id: current_user.id)
+    @knocker_meetings = Meeting.where(knocker_id: current_user.id)
+
+    binding.pry
+    @meetings = Meeting.all()
+  end
+
   def create
   	#TODO I need devise integration finished to finish meeting creation.
   	@meeting = Meeting.new(meeting_params)

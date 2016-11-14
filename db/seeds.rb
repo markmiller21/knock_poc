@@ -3,7 +3,7 @@ User.destroy_all
 
 User.create(
   id: 12, 
-  email: "ryan@georgetown.edu", 
+  email: "rgm56@georgetown.edu", 
   password: "123123123",
   first_name: "Ryan", 
   last_name: "Merlini", 
@@ -19,7 +19,7 @@ User.create(
 )
 
 User.create(id: 13,
-  email: "yu.song@georgetown.edu",
+  email: "terrorgeek@gmail.com",
   password: "123123123",
   first_name: "Yu",
   last_name: "Song",
@@ -35,10 +35,10 @@ User.create(id: 13,
 )
 
 User.create(id: 14,
-  email: "ivy@georgetown.edu",
+  email: "mark.kilpatrick.miller@gmail.com",
   password: "123123123",
-  first_name: "Ivy",
-  last_name: "Merlini",
+  first_name: "Mark",
+  last_name: "Miller",
   student_status: "college_student",
   cell_phone: "2156920921",
   phone_call_price: 12.56,

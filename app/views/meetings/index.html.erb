@@ -1,0 +1,26 @@
+<h1>Knockee meetings</h1>
+	<% if @knockee_meetings %> 
+		<% @knockee_meetings.each do |meeting| %>
+			<ul>
+				<li><%= meeting.meeting_type %></li>
+				<li><%= meeting.meeting_price %></li>
+				<li><%= meeting.meeting_time %></li>
+			</ul>
+		<% end %>
+	<% else %>
+		<h6>GET MORE MEETINGS SON</h6>
+	<% end %>
+
+
+<h1>Knockee meetings</h1>
+	<% if @knocker_meetings %> 
+		<% @knocker_meetings.each do |meeting| %>
+			<ul>
+				<li><%= meeting.meeting_type %></li>
+				<li><%= meeting.meeting_price %></li>
+				<li><%= meeting.meeting_time %></li>
+			</ul>
+		<% end %>
+	<% else %>
+		<h6>GET MORE MEETINGS SON</h6>
+	<% end %>
