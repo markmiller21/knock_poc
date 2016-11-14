@@ -1,7 +1,12 @@
 <div class="container">
   <h2><%= @meeting.meeting_type.capitalize %>, <%= @knocker.display_name %> with <%= @knockee.display_name %></h2>
-  <button class="btn btn-success" id="start_call"> Call Now </button>
+  <% if current_user.id == @knockee.id %>
+      <button class="btn btn-success" id="waiting_for_call" disabled> Waiting for <%= @knocker.display_name %> to call you.  </button>
+  <% else %>
+      <button class="btn btn-success" id="start_call"> Call Now </button>
+  <% end %>
   <button class="btn btn-success" id="answer"> Answer </button>
+  <button class="btn btn-danger" id="hangup"> Hang Up </button>
   <br/>
   <div id="status"></div>
   <div id="clientStart"></div>
@@ -13,6 +18,10 @@
 
 <script>
     $('document').ready(function() {
+        //init html components
+        $("#answer").hide();
+        $("#hangup").hide();
+
         $("#signOut").click(function() {
             if (sinchClient) {
                 sinchClient.terminate();
@@ -25,6 +34,7 @@
         var incomingCallListener = {
             onIncomingCall: function(incomingCall) {
                 $("#status").append("<div>Incoming Call</div>");
+                $("#answer").show();
                 call = incomingCall;
                 call.addEventListener(callListeners);
             }
@@ -40,6 +50,7 @@
                 $("#status").append("<div>Call established</div>");
                 $("#outgoing").attr("src", call.outgoingStreamURL);
                 $("#incoming").attr("src", call.incomingStreamURL);
+                $("#hangup").show();
             },
             //ended by either party
             onCallEnded: function(call) {
@@ -52,9 +63,9 @@
 
         function afterStartSinchClient() {
             // hide auth form
-            $("form#authForm").css("display", "none");
+            //$("form#authForm").css("display", "none");
             // show logged-in view
-            $("div#sinch").css("display", "inline");
+            //$("div#sinch").css("display", "inline");
             // start listening for incoming calls
             sinchClient.startActiveConnection();
             // define call client (to handle incoming/outgoing calls)
@@ -76,7 +87,7 @@
         });
         sinchClient.start({"userTicket":"<%=@ticket%>"})
                 .then(function() {
-                    $("#clientStart").css("display", "inline");
+                    //$("#clientStart").css("display", "inline");
                     afterStartSinchClient();
                 });
 
@@ -97,6 +108,15 @@
             if (call) {
                 $("#status").append("<div>You answered the call</div>");
                 call.answer();
+            }
+        });
+
+        $("#hangup").click(function(event) {
+            event.preventDefault();
+            if (call) {
+                $("div#status").append("<div>You hung up the call</div>");
+                call.hangup();
+                call = null
             }
         });
     });
