@@ -1,25 +1,37 @@
 <h1>Knockee meetings</h1>
-	<% if @knockee_meetings %> 
+	<% if @knockee_meetings.size > 0 %>
 		<% @knockee_meetings.each do |meeting| %>
 			<ul>
-				<li><%= meeting.meeting_type %></li>
+				<li>
+                  <%= meeting.meeting_type %>&nbsp;
+                  <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+                      <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
+                  <%end%>
+                </li>
 				<li><%= meeting.meeting_price %></li>
 				<li><%= meeting.meeting_time %></li>
 			</ul>
+        <hr/>
 		<% end %>
 	<% else %>
 		<h6>GET MORE MEETINGS SON</h6>
 	<% end %>
 
 
-<h1>Knockee meetings</h1>
-	<% if @knocker_meetings %> 
+<h1>Knocker meetings</h1>
+	<% if @knocker_meetings.size > 0 %>
 		<% @knocker_meetings.each do |meeting| %>
 			<ul>
-				<li><%= meeting.meeting_type %></li>
+				<li>
+                  <%= meeting.meeting_type %>&nbsp;
+                  <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+                      <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
+                  <%end%>
+                </li>
 				<li><%= meeting.meeting_price %></li>
 				<li><%= meeting.meeting_time %></li>
 			</ul>
+        <hr/>
 		<% end %>
 	<% else %>
 		<h6>GET MORE MEETINGS SON</h6>
