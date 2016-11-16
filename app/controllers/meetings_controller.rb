@@ -22,7 +22,8 @@ class MeetingsController < ApplicationController
   	#TODO I need devise integration finished to finish meeting creation.
   	@meeting = Meeting.new(meeting_params)
 
-    binding.pry
+    # We need to format this but I was taking too much time doing it so I decided to table it
+    current_format = meeting_params[:meeting_time]
 
     #now we need to assign some info that needs to be get from other models that can't get
     #directly from the form

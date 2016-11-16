@@ -1,2 +1,3 @@
 jQuery ->
-	$('#meeting_meeting_time').datetimepicker()
+	$('#meeting_meeting_time').datetimepicker
+		minDate: moment()
