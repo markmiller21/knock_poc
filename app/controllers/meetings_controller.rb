@@ -22,6 +22,8 @@ class MeetingsController < ApplicationController
   	#TODO I need devise integration finished to finish meeting creation.
   	@meeting = Meeting.new(meeting_params)
 
+    binding.pry
+
     #now we need to assign some info that needs to be get from other models that can't get
     #directly from the form
     @knockee = User.find(meeting_params[:knockee_id])
