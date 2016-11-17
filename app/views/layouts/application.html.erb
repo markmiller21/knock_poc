@@ -8,9 +8,6 @@
 </head>
 
 <body class="<%="#{controller_name}-#{action_name}"%>">
-	<% if session[:cart].present? %>
-		<%= render partial: "layouts/shopping_cart" %>
-	<%end%>
 	
 	<%= render partial: "layouts/header" %>
 	<p class="notice"><%= notice %></p>
