@@ -47,6 +47,9 @@ class UsersController < ApplicationController
     end
   end
 
+  # This method will calculate the video and meeting price based
+  # on the inputted call price from the user.  We made a decision
+  # for them to set 1 and only 1 price
   def calculate_prices(user)
     user.video_price = user.phone_call_price.to_f / 0.9 
     user.meeting_price = user.phone_call_price.to_f  / 0.8
