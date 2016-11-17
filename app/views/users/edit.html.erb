@@ -9,11 +9,6 @@
     <div class="edit-form-container col-md-8 col-sm-12">
       <!-- User Edit form -->
       <%= simple_form_for @user do |f| %>
-          <ul>
-            <% @user.errors.full_messages do |m|%>
-              <li><%=m%></li>
-            <% end %>
-          </ul>
         <div class="account-information-fields">
           <!-- fields for all users -->
           <h2 class="edit-profile-titles">Account Information</h2>
