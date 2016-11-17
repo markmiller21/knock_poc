@@ -147,11 +147,11 @@ mark = User.new(:email => "mark.kilpatrick.miller@gmail.com",
   meeting_price:  20.00, 
   video_price:  15.00, 
   venmo: 'markmiller21', 
-  avatar_path: '../fixtures/mark_knock.png', 
   resume_path: '' , 
   common_essay_path: '', 
   college_essay_path: ''
 )
+mark.avatar_path = File.open(File.expand_path('../fixtures/mark_knock.png', __FILE__))
 mark.save
 
 
@@ -171,11 +171,11 @@ ryan = User.new(:email => "ryan@georgetown.edu",
   meeting_price: 20.00, 
   video_price: 15.00, 
   venmo: 'ryanMerlini', 
-  avatar_path: '../fixtures/ryan_knock.png', 
   resume_path: '' , 
   common_essay_path: '', 
   college_essay_path: ''
 )
+ryan.avatar_path = File.open(File.expand_path('../fixtures/ryan_knock.png', __FILE__))
 ryan.save
 
 song = User.new(:email => "terrorgeek@gmail.com", 
@@ -194,11 +194,11 @@ song = User.new(:email => "terrorgeek@gmail.com",
   meeting_price: 20.00, 
   video_price: 15.00, 
   venmo: 'yuSong', 
-  avatar_path: '', 
   resume_path: '' , 
   common_essay_path: '', 
   college_essay_path: ''
 )
+song.avatar_path = File.open(File.expand_path('../fixtures/song_knock.png', __FILE__))
 song.save
 
 yahya = User.new(:email => "yahya@georgetown.edu", 
@@ -223,5 +223,6 @@ yahya = User.new(:email => "yahya@georgetown.edu",
   common_essay_path: '', 
   college_essay_path: ''
 )
+yahya.avatar_path = File.open(File.expand_path('../fixtures/yahya_knock.png', __FILE__))
 yahya.save
 
