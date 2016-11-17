@@ -1,0 +1,20 @@
+<div class="container">
+  <% if @transaction_falied %>
+      <div class="alert alert-danger">
+        <strong>Payment failed!</strong> There are something wrong with your payment, please make sure you input the correct payment information.
+      </div>
+  <% else %>
+      <div class="alert alert-success">
+        <strong>Payment success!</strong>
+      </div>
+      <br/>
+      <br/>
+      <h2>Card's holder name: <%= current_user.display_name %></h2>
+      <div class="well well-lg">
+        Your transaction with card number: <br/>
+        <strong><%= @card[:card_number] %></strong> <br/>
+        has been proceeded. <br/>
+        <h5>Congratulations!</h5>
+      </div>
+  <%end%>
+</div>

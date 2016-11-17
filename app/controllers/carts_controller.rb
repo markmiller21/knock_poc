@@ -8,7 +8,7 @@ class CartsController < ApplicationController
   def add_to_cart
     user = User.find(params[:user_id])
     all_items = session[:cart]
-    new_item = Item.new(user.id, user.display_name, 1, Constants::ESSAY_DEFAULT_PRICE, user.avatar_path.url)
+    new_item = Item.new(user.id, user.display_name, 1, Constants::ESSAY_DEFAULT_PRICE, user.avatar_path.url || User::default_avatar_path)
     if session[:cart].blank?
       session[:cart] = [new_item]
     else
@@ -35,10 +35,8 @@ class CartsController < ApplicationController
 
     # Get the credit card details submitted by the form
     token = params[:stripeToken]
-
+    @card = {card_number: params[:card_number], cvv: params[:cvv], exp_date: "#{params[:exp_year]}-#{params[:exp_month]}", card_holder_name: params[:card_holder_name]}
     # add transaction here
-
-    binding.pry
 
     # Create a charge: this will charge the user's card
     begin
@@ -49,9 +47,16 @@ class CartsController < ApplicationController
           :description => "Example charge",
           :metadata => {"order_id" => "6735"}
       )
+      PaymentMailer.payment_success(current_user, @card).deliver_now
     rescue Stripe::CardError => e
+      @transaction_falied = true
       # The card has been declined
+      PaymentMailer.payment_failed(current_user, @card).deliver_now
     end
-    redirect_to :back
+    render 'payment_confirmation'
+  end
+
+  def payment_confirmation
+
   end
 end
