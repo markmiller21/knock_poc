@@ -23,6 +23,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(User::permitted(params))
+      # this will check if the user filled out price
+      if (@user.phone_call_price)
+        calculate_prices(@user)
+        @user.save
+      end
       redirect_to :back
     else
       render :edit
@@ -40,5 +45,13 @@ class UsersController < ApplicationController
     else
       redirect_back fallback_location: root_path
     end
+  end
+
+  # This method will calculate the video and meeting price based
+  # on the inputted call price from the user.  We made a decision
+  # for them to set 1 and only 1 price
+  def calculate_prices(user)
+    user.video_price = user.phone_call_price.to_f / 0.9 
+    user.meeting_price = user.phone_call_price.to_f  / 0.8
   end
 end
