@@ -15,6 +15,7 @@ gem 'underscore-rails'
 gem 'kaminari'
 gem 'sidekiq'
 gem 'rest-client'
+gem 'mini_magick'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
