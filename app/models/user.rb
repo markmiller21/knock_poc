@@ -36,10 +36,6 @@ class User < ApplicationRecord
     params.require(:user).permit!
   end
 
-  def self.default_avatar_path
-    '/images/photos/gu-logo.jpg'
-  end
-
   def display_name
     "#{self.first_name} #{self.last_name}"
   end

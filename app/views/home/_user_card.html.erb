@@ -6,7 +6,7 @@
         <!-- image and name row -->
         <div class="col-xs-4">
           <h5 class="knock-text-color"><%= link_to full_name(user), user_path(user.id) %></h5>
-          <img class="img-thumbnail home-image-list-image" src="<%=get_user_avatar(user.avatar_path) %>"> 
+          <img class="img-thumbnail home-image-list-image" src="<%= user.avatar_path %>">
         </div>
 
 
