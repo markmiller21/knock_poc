@@ -23,9 +23,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(User::permitted(params))
-      calculate_prices(@user)
-      @user.save
-      binding.pry
+      if (@user.meeting_price)
+        calculate_prices(@user)
+        @user.save
+      end
       redirect_to :back
     else
       render :edit
@@ -46,7 +47,6 @@ class UsersController < ApplicationController
   end
 
   def calculate_prices(user)
-    binding.pry
     user.video_price = user.phone_call_price.to_f / 0.9 
     user.meeting_price = user.phone_call_price.to_f  / 0.8
   end
