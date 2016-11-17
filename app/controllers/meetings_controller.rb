@@ -23,7 +23,8 @@ class MeetingsController < ApplicationController
   	@meeting = Meeting.new(meeting_params)
 
     # We need to format this but I was taking too much time doing it so I decided to table it
-    current_format = meeting_params[:meeting_time]
+    formatted_date = format_date_to_db(meeting_params[:meeting_time])
+    meeting_params[:meeting_time] = formatted_date
 
     #now we need to assign some info that needs to be get from other models that can't get
     #directly from the form
@@ -47,7 +48,8 @@ class MeetingsController < ApplicationController
     time_to_call = Time.zone.parse("#{@meeting.meeting_time} -0400") - Time.zone.now
     MeetingSetupJob.set(wait: time_to_call.seconds).
         perform_later("+1#{@knockee.cell_phone}",
-                      "+1#{@knocker.cell_phone}", @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
+                      "+1#{@knocker.cell_phone}", 
+                      @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
 
     MeetingSetupMailer.accept_call_for_knocker_confirmation(@knocker, @knockee, @meeting).deliver_now
     MeetingSetupMailer.accept_call_for_knockee_confirmation(@knocker, @knockee, @meeting).deliver_now
@@ -88,5 +90,20 @@ class MeetingsController < ApplicationController
       @knockee = User.find(params[:knockee_id])
       @meeting = Meeting.find(params[:meeting_id])
     end
+  end
+
+  def format_date_to_db(date)
+    original_date_array = date.split(' ')
+    
+    # logic to convert to military time
+    time = original_date_array[1].split(':')
+    hour = time[0].to_i
+    original_date_array[2] == 'PM' ? hour += 12 : hour
+    time[0]=hour.to_s
+    
+    # arrange date in proper format for DB
+    proper_date = original_date_array[0].split('/').rotate(2).join('-')
+    proper_time = time.push('00').join('-')
+    return proper_date + ' ' + proper_time
   end
 end
