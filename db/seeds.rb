@@ -218,7 +218,7 @@ yahya = User.new(:email => "yahya@georgetown.edu",
   meeting_price: 20.00, 
   video_price: 15.00, 
   venmo: 'yayaya', 
-  avatar_path: '', 
+  avatar_path: '../app/assets/images/mark_knock.png', 
   resume_path: '' , 
   common_essay_path: '', 
   college_essay_path: ''
