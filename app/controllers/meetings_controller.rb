@@ -70,6 +70,14 @@ class MeetingsController < ApplicationController
     end
   end
 
+  #this is the callback action when caller and callee hangup the phone, this is
+  # configured on Sinch dashboard, which is very important
+  def disconnect_call_back
+    #Transaction.create(call_id: 1, duration: 1, whole_callback_response: JSON.generate(params.inspect))
+    #Transaction.create(call_id: 1, duration: 1, whole_callback_response: params.to_json)
+    render nothing: true
+  end
+
   private 
   #TODO we may need bunch of ***_params for every record creation based on strong parameters, may need 
   #to create a generic method to handle strong parameters
