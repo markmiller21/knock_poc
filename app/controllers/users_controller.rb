@@ -23,6 +23,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(User::permitted(params))
+      calculate_prices(@user)
+      @user.save
+      binding.pry
       redirect_to :back
     else
       render :edit
@@ -40,5 +43,11 @@ class UsersController < ApplicationController
     else
       redirect_back fallback_location: root_path
     end
+  end
+
+  def calculate_prices(user)
+    binding.pry
+    user.video_price = user.phone_call_price.to_f / 0.9 
+    user.meeting_price = user.phone_call_price.to_f  / 0.8
   end
 end
