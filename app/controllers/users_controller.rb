@@ -23,7 +23,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(User::permitted(params))
-      if (@user.meeting_price)
+      # this will check if the user filled out price
+      if (@user.phone_call_price)
         calculate_prices(@user)
         @user.save
       end
