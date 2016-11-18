@@ -4,6 +4,8 @@ class MeetingsController < ApplicationController
     @knockee_meetings = Meeting.where(knockee_id: current_user.id)
     @knocker_meetings = Meeting.where(knocker_id: current_user.id)
 
+    binding.pry
+
     @meetings = Meeting.all
   end
 
