@@ -10,7 +10,7 @@ class Meeting < ApplicationRecord
 	# Associations
 	belongs_to :knockee, class_name: 'User'
 	belongs_to :knocker, class_name: 'User'
-	has_one :transaction
+	has_one :meeting_transaction, class_name: 'Transaction'
 
 	# Methods
 
@@ -32,7 +32,7 @@ class Meeting < ApplicationRecord
 	def get_price_by_meeting_type(knocker, duration)
 		#now the price is 15 mins unit ,right?
 		if self.meeting_type == Constants::CALL_TYPE
-			(knocker.phone_call_price.to_f / Constants::PRICE_TIME_UNIT.to_f) * duration.to_f
+			((knocker.phone_call_price.to_f / Constants::PRICE_TIME_UNIT.to_f) * duration.to_f).round(2)
 		else
 			#we know that this is not gonna happen, but just put it here in case of future.
 			return 1

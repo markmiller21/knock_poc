@@ -11,12 +11,12 @@ class Transaction < ApplicationRecord
 	belongs_to :knocker, class_name: 'User'
 	belongs_to :meeting
 
-	before_save(on: :create) do
+	before_validation(on: :create) do
 		#similar with meeting
 		# 3 status for transactions as below:
 		# 0: pending
 		# 1: approved
 		# 2: rejected
-		self.status = 0
+		self.status = 0 if self.status.blank?
 	end
 end

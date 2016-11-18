@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
-  before_action :set_knocker_knockee_meeting, except: [:create]
+  before_action :set_knocker_knockee_meeting, except: [:create, :disconnect_call_back]
+  skip_before_action :verify_authenticity_token, only: [:disconnect_call_back]
   def index
     @knockee_meetings = Meeting.where(knockee_id: current_user.id)
     @knocker_meetings = Meeting.where(knocker_id: current_user.id)
@@ -76,14 +77,17 @@ class MeetingsController < ApplicationController
     #We only count the price when the first guy hangup
     #The Dice callback will return us a JSON, it contains the duration time of the call and some custom data
     #The params[:custom] stores the corresponding meeting id, which will be used to find the knocker and charge him
-    meeting = Meeting.find(params[:custom])
-    duration = params[:duration].to_i
-    if meeting.transaction.blank?
-      #the person that first hangup the phone
-      hanger = User.find_by(id: meeting.knocker_id) || User.find_by(id: meeting.knockee_id)
-      price = meeting.get_price_by_meeting_type(hanger, duration)
-      meeting.create_transaction(knocker_id: meeting.knocker_id, knockee_id: meeting.knockee_id,
-        price: price, duration: duration)
+    begin
+      meeting = Meeting.find(params[:custom])
+      duration = params[:duration].to_i
+      if meeting && meeting.meeting_transaction.blank?
+        knocker = User.find(meeting.knocker_id)
+        price = meeting.get_price_by_meeting_type(knocker, duration)
+        meeting.create_meeting_transaction(knocker_id: meeting.knocker_id, knockee_id: meeting.knockee_id,
+                                           price: price, duration: duration)
+      end
+    rescue ActiveRecord::RecordNotFound
+      render text: 'The parameter you sent is invalid, make sure you are operating within the website.' and return
     end
     render nothing: true
   end
