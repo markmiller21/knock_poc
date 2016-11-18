@@ -6,4 +6,8 @@ module ApplicationHelper
   def show_cart(cart)
     cart.map{|i| i["quantity"]}.map(&:to_i).sum
   end
+
+  def convert_db_time(date)
+  	binding.pry
+  end
 end

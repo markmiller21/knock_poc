@@ -43,7 +43,7 @@
                   <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
                 <%end%>
               </li>
-              <li><%= meeting.meeting_price %></li>
+              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
               <li><%= meeting.meeting_time %></li>
             </ul>
           <% end %>
