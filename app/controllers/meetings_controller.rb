@@ -20,8 +20,7 @@ class MeetingsController < ApplicationController
 
   def create
     # We need to format this but I was taking too much time doing it so I decided to table it
-    formatted_date = format_date_to_db(meeting_params[:meeting_time])
-    meeting_params[:meeting_time] = formatted_date
+    meeting_params[:meeting_time] = format_date_to_db(meeting_params[:meeting_time])
 
   	#TODO I need devise integration finished to finish meeting creation.
   	@meeting = Meeting.new(meeting_params)
@@ -34,7 +33,6 @@ class MeetingsController < ApplicationController
     knocker = User.find(meeting_params[:knocker_id])
     @meeting.meeting_price = @knockee.phone_call_price
 
-    binding.pry
 
     #only if the meeting saved, then schedule the call if its type is 'call'
     if @meeting.save
@@ -96,6 +94,7 @@ class MeetingsController < ApplicationController
     end
   end
 
+  # This converts the datetimepicker gem data into db/ ruby friends dateTime format
   def format_date_to_db(date)
     original_date_array = date.split(' ')
     
