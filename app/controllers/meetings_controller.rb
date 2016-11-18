@@ -8,9 +8,11 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    # TODO: change the @knockee & @knocker references to @meeting.knockee / @meeting.knocker
     @meeting = Meeting.find(params[:id])
     @knockee = @meeting.knockee
     @knocker = @meeting.knocker
+
     #TODO I temproraly put this in here, once we get video design done, I will move this.
     #------   Sinch Video call code   ------
     #below code are from since official gem 'sinch_auth', SinchAuth class and get_auth_ticket method are provided by the gem.
@@ -19,20 +21,17 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    # We need to format this but I was taking too much time doing it so I decided to table it
+    # use the format date method to massage the data to get it in proper form
     meeting_params[:meeting_time] = format_date_to_db(meeting_params[:meeting_time])
 
   	#TODO I need devise integration finished to finish meeting creation.
   	@meeting = Meeting.new(meeting_params)
-
-    
 
     #now we need to assign some info that needs to be get from other models that can't get
     #directly from the form
     @knockee = User.find(meeting_params[:knockee_id])
     knocker = User.find(meeting_params[:knocker_id])
     @meeting.meeting_price = @knockee.phone_call_price
-
 
     #only if the meeting saved, then schedule the call if its type is 'call'
     if @meeting.save
