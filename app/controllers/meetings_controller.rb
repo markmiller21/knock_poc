@@ -19,18 +19,22 @@ class MeetingsController < ApplicationController
   end
 
   def create
-  	#TODO I need devise integration finished to finish meeting creation.
-  	@meeting = Meeting.new(meeting_params)
-
     # We need to format this but I was taking too much time doing it so I decided to table it
     formatted_date = format_date_to_db(meeting_params[:meeting_time])
     meeting_params[:meeting_time] = formatted_date
+
+  	#TODO I need devise integration finished to finish meeting creation.
+  	@meeting = Meeting.new(meeting_params)
+
+    
 
     #now we need to assign some info that needs to be get from other models that can't get
     #directly from the form
     @knockee = User.find(meeting_params[:knockee_id])
     knocker = User.find(meeting_params[:knocker_id])
     @meeting.meeting_price = @knockee.phone_call_price
+
+    binding.pry
 
     #only if the meeting saved, then schedule the call if its type is 'call'
     if @meeting.save
@@ -104,6 +108,6 @@ class MeetingsController < ApplicationController
     # arrange date in proper format for DB
     proper_date = original_date_array[0].split('/').rotate(2).join('-')
     proper_time = time.push('00').join('-')
-    return proper_date + ' ' + proper_time
+    return proper_date + ' ' + proper_time + ' -500'
   end
 end
