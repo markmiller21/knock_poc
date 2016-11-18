@@ -22,6 +22,7 @@
               <% end %>
               <li><%= convert_db_time(meeting.meeting_time) %></li>
               <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
+              <li><%=link_to "Click here to reschedule", edit_meeting_path(meeting) %></li>
             </ul>
           <% end %>
         <% else %>
@@ -54,6 +55,7 @@
               <% end %>
               <li><%= convert_db_time(meeting.meeting_time) %></li>
               <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
+              <li><%=link_to "Click here to reschedule", edit_meeting_path(meeting) %></li>
             </ul>
           <% end %>
         <% else %>
