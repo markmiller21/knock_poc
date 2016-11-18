@@ -1,10 +1,10 @@
 class MeetingsController < ApplicationController
   before_action :set_knocker_knockee_meeting, except: [:create]
   def index
+    # Grab the all the Knocker & Knockee meetings
+    # Todo: seperate them into previous meetings and upcoming meetings
     @knockee_meetings = Meeting.where(knockee_id: current_user.id)
     @knocker_meetings = Meeting.where(knocker_id: current_user.id)
-
-    @meetings = Meeting.all
   end
 
   def show

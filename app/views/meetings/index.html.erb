@@ -1,38 +1,72 @@
-<h1>Knockee meetings</h1>
-	<% if @knockee_meetings.size > 0 %>
-		<% @knockee_meetings.each do |meeting| %>
-			<ul>
-				<li>
-                  <%= meeting.meeting_type %>&nbsp;
-                  <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
-                      <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
-                  <%end%>
+<div class="row">
+  
+  <!-- Knockee meetings -->
+  <div class="col-sm-5 col-sm-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">Meetings setup by you:</div>
+      <div class="panel-body">
+        
+        <% if @knocker_meetings.size > 0 %>
+          <% @knocker_meetings.each do |meeting| %>
+            <h4><%= full_name(meeting.knockee) %></h4>
+            <ul class="list-unstyled meetings-page-bullets">
+              <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+                <li>
+                  <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
                 </li>
-				<li><%= meeting.meeting_price %></li>
-				<li><%= meeting.meeting_time %></li>
-			</ul>
-        <hr/>
-		<% end %>
-	<% else %>
-		<h6>GET MORE MEETINGS SON</h6>
-	<% end %>
+              <% elsif meeting.meeting_type == Constants::CALL_TYPE %>
+                <li>Phone Call</li>
+              <% else %>
+                <li>In Person Meeting</li>
+                <li>LOCATION HERE</li>
+              <% end %>
+              <li><%= convert_db_time(meeting.meeting_time) %></li>
+              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
+              <li><%=link_to "Click here to reschedule", edit_meeting_path(meeting) %></li>
+            </ul>
+          <% end %>
+        <% else %>
+          <h4>No upcoming meetings setup</h4>
+          <h4><%=link_to "See students to setup meetings", users_path %></h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 
-<h1>Knocker meetings</h1>
-	<% if @knocker_meetings.size > 0 %>
-		<% @knocker_meetings.each do |meeting| %>
-			<ul>
-				<li>
-                  <%= meeting.meeting_type %>&nbsp;
-                  <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
-                      <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
-                  <%end%>
+  <!-- Knocker meetings -->
+  <div class="col-sm-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">Meetings reaching out to you:</div>
+      <div class="panel-body">
+        <% if @knockee_meetings.size > 0 %>
+          <% @knockee_meetings.each do |meeting| %>
+            <h4><%= full_name(meeting.knocker) %></h4>
+            <ul class="list-unstyled meetings-page-bullets">
+              <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+                <li>
+                  <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
                 </li>
-				<li><%= meeting.meeting_price %></li>
-				<li><%= meeting.meeting_time %></li>
-			</ul>
-        <hr/>
-		<% end %>
-	<% else %>
-		<h6>GET MORE MEETINGS SON</h6>
-	<% end %>
+              <% elsif meeting.meeting_type == Constants::CALL_TYPE %>
+                <li>Phone Call</li>
+              <% else %>
+                <li>In Person Meeting</li>
+                <li>LOCATION HERE</li>
+              <% end %>
+              <li><%= convert_db_time(meeting.meeting_time) %></li>
+              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
+              <li><%=link_to "Click here to reschedule", edit_meeting_path(meeting) %></li>
+            </ul>
+          <% end %>
+        <% else %>
+          <h4>No upcoming meetings setup</h4>
+          <h4><%=link_to "Try adding more information to your profile", edit_user_path(current_user) %></h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
