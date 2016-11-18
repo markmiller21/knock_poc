@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_many :knocker_meetings, class_name: 'Meeting', foreign_key: 'knocker'
   has_many :knockee_transactions, class_name: 'Transaction', foreign_key: 'knockee'
   has_many :knocker_transactions, class_name: 'Transaction', foreign_key: 'knocker'
+  has_and_belongs_to_many :tags
 
   # Methods 
   

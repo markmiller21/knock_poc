@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117042203) do
+ActiveRecord::Schema.define(version: 20161118013332) do
 
   create_table "meetings", force: :cascade do |t|
     t.integer  "knockee_id"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20161117042203) do
     t.index ["knocker_id"], name: "index_meetings_on_knocker_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.integer  "knocker_id"
     t.integer  "knockee_id"
@@ -37,6 +41,7 @@ ActiveRecord::Schema.define(version: 20161117042203) do
     t.float    "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "meeting_id"
     t.index ["knockee_id"], name: "index_transactions_on_knockee_id"
     t.index ["knocker_id"], name: "index_transactions_on_knocker_id"
   end
@@ -77,6 +82,11 @@ ActiveRecord::Schema.define(version: 20161117042203) do
     t.string   "year",                   limit: 5
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_tags", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tag_id"
   end
 
 end

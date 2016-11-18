@@ -73,8 +73,18 @@ class MeetingsController < ApplicationController
   #this is the callback action when caller and callee hangup the phone, this is
   # configured on Sinch dashboard, which is very important
   def disconnect_call_back
-    #Transaction.create(call_id: 1, duration: 1, whole_callback_response: JSON.generate(params.inspect))
-    #Transaction.create(call_id: 1, duration: 1, whole_callback_response: params.to_json)
+    #We only count the price when the first guy hangup
+    #The Dice callback will return us a JSON, it contains the duration time of the call and some custom data
+    #The params[:custom] stores the corresponding meeting id, which will be used to find the knocker and charge him
+    meeting = Meeting.find(params[:custom])
+    duration = params[:duration].to_i
+    if meeting.transaction.blank?
+      #the person that first hangup the phone
+      hanger = User.find_by(id: meeting.knocker_id) || User.find_by(id: meeting.knockee_id)
+      price = meeting.get_price_by_meeting_type(hanger, duration)
+      meeting.create_transaction(knocker_id: meeting.knocker_id, knockee_id: meeting.knockee_id,
+        price: price, duration: duration)
+    end
     render nothing: true
   end
 

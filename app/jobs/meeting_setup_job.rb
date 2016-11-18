@@ -13,8 +13,8 @@ class MeetingSetupJob < ApplicationJob
   # 3, call's id(This is not the sinch's call id, it's the DB's call id) and identity, e.g: 34-callee
   def perform(*args)
     conference_id = UUID.generate
-    send_request conference_id, args[0], "#{args[2]}-callee"
-    send_request conference_id, args[1], "#{args[2]}-caller"
+    send_request conference_id, args[0], args[2]
+    send_request conference_id, args[1], args[2]
   end
 
   #this method is the actual method that call since REST API to really make the call happens
