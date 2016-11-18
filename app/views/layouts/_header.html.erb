@@ -16,11 +16,16 @@
       <div class="collapse navbar-collapse" id="navbar-collapse-2">
         
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <% if user_signed_in? %>
+          <% if user_signed_in? %>
+            <li>
+              <%=link_to "Meetings", meetings_path %>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li>
               <%=link_to "Edit Profile", edit_user_path(current_user) %>
-            <%end%>
-          </li>
+            </li>
+          <%end%>
           <li>
             <%=link_to "View Students", users_path %>
           </li>
