@@ -15,31 +15,6 @@
     </p>
   </center>
 
-  <br/>
-
-  <p>How it works:</p>
-  <ul>
-    <li>
-      High School Seniors:
-      <ul>
-        <li><%= link_to "View current students and schedule a call", users_path %></li>
-        <li>Enjoy getting an inside look at the college application process like never before</li>
-      </ul>
-    </li>
-    <br/>
-    <li>
-      Georgetown Students:
-      <ul>
-        <li><a href="/">Upload your credentials</a></li>
-        <li>Specify whether you'd additionally like to monetize your time through in-person, video, or phone meetings</li>
-        <li>Enjoy a passive source of income&nbsp;</li>
-      </ul>
-    </li>
-  </ul>
-  <br/><br/>
-
-  <br/><br/>
-
   <div class="row user-card-container">
     <% @users.each do |user| %>
       <%= render partial: "home/user_card", locals: { user: user } %>
@@ -48,6 +23,6 @@
   <br/><br/>
 
   <div class="row">
-    <p class="global-disclaimer">Disclaimer: Georgetown has plagiarism checks for every application submitted. Highschoolers are made well aware that any copying will be easily detected and they alone are responsible resulting in a rejected application. Your essay is merely a storytelling template.</p>
+    <p class="global-disclaimer">Disclaimer: Universities has plagiarism checks for every application submitted. Highschoolers are made well aware that any copying will be easily detected and they alone are responsible resulting in a rejected application. Your essay is merely a storytelling template.</p>
   </div>
 </div>
