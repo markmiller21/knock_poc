@@ -8,9 +8,11 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    # TODO: change the @knockee & @knocker references to @meeting.knockee / @meeting.knocker
     @meeting = Meeting.find(params[:id])
     @knockee = @meeting.knockee
     @knocker = @meeting.knocker
+
     #TODO I temproraly put this in here, once we get video design done, I will move this.
     #------   Sinch Video call code   ------
     #below code are from since official gem 'sinch_auth', SinchAuth class and get_auth_ticket method are provided by the gem.
@@ -19,6 +21,9 @@ class MeetingsController < ApplicationController
   end
 
   def create
+    # use the format date method to massage the data to get it in proper form
+    meeting_params[:meeting_time] = format_date_to_db(meeting_params[:meeting_time])
+
   	#TODO I need devise integration finished to finish meeting creation.
   	@meeting = Meeting.new(meeting_params)
 
@@ -44,7 +49,8 @@ class MeetingsController < ApplicationController
     time_to_call = Time.zone.parse("#{@meeting.meeting_time} -0400") - Time.zone.now
     MeetingSetupJob.set(wait: time_to_call.seconds).
         perform_later("+1#{@knockee.cell_phone}",
-                      "+1#{@knocker.cell_phone}", @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
+                      "+1#{@knocker.cell_phone}", 
+                      @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
 
     MeetingSetupMailer.accept_call_for_knocker_confirmation(@knocker, @knockee, @meeting).deliver_now
     MeetingSetupMailer.accept_call_for_knockee_confirmation(@knocker, @knockee, @meeting).deliver_now
@@ -85,5 +91,21 @@ class MeetingsController < ApplicationController
       @knockee = User.find(params[:knockee_id])
       @meeting = Meeting.find(params[:meeting_id])
     end
+  end
+
+  # This converts the datetimepicker gem data into db/ ruby friends dateTime format
+  def format_date_to_db(date)
+    original_date_array = date.split(' ')
+    
+    # logic to convert to military time
+    time = original_date_array[1].split(':')
+    hour = time[0].to_i
+    original_date_array[2] == 'PM' ? hour += 12 : hour
+    time[0]=hour.to_s
+    
+    # arrange date in proper format for DB
+    proper_date = original_date_array[0].split('/').rotate(2).join('-')
+    proper_time = time.push('00').join(':')
+    return proper_date + ' ' + proper_time
   end
 end

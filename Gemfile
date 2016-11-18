@@ -34,6 +34,9 @@ gem 'bundler'
 # Devise for User Authentication
 gem 'devise'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
+
 gem 'bootstrap_form'
 gem 'simple_form'
 gem 'uuid'
