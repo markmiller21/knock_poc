@@ -10,14 +10,18 @@
           <% @knocker_meetings.each do |meeting| %>
             <h4><%= full_name(meeting.knockee) %></h4>
             <ul class="list-unstyled meetings-page-bullets">
-              <li>
-                <%= meeting.meeting_type %>&nbsp;
-                <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+              <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+                <li>
                   <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
-                <%end%>
-              </li>
-              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
+                </li>
+              <% elsif meeting.meeting_type == Constants::CALL_TYPE %>
+                <li>Phone Call</li>
+              <% else %>
+                <li>In Person Meeting</li>
+                <li>LOCATION HERE</li>
+              <% end %>
               <li><%= convert_db_time(meeting.meeting_time) %></li>
+              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
             </ul>
           <% end %>
         <% else %>
@@ -38,14 +42,18 @@
           <% @knockee_meetings.each do |meeting| %>
             <h4><%= full_name(meeting.knocker) %></h4>
             <ul class="list-unstyled meetings-page-bullets">
-              <li>
-                <%= meeting.meeting_type %>&nbsp;
-                <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+              <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
+                <li>
                   <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
-                <%end%>
-              </li>
-              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
+                </li>
+              <% elsif meeting.meeting_type == Constants::CALL_TYPE %>
+                <li>Phone Call</li>
+              <% else %>
+                <li>In Person Meeting</li>
+                <li>LOCATION HERE</li>
+              <% end %>
               <li><%= convert_db_time(meeting.meeting_time) %></li>
+              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
             </ul>
           <% end %>
         <% else %>
