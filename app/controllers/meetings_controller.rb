@@ -107,7 +107,7 @@ class MeetingsController < ApplicationController
     
     # arrange date in proper format for DB
     proper_date = original_date_array[0].split('/').rotate(2).join('-')
-    proper_time = time.push('00').join('-')
-    return proper_date + ' ' + proper_time + ' -500'
+    proper_time = time.push('00').join(':')
+    return proper_date + ' ' + proper_time
   end
 end
