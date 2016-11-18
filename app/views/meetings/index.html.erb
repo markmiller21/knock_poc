@@ -5,18 +5,19 @@
     <div class="panel panel-default">
       <div class="panel-heading">Meetings setup by you:</div>
       <div class="panel-body">
-        <% if @knockee_meetings.size > 0 %>
-          <% @knockee_meetings.each do |meeting| %>
-            <h2>meeting 1</h2>
-            <ul>
+        
+        <% if @knocker_meetings.size > 0 %>
+          <% @knocker_meetings.each do |meeting| %>
+            <h4><%= full_name(meeting.knockee) %></h4>
+            <ul class="list-unstyled meetings-page-bullets">
               <li>
                 <%= meeting.meeting_type %>&nbsp;
                 <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
                   <%=link_to "Go To", meeting_path(meeting) , class: "btn btn-success" %>
                 <%end%>
               </li>
-              <li><%= meeting.meeting_price %></li>
-              <li><%= meeting.meeting_time %></li>
+              <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
+              <li><%= convert_db_time(meeting.meeting_time) %></li>
             </ul>
           <% end %>
         <% else %>
@@ -33,10 +34,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">Meetings reaching out to you:</div>
       <div class="panel-body">
-        <% if @knocker_meetings.size > 0 %>
-          <% @knocker_meetings.each do |meeting| %>
-            <h4><%= full_name(meeting.knockee) %></h4>
-            <ul>
+        <% if @knockee_meetings.size > 0 %>
+          <% @knockee_meetings.each do |meeting| %>
+            <h4><%= full_name(meeting.knocker) %></h4>
+            <ul class="list-unstyled meetings-page-bullets">
               <li>
                 <%= meeting.meeting_type %>&nbsp;
                 <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
@@ -44,7 +45,7 @@
                 <%end%>
               </li>
               <li>Price: $<%= meeting.meeting_price %> per 15 minutes</li>
-              <li><%= meeting.meeting_time %></li>
+              <li><%= convert_db_time(meeting.meeting_time) %></li>
             </ul>
           <% end %>
         <% else %>

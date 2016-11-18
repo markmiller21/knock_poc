@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def convert_db_time(date)
-  	binding.pry
+  	return date.strftime("%m/%d/%Y %I:%M %p")
   end
 end
