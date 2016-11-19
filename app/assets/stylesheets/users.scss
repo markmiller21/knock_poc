@@ -179,3 +179,9 @@ and (min-device-width: 1224px) {
   margin-bottom: 30px;
 }
 
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
