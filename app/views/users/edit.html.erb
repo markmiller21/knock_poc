@@ -3,7 +3,7 @@
 
     <div class="user-preview-container col-md-4 hidden-sm hidden-xs">
       <h2 class="user-profile-name"><%= @user.display_name %></h2>
-      <img src="<%=get_user_avatar @user.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
+      <img src="<%=get_user_avatar @user.avatar_path.thumb.url%>" class="img-thumbnail img-rounded img-profile" />
     </div>
 
     <div class="edit-form-container col-md-8 col-sm-12">
@@ -31,7 +31,7 @@
             <!-- user avatar field -->
             <label for="avatar_path" class="col-xs-2 col-form-label">Avatar:</label>
             <div class="col-xs-10">
-              <%= f.file_field :avatar_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
             </div>
           </div>
 
