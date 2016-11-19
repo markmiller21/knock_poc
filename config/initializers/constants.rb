@@ -5,6 +5,9 @@ class Constants
   VALID_US_CURRENCY = /\A^\d{1,3}(\.\d{0,2})?$\Z/
   VALID_TIME = /\A^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$\Z/
 
+  #default images
+  AVATAR_DEFAULT_PATH = '/images/photos/gu-logo.jpg'
+
   #keep this, maybe we need it later
   CALL_TYPE = 'call'
   IN_PERSON_TYPE = 'in_person'
@@ -23,4 +26,7 @@ class Constants
   #Stripe API KEYs
   STRIPE_API_PUBLISHABLE_KEY = 'pk_test_nIplpPKMZLX2RsglbSfcHY6H'
   STRIPE_API_SECRET_KEY = 'sk_test_Qe3pGLNi0JcT9scG6Au6cs7O'
+
+  #seconds for 15 mins
+  PRICE_TIME_UNIT = 900
 end

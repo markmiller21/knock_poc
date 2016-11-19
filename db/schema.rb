@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118000554) do
+ActiveRecord::Schema.define(version: 20161118013332) do
 
   create_table "meetings", force: :cascade do |t|
     t.integer  "knockee_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20161118000554) do
     t.float    "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "meeting_id"
     t.index ["knockee_id"], name: "index_transactions_on_knockee_id"
     t.index ["knocker_id"], name: "index_transactions_on_knocker_id"
   end

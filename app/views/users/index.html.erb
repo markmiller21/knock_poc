@@ -42,7 +42,7 @@
       <div class="col-md-4 col-md-offset-0 col-sm-offset-0  col-xs-5 col-xs-offset-1 essays">
         <div class="card">
           <%=link_to user_path(user) do %>
-              <img class="card-img-top" src="<%=get_user_avatar user.avatar_path.url%>">
+              <img class="card-img-top" src="<%= user.avatar_path.url %>">
           <%end%>
 
           <div class="card-block">
