@@ -7,12 +7,20 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates_format_of :cell_phone, with: Constants::VALID_PHONE_NUMBER_REGEX, message: "is invalid.", if: "self.cell_phone.present?"
+  validates_format_of :cell_phone, with: Constants::VALID_PHONE_NUMBER_REGEX, message: "format is invalid.", if: "self.cell_phone.present?"
 
   #since 3 prices are all in same format, we validate them by same regex
   validates_each :phone_call_price, :meeting_price, :video_price do |record, attr, value|
     record.errors.add(attr, ' is invalid, price should be between 0 and 999.99, no dollar sign please.') if value.present? &&  !(value =~ Constants::VALID_US_CURRENCY)
   end
+
+  # before_save do
+  #   if self.student_status == 'college_student'
+  #     self.student_status = 'georgetown log'
+  #   else
+  #     self.student_status = 'knocker logl'
+  #   end
+  # end
 
   #TODO I comment this just for now since we need to let user switch their roles when they signup
   #validates :highschool, presence: true
@@ -35,10 +43,6 @@ class User < ApplicationRecord
   
   def self.permitted(params)
     params.require(:user).permit!
-  end
-
-  def self.default_avatar_path
-    '/images/photos/gu-logo.jpg'
   end
 
   def display_name

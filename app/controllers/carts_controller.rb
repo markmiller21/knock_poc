@@ -8,7 +8,7 @@ class CartsController < ApplicationController
   def add_to_cart
     user = User.find(params[:user_id])
     all_items = session[:cart]
-    new_item = Item.new(user.id, user.display_name, 1, Constants::ESSAY_DEFAULT_PRICE, user.avatar_path.url || User::default_avatar_path)
+    new_item = Item.new(user.id, user.display_name, 1, Constants::ESSAY_DEFAULT_PRICE, user.avatar_path.url)
     if session[:cart].blank?
       session[:cart] = [new_item]
     else
