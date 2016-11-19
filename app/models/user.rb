@@ -51,23 +51,24 @@ class User < ApplicationRecord
   end
 
   #TODO keep this, may need this later even if it's doing the same thing in carts controller.
-  def pay_with_current_bank_or_create
+  def pay_with_current_bank_or_create(price)
     if self.stripe_customer_id.blank?
-      customer = Stripe::Customer.create(
-          card: token,
-          description: "#{self.email}-#{self.display_name}",
-          email: self.email
-      )
-      customer_id = customer.id
+      return false
+      # customer = Stripe::Customer.create(
+      #     card: token,
+      #     description: "#{self.email}-#{self.display_name}",
+      #     email: self.email
+      # )
+      # customer_id = customer.id
     else
       customer_id = self.stripe_customer_id
+      Stripe::Charge.create(
+          amount: price,
+          currency: 'usd',
+          customer: customer_id
+      )
+      # save the customer ID in your database so you can use it later
+      self.update_column("stripe_customer_id", customer_id)
     end
-    Stripe::Charge.create(
-        amount: 500, # $15.00 this time
-        currency: 'usd',
-        customer: customer_id
-    )
-    # save the customer ID in your database so you can use it later
-    current_user.update_column("stripe_customer_id", customer.id)
   end
 end

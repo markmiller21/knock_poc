@@ -69,7 +69,7 @@ class CartsController < ApplicationController
       )
       PaymentMailer.payment_success(current_user, @card).deliver_now
       # save the customer ID in your database so you can use it later
-      current_user.update_column("stripe_customer_id", customer.id)
+      current_user.update_column("stripe_customer_id", customer_id)
 
     rescue Stripe::CardError => e
       @transaction_falied = true
