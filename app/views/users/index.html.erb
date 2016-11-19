@@ -38,8 +38,8 @@
 <br/>
 <div class="container" id="essays">
   <div class="row">
-    <% @essays.each do |user|%>
-      <div class="col-md-4 col-md-offset-0 col-sm-offset-0  col-xs-5 col-xs-offset-1 essays">
+    <% @users.each do |user|%>
+      <div class="col-md-4 col-md-offset-0 col-sm-offset-0  col-xs-6 essays">
         <div class="card">
           <%=link_to user_path(user) do %>
               <img class="card-img-top" src="<%= user.avatar_path.url %>">
@@ -49,10 +49,11 @@
             <h4 class="card-title"><%= link_to user.display_name, user_path(user) %></h4>
             <h5 class="card-title"><%= user.college %></h5>
             <h5 class="card-title"><%= user.major %></h5>
+            <h5 class="card-title"><%= user.major %></h5>
           </div>
         </div>
       </div>
     <%end%>
   </div>
-  <%= paginate @essays %>
+  <%= paginate @users %>
 </div>
