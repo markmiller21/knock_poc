@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_knocker_knockee_meeting, except: [:create]
   def index
     # Grab the all the Knocker & Knockee meetings

@@ -14,6 +14,8 @@ class User < ApplicationRecord
     record.errors.add(attr, ' is invalid, price should be between 0 and 999.99, no dollar sign please.') if value.present? &&  !(value =~ Constants::VALID_US_CURRENCY)
   end
 
+  scope :with_tags, -> {includes(:tags)}
+
   #TODO I comment this just for now since we need to let user switch their roles when they signup
   #validates :highschool, presence: true
 

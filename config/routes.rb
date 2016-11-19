@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:show, :index, :edit, :update]
+  resources :tags do
+    collection do
+      post "search"
+    end
+  end
 
   resources :meetings, except: [:destroy] do
     collection do
