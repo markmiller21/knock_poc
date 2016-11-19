@@ -3,7 +3,8 @@ class TagsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def search
     term = params[:term]
-    @users = User.where("activities LIKE '%#{term}%' OR college LIKE '%#{term}%' OR major LIKE '%#{term}%'") + User.joins(:tags).where("name LIKE '#{term}%'")
-    render json: @users.uniq
+    binding.pry
+    @users = (User.where("activities LIKE '%#{term}%' OR college LIKE '%#{term}%' OR major LIKE '%#{term}%'") + User.joins(:tags).where("name LIKE '#{term}%'")).page(params[:page]).per(10)
+    render "users/index"
   end
 end

@@ -6,8 +6,7 @@
 
 <br />
 
-
-<br/>
+<br />
 
 <div class="row">
   <div class="col-sm-4 col-sm-offset-1">
@@ -34,8 +33,25 @@
   </div>
 </div>
 
+<br/>
+
+<div class="row">
+  <div class="col-md-6 col col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+    <div class="input-group">
+      <h4 class="search-label">Search for schools, activities, majors, or anything you want to connect on</h4>
+      <%= form_tag(search_tags_path, :method => "post", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search for students to reach out to", class: 'form-control' %>
+        <span class="input-group-btn">
+          <%= submit_tag "Start Knocking", class: 'btn btn-default' %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
 <br/>
+
 <div class="container" id="essays">
   <div class="row">
     <% @users.each do |user|%>
