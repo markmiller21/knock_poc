@@ -131,6 +131,7 @@ User.destroy_all
 # )
 
 mark = User.new(:email => "mark.kilpatrick.miller@gmail.com", 
+  bio: 'surving the QFIN program at JMU',
   password: 'password', 
   password_confirmation: 'password', 
   first_name: 'Mark', 
@@ -156,6 +157,7 @@ mark.save
 
 
 ryan = User.new(:email => "ryan@georgetown.edu", 
+  bio: 'Georgetown advice, financial consulting',
   password: 'password', 
   password_confirmation: 'password', 
   first_name: 'Mark', 
@@ -179,6 +181,7 @@ ryan = User.new(:email => "ryan@georgetown.edu",
 ryan.save
 
 song = User.new(:email => "terrorgeek@gmail.com", 
+  bio: 'Advice on CS program',
   password: 'password', 
   password_confirmation: 'password', 
   first_name: 'Yu', 
@@ -202,6 +205,7 @@ song = User.new(:email => "terrorgeek@gmail.com",
 song.save
 
 yahya = User.new(:email => "yahya@georgetown.edu", 
+  bio: 'Entrepreneurship advice',
   password: 'password', 
   password_confirmation: 'password', 
   first_name: 'Yahya', 
