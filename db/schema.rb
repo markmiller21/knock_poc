@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 20161119185030) do
     t.string   "college"
     t.text     "bio"
     t.string   "year",                   limit: 5
-    t.index ["activities"], name: "activities_full_text_index"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

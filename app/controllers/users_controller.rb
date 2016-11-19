@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def index
   	# returns 10 users per 'page'  
   	# TODO We should change @esssays to @users
-    @essays = User.all.page(params[:page]).per(10)
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def edit
