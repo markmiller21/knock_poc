@@ -1,6 +1,8 @@
 class MeetingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_knocker_knockee_meeting, except: [:create, :disconnect_call_back]
   skip_before_action :verify_authenticity_token, only: [:disconnect_call_back]
+
   def index
     # Grab the all the Knocker & Knockee meetings
     # Todo: seperate them into previous meetings and upcoming meetings

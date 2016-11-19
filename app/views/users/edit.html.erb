@@ -3,7 +3,7 @@
 
     <div class="user-preview-container col-md-4 hidden-sm hidden-xs">
       <h2 class="user-profile-name"><%= @user.display_name %></h2>
-      <img src="<%= @user.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
+      <img src="<%= @user.avatar_path.thumb.url%>" class="img-thumbnail img-rounded img-profile" />
     </div>
 
     <div class="edit-form-container col-md-8 col-sm-12">
@@ -31,7 +31,7 @@
             <!-- user avatar field -->
             <label for="avatar_path" class="col-xs-2 col-form-label">Avatar:</label>
             <div class="col-xs-10">
-              <%= f.file_field :avatar_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
             </div>
           </div>
 
@@ -58,6 +58,15 @@
         <div class="personal-information-fields">
           <!-- fields for all users -->
           <h2 class="edit-profile-titles">Personal Information</h2>
+
+            <div class="form-group row">
+              <!-- Knock @ me for -->
+              <label for="activities" class="col-xs-2 col-form-label">Knock @me for:</label>
+              <div class="col-xs-10">
+                <%= f.input :bio, input_html: { class: "form-control" }, required: true, label: false %>
+              </div>
+            </div>
+
             <div class="form-group row">
             <!-- first name field -->
             <label for="activities" class="col-xs-2 col-form-label">Activities:</label>

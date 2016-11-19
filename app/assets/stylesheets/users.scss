@@ -179,3 +179,18 @@ and (min-device-width: 1224px) {
   margin-bottom: 30px;
 }
 
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.knock-at-me-tip {
+  color: #5AA7B4;
+}
+
+.search-label {
+  color: #5AA7B4;
+  text-align: center;
+}
+
