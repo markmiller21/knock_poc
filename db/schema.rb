@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118013332) do
+ActiveRecord::Schema.define(version: 20161119203746) do
 
   create_table "meetings", force: :cascade do |t|
     t.integer  "knockee_id"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(version: 20161118013332) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "tags_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tag_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -80,13 +85,11 @@ ActiveRecord::Schema.define(version: 20161118013332) do
     t.string   "college"
     t.text     "bio"
     t.string   "year",                   limit: 5
+    t.string   "stripe_customer_id"
+    t.index ["activities"], name: "activities_full_text_index"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "users_tags", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tag_id"
+    t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id"
   end
 
 end
