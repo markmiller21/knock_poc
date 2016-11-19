@@ -25,7 +25,7 @@
   <div class="row">
     <div class="col-md-4 col-sm-8 col-sm-offset-2 col-md-offset-0">
       <h2 class="user-profile-name"><%= @knockee.display_name %></h2>
-      <img src="<%=get_user_avatar @knockee.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
+      <img src="<%= @knockee.avatar_path.url %>" class="img-thumbnail img-rounded img-profile" />
       <br />
       <h4 class="user-profile-name">About <%= @knockee.display_name %>:</h4>
       <h4>Bio will go here</h4> <!-- @knockee.bio -->

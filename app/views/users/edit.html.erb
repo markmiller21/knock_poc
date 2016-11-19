@@ -3,7 +3,7 @@
 
     <div class="user-preview-container col-md-4 hidden-sm hidden-xs">
       <h2 class="user-profile-name"><%= @user.display_name %></h2>
-      <img src="<%=get_user_avatar @user.avatar_path.thumb.url%>" class="img-thumbnail img-rounded img-profile" />
+      <img src="<%= @user.avatar_path.thumb.url%>" class="img-thumbnail img-rounded img-profile" />
     </div>
 
     <div class="edit-form-container col-md-8 col-sm-12">

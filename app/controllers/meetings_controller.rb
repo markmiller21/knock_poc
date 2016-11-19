@@ -1,6 +1,8 @@
 class MeetingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_knocker_knockee_meeting, except: [:create]
+  before_action :set_knocker_knockee_meeting, except: [:create, :disconnect_call_back]
+  skip_before_action :verify_authenticity_token, only: [:disconnect_call_back]
+
   def index
     # Grab the all the Knocker & Knockee meetings
     # Todo: seperate them into previous meetings and upcoming meetings
@@ -75,6 +77,27 @@ class MeetingsController < ApplicationController
       MeetingSetupMailer.reject_call_for_knockee_confirmation(@knocker, @knockee, @meeting).deliver_now
       redirect_to reject_call_meetings_path
     end
+  end
+
+  #this is the callback action when caller and callee hangup the phone, this is
+  # configured on Sinch dashboard, which is very important
+  def disconnect_call_back
+    #We only count the price when the first guy hangup
+    #The Dice callback will return us a JSON, it contains the duration time of the call and some custom data
+    #The params[:custom] stores the corresponding meeting id, which will be used to find the knocker and charge him
+    begin
+      meeting = Meeting.find(params[:custom])
+      duration = params[:duration].to_i
+      if meeting && meeting.meeting_transaction.blank?
+        knocker = User.find(meeting.knocker_id)
+        price = meeting.get_price_by_meeting_type(knocker, duration)
+        meeting.create_meeting_transaction(knocker_id: meeting.knocker_id, knockee_id: meeting.knockee_id,
+                                           price: price, duration: duration)
+      end
+    rescue ActiveRecord::RecordNotFound
+      render text: 'The parameter you sent is invalid, make sure you are operating within the website.' and return
+    end
+    render nothing: true
   end
 
   private 
