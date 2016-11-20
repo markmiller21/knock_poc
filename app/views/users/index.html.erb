@@ -40,7 +40,7 @@
     <div class="row input-group">
       <h4 class="search-label">Search for Schools, Activities, Majors, or anything you want to connect on</h4>
       <%= form_tag search_tags_path, method: "post", id: "search-form", :class => "form-inline" do %>
-        <%= text_field_tag :term, params[:term], placeholder: "Search for students to reach out to", class: 'col-sm-9 user-search-bar' %>
+        <%= text_field_tag :term, params[:term], placeholder: "Search for students to reach out to", class: 'col-xs-9 user-search-bar' %>
         <%= submit_tag "Start Knocking", class: 'btn btn-default col-xs-3' %>
       <% end %>
     </div>
