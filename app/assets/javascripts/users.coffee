@@ -16,7 +16,7 @@ $(document).ready ->
 
 $(document).ready ->
   phil_slider = $('#phil-slider').slider()
-  phil_slider.slider 'setValue', 5
+  phil_slider.slider 'setValue', 5 if phil_slider
 
 
 
