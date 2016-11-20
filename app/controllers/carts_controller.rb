@@ -26,6 +26,11 @@ class CartsController < ApplicationController
     redirect_to :back
   end
 
+  def clear_cart
+    session[:cart] = nil
+    redirect_to :back
+  end
+
   def checkout
     if current_user.stripe_customer_id.present?
       redirect_to carts_pay_path

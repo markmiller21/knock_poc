@@ -15,7 +15,7 @@ class PaymentMailer < ApplicationMailer
     @knocker = knocker
     knockees = User.where(id: cart.map {|item| item["user_id"]})
     knockees.each_with_index do |knockee, i|
-      attachments["#{i} - #{knockee.display_name} - Essay"] = File.read(File.join(Rails.root, 'public', knockee.college_essay_path.url)) #File.read(knockee.college_essay_path.url)
+      attachments["#{i+1} - #{knockee.display_name} - Essay"] = File.read(File.join(Rails.root, 'public', knockee.college_essay_path.url)) #File.read(knockee.college_essay_path.url)
     end
     mail(to: @knocker.email, subject: "Your essay is right here!")
   end
