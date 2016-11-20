@@ -22,13 +22,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    # this will check if the user filled out price
+    if @user.phone_call_price.present?
+      calculate_prices(@user)
+      @user.save
+    end
     if @user.update(User::permitted(params))
-      # this will check if the user filled out price
-      if @user.phone_call_price
-        calculate_prices(@user)
-        @user.save
-      end
-      redirect_to :back
+      redirect_to edit_user_path(current_user)
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   # on the inputted call price from the user.  We made a decision
   # for them to set 1 and only 1 price
   def calculate_prices(user)
-    user.video_price = user.phone_call_price.to_f / 0.9 
-    user.meeting_price = user.phone_call_price.to_f  / 0.8
+    user.video_price = (user.phone_call_price.to_f / 0.9).round(2)
+    user.meeting_price = (user.phone_call_price.to_f  / 0.8).round(2)
   end
 end
