@@ -13,7 +13,7 @@
     <%=render partial: "layouts/shopping_cart" if session[:cart]%>
 	<p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-    <p><%=show_flash_by_key :duplicated_college_student%></p>
+    <p><%=show_error_flash_by_key :duplicated_college_student%></p>
 	<%= yield %>
 
 	<br/><br/><br/><br/>

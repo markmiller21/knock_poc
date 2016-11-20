@@ -8,7 +8,7 @@ module ApplicationHelper
   	return date.strftime("%m/%d/%Y %I:%M %P")
   end
 
-  def show_flash_by_key(key)
+  def show_error_flash_by_key(key)
     "<div class='alert alert-danger'>
        <strong>Duplicated student!</strong>&nbsp;#{flash[key]}.
     </div>".html_safe if flash[key]

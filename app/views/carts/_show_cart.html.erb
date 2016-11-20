@@ -4,7 +4,7 @@
       <thead>
       <tr>
         <th>Item</th>
-        <th>Quantity</th>
+        <!--<th>Quantity</th>-->
         <th>Price</th>
       </tr>
       </thead>
@@ -13,7 +13,7 @@
           <% total += item["price"] * item["quantity"]%>
           <tr>
             <td><img src="<%=item["essay_path"] %>" height="100" width="100" class="cart-item-image img-rounded img-thumbnail" /> <p><%="#{item["name"]} 's Essay"%></p></td>
-            <td><%=item["quantity"]%></td>
+            <!--<td><%#=item["quantity"]%></td>-->
             <td>$<%=item["price"] * item["quantity"]%></td>
           </tr>
       <%end%>
