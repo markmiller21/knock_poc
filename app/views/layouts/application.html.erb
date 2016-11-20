@@ -8,12 +8,13 @@
 </head>
 
 <body class="<%="#{controller_name}-#{action_name}"%>">
-	
 	<%= render partial: "layouts/header" %>
+    <!-- I added Cart back here, let's do some styles about it. -->
+    <%=render partial: "layouts/shopping_cart" if session[:cart]%>
 	<p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 	<%= yield %>
-	
+
 	<br/><br/><br/><br/>
 	
 	<%unless @nofooter%>

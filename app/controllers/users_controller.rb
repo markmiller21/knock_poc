@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(User::permitted(params))
       # this will check if the user filled out price
-      if (@user.phone_call_price)
+      if @user.phone_call_price
         calculate_prices(@user)
         @user.save
       end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       unless @user.id == current_user.id
         #TODO we need to construct several customized error pages(just html pages and put them to public dir),
-        # here we redirect user to an error page like 'You are not authenticated' or 'params error'
+        redirect_to edit_user_path(current_user)
       end
     else
       redirect_back fallback_location: root_path
