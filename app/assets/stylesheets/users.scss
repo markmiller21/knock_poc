@@ -92,6 +92,8 @@ and (min-device-width: 1224px) {
 
 .img-profile {
   height: auto;
+  width: 90%;
+  max-width: 450px
 }
 
 .add-cart-button {
@@ -200,4 +202,9 @@ and (min-device-width: 1224px) {
 
 .user-search-bar {
   height: 34px;
+}
+
+.user-documents {
+  height: 100px;
+  width: 100px;
 }

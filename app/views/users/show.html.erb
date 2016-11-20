@@ -28,9 +28,33 @@
       <h2 class="user-profile-name"><%= @knockee.display_name %></h2>
       <img src="<%= @knockee.avatar_path.url %>" class="img-thumbnail img-profile" />
     </div>
-    <div class="col-md-4 col-sm-5 col-xs-12">
+    <div class="col-md-5 col-sm-5 col-xs-12">
       <h2 class="user-profile-name">Knock @<%= @knockee.display_name %> for:</h2>
       <h4><%= @knockee.bio %></h4>
+
+      <br />
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Basic Information:</div>
+        <div class="panel-body">
+          <ul class="list-unstyled meetings-page-bullets">
+            <% if @knockee.phone_call_price %>
+              <li><span class="user-show-db-title">College:</span> <%= @knockee.college%></li>
+            <%end%>
+
+            <% if @knockee.video_price %>
+              <li><span class="user-show-db-title">Major:</span> <%= @knockee.major%></li>
+            <%end%>
+
+            <% if @knockee.meeting_price %>
+              <li><span class="user-show-db-title">High School:</span> <%= @knockee.highschool %></li>
+            <%end%>
+            <% if @knockee.common_essay_path %>
+              <li><span class="user-show-db-title">Activities:</span> <%= @knockee.activities %></li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
 
       <br />
 
@@ -64,18 +88,33 @@
       </div>
     </div>
   </div>
+  
+  <br/>
+
   <div class="row">
-    <div class="col-md-6 col-sm-7 col-md-offset-1 col-xs-12">
-      <h2 class="knock-text-color">Basic Information:</h2>
-      <p><span class="user-show-db-title">College:</span> <%= @knockee.college%></p>
-      <p><span class="user-show-db-title">Major:</span> <%= @knockee.major%></p>
-      <p><span class="user-show-db-title">High School:</span> <%= @knockee.highschool %></p>
-      <p><span class="user-show-db-title">Activities:</span> <%= @knockee.activities %></p>
+    <div class="col-md-6 col-sm-7 col-md-offset-1 hidden-xs">
+      <h2 class="knock-text-color"><%= @knockee.display_name %>'s Documents</h2>
+
+      <!-- common_essay_path -->
+      <% if @knockee.common_essay_path.present? %>
+        <img src="<%= @knockee.common_essay_path.url %>" class="user-documents col-sm-4" />
+      <% end %>
+      
+      <!-- college_essay_path -->
+      <% if @knockee.college_essay_path.present? %>
+        <img src="<%= @knockee.college_essay_path.url %>" class="user-documents col-sm-4" />
+      <% end %>
+
+      <!-- resume_path -->
+      <% if @knockee.resume_path.present? %>
+        <img src="<%= @knockee.resume_path.url %>" class="user-documents col-sm-4" />
+      <% end %>
+
     </div>
 
     <div class="col-md-4 col-sm-5 col-xs-12">
     
-      <h2 class="knock-text-color">Knock to schedule a:</h2>
+      <h2 class="knock-text-color">Schedule a:</h2>
       <% if @knockee.phone_call_price.present? %>
           <a class="btn btn-info global-knock-button profile-button col-xs-5" id="call-btn">Phone Call</a>
       <% end %>
