@@ -214,10 +214,11 @@ span.radio {
   font-size: 16px; 
 }
 
-.sign-up-container {
+.sign-up-container {}
 
-}
-
-.edit-form-container {
-  margin-right: 15px;
+.edit-fields-container {
+  background: #F8F8F8;
+  border-radius: 25px;
+  padding: 20px 10px 5px 10px;
+  margin-bottom: 10px;
 }
