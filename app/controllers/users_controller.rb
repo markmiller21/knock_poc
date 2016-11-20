@@ -22,11 +22,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # this will check if the user filled out price
-    if @user.phone_call_price.present?
-      calculate_prices(@user)
-      @user.save
-    end
     if @user.update(User::permitted(params))
       # this will check if the user filled out price
       if @user.phone_call_price
@@ -56,21 +51,14 @@ class UsersController < ApplicationController
   # This method will calculate the video price based
   # on the inputted call price from the user.  We made a decision
   # for them to set 1 and only 1 price
-<<<<<<< HEAD
-  def calculate_prices(user)
-    user.video_price = (user.phone_call_price.to_f / 0.9).round(2)
-    user.meeting_price = (user.phone_call_price.to_f  / 0.8).round(2)
-=======
   def calculate_video_price(user)
     return user.video_price = user.phone_call_price.to_f / 0.9 
-    user.meeting_price = user.phone_call_price.to_f  / 0.8
->>>>>>> add method to update price
   end
 
   # This method will calculate the meeting price based
   # on the inputted call price from the user.  We made a decision
   # for them to set 1 and only 1 price
-  def calculate_meetins_price(user)
-    return user.meetins_price = user.phone_call_price.to_f / 0.8
+  def calculate_meeting_price(user)
+    return user.meeting_price = user.phone_call_price.to_f / 0.8
   end
 end
