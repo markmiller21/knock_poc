@@ -3,7 +3,7 @@
 
     <div class="user-preview-container col-md-4 hidden-sm hidden-xs">
       <h2 class="user-profile-name"><%= @user.display_name %></h2>
-      <img src="<%= @user.avatar_path.thumb.url%>" class="img-thumbnail img-rounded img-profile" />
+      <img src="<%= @user.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
     </div>
 
     <div class="edit-form-container col-md-8 col-sm-12">
@@ -12,43 +12,45 @@
         <div class="account-information-fields">
           <!-- fields for all users -->
           <h2 class="edit-profile-titles">Account Information</h2>
-          <div class="form-group row">
-            <!-- first name field -->
-            <label for="first_name" class="col-xs-2 col-form-label">First Name:</label>
-            <div class="col-xs-4">
-              <%= f.input :first_name, input_html: { class: "form-control" }, label: false %>
+
+          <div class="edit-fields-container">
+            
+            <div class="form-group row">  
+              <!-- first name field -->
+              <div class="col-xs-6 form-inline">
+                <%= f.input :first_name, input_html: { class: "form-control" }, label: "First Name: " %>
+              </div>
+            
+              <!-- last name field -->
+              <div class="col-xs-6 form-inline">
+                <%= f.input :last_name, input_html: { class: "form-control" }, label: "Last Name:" %>
+              </div>
             </div>
-          
-            <!-- last name field -->
-            <label for="last_name" class="col-xs-2 col-form-label">Last Name:</label>
-            <div class="col-xs-4">
-              <%= f.input :last_name, input_html: { class: "form-control" }, label: false %>
+
+
+            <div class="form-group row">
+              <!-- user avatar field -->
+              <label for="avatar_path" class="col-xs-2 col-form-label">Avatar:</label>
+              <div class="col-xs-10">
+                <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
             </div>
-          </div>
 
-
-          <div class="form-group row">
-            <!-- user avatar field -->
-            <label for="avatar_path" class="col-xs-2 col-form-label">Avatar:</label>
-            <div class="col-xs-10">
-              <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+            <div class="form-group row">
+              <!-- student status -->
+              <label for="student_status" class="col-xs-2 col-form-label">Education:</label>
+              <div class="col-xs-10">
+                <%=f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
+              </div>
             </div>
-          </div>
-
-          <div class="form-group row">
-            <!-- student status -->
-            <label for="student_status" class="col-xs-2 col-form-label">Student Status:</label>
-            <div class="col-xs-10">
-              <%=f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
-            </div>
-          </div>
 
 
-          <div class="form-group row">
-            <!-- email field -->
-            <label for="email" class="col-xs-2 col-form-label">Email:</label>
-            <div class="col-xs-10">
-              <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "Email", required: true, label: false %>
+            <div class="form-group row">
+              <!-- email field -->
+              <label for="email" class="col-xs-2 col-form-label">Email:</label>
+              <div class="col-xs-10">
+                <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "email@university.com", required: true, label: false %>
+              </div>
             </div>
           </div>
         </div>
@@ -58,63 +60,84 @@
         <div class="personal-information-fields">
           <!-- fields for all users -->
           <h2 class="edit-profile-titles">Personal Information</h2>
+            <div class="edit-fields-container">
 
-            <div class="form-group row">
-              <!-- Knock @ me for -->
-              <label for="activities" class="col-xs-2 col-form-label">Knock @me for:</label>
+              <div class="form-group row">
+                <!-- Knock @ me for -->
+                <label for="activities" class="col-xs-2 col-form-label">Knock @me for:</label>
+                <div class="col-xs-10">
+                  <%= f.input :bio, input_html: { class: "form-control" }, placeholder: "Description of what people should reach out to you for", required: true, label: false %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+              <!-- first name field -->
+              <label for="activities" class="col-xs-2 col-form-label">Activities:</label>
               <div class="col-xs-10">
-                <%= f.input :bio, input_html: { class: "form-control" }, required: true, label: false %>
+                <input class="form-control" type="text" value="<%=@user.activities%>" placeholder="Activities (seperated by comma)" id="activities">
               </div>
             </div>
 
             <div class="form-group row">
-            <!-- first name field -->
-            <label for="activities" class="col-xs-2 col-form-label">Activities:</label>
-            <div class="col-xs-10">
-              <input class="form-control" type="text" value="<%=@user.activities%>" id="activities">
-            </div>
-          </div>
-
-          <% if is_college_student?(@user) %>
-            <div class="form-group row">
-              <!-- philanthropy percentage field -->
-              <label for="philanthropy_percent" class="col-xs-2 col-form-label">Philanthropy percentage:</label>
+              <!-- cell phone field -->
+              <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone:</label>
               <div class="col-xs-10">
-                <%= f.text_field :philanthropy_percent, id: 'phil-slider', type: 'text', 
-                  data: {'slider-id' => 'phil-slider', 
-                         'slider-min' => '0', 
-                         'slider-max' => '100', 
-                         'slider-step' => '5', 
-                         'slider-value' => '5' } %>
+                <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, placeholder: "(555) 555 - 5555", label: false %>
               </div>
             </div>
-          <% end %>
 
-          <div class="form-group row">
-            <!-- cell phone field -->
-            <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone:</label>
-            <div class="col-xs-10">
-              <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, label: false %>
-            </div>
-          </div>
+            <% if is_college_student?(@user) %>
+              <div class="form-group row">
+                <!-- College field -->
+                <label for="college" class="col-xs-2 col-form-label">College:</label>
+                <div class="col-xs-10">
+                  <%= f.text_field :college, placeholder: "Your University here", class: "form-control"%>
+                </div>
+              </div>
+            <% end %>
 
-          <div class="form-group row">
-            <!-- High School field -->
-            <label for="highschool" class="col-xs-2 col-form-label">High School:</label>
-            <div class="col-xs-10">
-              <%= f.text_field :highschool, class: "form-control", label: false %>
-            </div>
-          </div>
+            <% if is_college_student?(@user) %>
+              <div class="form-group row">
+                <!-- College field -->
+                <label for="major" class="col-xs-2 col-form-label">Major:</label>
+                <div class="col-xs-10">
+                  <%= f.text_field :major, placeholder: "Underwater Basket Weaving", class: "form-control"%>
+                </div>
+              </div>
+            <% end %>
 
-          <% if is_college_student?(@user) %>
             <div class="form-group row">
-              <!-- College field -->
-              <label for="college" class="col-xs-2 col-form-label">College:</label>
+              <!-- High School field -->
+              <label for="highschool" class="col-xs-2 col-form-label">High School:</label>
               <div class="col-xs-10">
-                <%= f.text_field :college, class: "form-control"%>
+                <%= f.text_field :highschool, class: "form-control", label: false %>
               </div>
             </div>
-          <% end %>
+
+            <div class="form-group row">
+              <!-- High School field -->
+              <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy:</label>
+              <div class="col-xs-10">
+                <%= f.text_field :philanthropy, placeholder: "Georgetown University Endownment", class: "form-control", label: false %>
+              </div>
+            </div>
+
+            <% if is_college_student?(@user) %>
+              <div class="form-group row">
+                <!-- philanthropy percentage field -->
+                <label for="philanthropy_percent" class="col-xs-2 col-form-label">Donation %:</label>
+                <div class="col-xs-10 philanthropy-slider">
+                  <%= f.text_field :philanthropy_percent, id: 'phil-slider', type: 'text', 
+                    data: {'slider-id' => 'phil-slider', 
+                           'slider-min' => '0', 
+                           'slider-max' => '100', 
+                           'slider-step' => '5', 
+                           'slider-value' => '5' } %>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
         </div>
         
 
@@ -123,43 +146,30 @@
             <!-- availability fields-->
             <h2 class="edit-profile-titles">Meeting Information</h2>  
 
-            <div class="form-group row">
-              <!-- Availability field -->
-              <label for="avaliability" class="col-xs-2 col-form-label">Availability:</label>
-              <div class="col-xs-10">
-                <input class="form-control" type="text" value="<%=@user.avaliability%>" id="avaliability">
-              </div>
-            </div>
+            <div class="edit-fields-container">
 
-            <div class="form-group row">
-              <!-- phone call price field -->
-              <label for="phone_call_price" class="col-xs-2 col-form-label">Phone Meeting Price:</label>
-              <div class="col-xs-10">
-                <%= f.input :phone_call_price , input_html: { class: "form-control"}, label: false %>
+              <div class="form-group row">
+                <!-- Availability field -->
+                <label for="avaliability" class="col-xs-2 col-form-label">Availability:</label>
+                <div class="col-xs-10">
+                  <input class="form-control" type="text" value="<%=@user.avaliability%>" placeholder="Weekends 3PM - 6PM" id="avaliability">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row">
-              <!-- video call price field -->
-              <label for="phone_call_price" class="col-xs-2 col-form-label">Video Call Price:</label>
-              <div class="col-xs-10">
-                <%= f.input :video_price , input_html: { class: "form-control"}, label: false %>
+              <div class="form-group row">
+                <!-- phone call price field -->
+                <label for="phone_call_price" class="col-xs-2 col-form-label">Cost / 15 min:</label>
+                <div class="col-xs-10">
+                  <%= f.input :phone_call_price , input_html: { class: "form-control"}, placeholder: "15.00", label: false %>
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row">
-              <!-- in person call price field -->
-              <label for="phone_call_price" class="col-xs-2 col-form-label">In-Person Meeting Price:</label>
-              <div class="col-xs-10">
-                <%= f.input :meeting_price , input_html: { class: "form-control"}, label: false %>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- venmo account field -->
-              <label for="venmo" class="col-xs-2 col-form-label">Venmo username:</label>
-              <div class="col-xs-10">
-                <%= f.input :venmo , input_html: { class: "form-control" }, label: false %>
+              <div class="form-group row">
+                <!-- venmo account field -->
+                <label for="venmo" class="col-xs-2 col-form-label">Venmo:</label>
+                <div class="col-xs-10">
+                  <%= f.input :venmo , input_html: { class: "form-control" }, placeholder: "Venmo Username", label: false %>
+                </div>
               </div>
             </div>
           </div>
@@ -168,51 +178,53 @@
         <div class="document-management-fields">
           <!-- User documents -->
           <h2 class="edit-profile-titles">Document Management</h2>
-          <div class="form-group row">
-            <!-- common_essay_path field -->
-            <label for="common_essay_path" class="col-xs-4 col-form-label">Common Application Essay:</label>
-            <div class="col-xs-8">
-              <%= f.file_field :common_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+            <div class="edit-fields-container">
+            <div class="form-group row">
+              <!-- common_essay_path field -->
+              <label for="common_essay_path" class="col-xs-3 col-form-label">Common Application Essay:</label>
+              <div class="col-xs-9">
+                <%= f.file_field :common_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <!-- college_essay_path field -->
-            <label for="college_essay_path" class="col-xs-4 col-form-label">College Specific Essay:</label>
-            <div class="col-xs-8">
-              <%= f.file_field :college_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+            <div class="form-group row">
+              <!-- college_essay_path field -->
+              <label for="college_essay_path" class="col-xs-3 col-form-label">College Specific Essay:</label>
+              <div class="col-xs-9">
+                <%= f.file_field :college_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <!-- resume_path field -->
-            <label for="resume_path" class="col-xs-4 col-form-label">Resume:</label>
-            <div class="col-xs-8">
-              <%= f.file_field :resume_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-3 col-form-label">Resume:</label>
+              <div class="col-xs-9">
+                <%= f.file_field :resume_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <!-- resume_path field -->
-            <label for="resume_path" class="col-xs-4 col-form-label">Accept Phone Call:</label>
-            <div class="col-xs-8">
-              <%= f.input :accept_phone_call, label: false, as: :radio_buttons %>
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-3 col-form-label">Accept Phone Call:</label>
+              <div class="col-xs-9 form-inline">
+                <%= f.input :accept_phone_call, label: false, as: :radio_buttons %>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <!-- resume_path field -->
-            <label for="resume_path" class="col-xs-4 col-form-label">Accept Video Call:</label>
-            <div class="col-xs-8">
-              <%= f.input :accept_video_call, label: false, as: :radio_buttons%>
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-3 col-form-label">Accept Video Call:</label>
+              <div class="col-xs-9 form-inline">
+                <%= f.input :accept_video_call, label: false, as: :radio_buttons%>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group row">
-            <!-- resume_path field -->
-            <label for="resume_path" class="col-xs-4 col-form-label">Accept Meeting:</label>
-            <div class="col-xs-8">
-              <%= f.input :accept_meeting, label: false, as: :radio_buttons%>
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-3 col-form-label">Accept Meeting:</label>
+              <div class="col-xs-9 form-inline">
+                <%= f.input :accept_meeting, label: false, as: :radio_buttons%>
+              </div>
             </div>
           </div>
         </div>

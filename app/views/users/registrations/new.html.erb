@@ -1,4 +1,4 @@
-<div class="row user-registration-page">
+<div class="row user-registration-page sign-up-container">
   <h2>Signup for Knock</h2>
   <br />
   <%= bootstrap_form_for(resource) do |f| %>
@@ -8,7 +8,7 @@
     <%= f.text_field  :last_name %>
     <%= f.email_field :email %>
     <%= f.password_field :password %>
-    <%= f.text_field  :student_status %>
+    <%= f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {} %>
     <%= f.submit "Join Knock", class: "btn btn-success" %>
   <% end %>
 </div>
