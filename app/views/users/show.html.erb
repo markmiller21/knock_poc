@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <!-- Message to user - confirmations -->
   <div class="row" id="setup_call_request_alert">
     <div class="col-md-8">
@@ -22,80 +22,120 @@
   <br/>
 
 
+
   <div class="row">
-    <div class="col-md-4 col-sm-8 col-sm-offset-2 col-md-offset-0">
+    <div class="col-md-6 col-sm-7 col-md-offset-1 col-xs-12">
       <h2 class="user-profile-name"><%= @knockee.display_name %></h2>
-      <img src="<%= @knockee.avatar_path.url %>" class="img-thumbnail img-rounded img-profile" />
-      <br />
-      <h4 class="user-profile-name">About <%= @knockee.display_name %>:</h4>
-      <h4>Bio will go here</h4> <!-- @knockee.bio -->
+      <img src="<%= @knockee.avatar_path.url %>" class="img-thumbnail img-profile" />
     </div>
-    <div class="col-md-8 col-sm-8 col-sm-offset-2 col-md-offset-0">
-      <p><span class="user-show-db-title">High School:</span> <%= @knockee.highschool %></p>
+    <div class="col-md-5 col-sm-5 col-xs-12">
+      <h2 class="user-profile-name">Knock @<%= @knockee.display_name %> for:</h2>
+      <h4><%= @knockee.bio %></h4>
 
-      <p><span class="user-show-db-title">College:</span> <%= @knockee.college%></p>
+      <br />
 
-      <p><span class="user-show-db-title">High School Activities: </span><span><%=@knockee.personal_description.present? ? @knockee.personal_description : "N/A"%></span></p>   
+      <div class="panel panel-default">
+        <div class="panel-heading">Basic Information:</div>
+        <div class="panel-body">
+          <ul class="list-unstyled meetings-page-bullets">
+            <% if @knockee.phone_call_price %>
+              <li><span class="user-show-db-title">College:</span> <%= @knockee.college%></li>
+            <%end%>
 
-      <br />   
+            <% if @knockee.video_price %>
+              <li><span class="user-show-db-title">Major:</span> <%= @knockee.major%></li>
+            <%end%>
 
-      <% if @knockee.phone_call_price %>
-          <p><span class="user-show-db-title"><%= @knockee.first_name %>'s phone call price per 15 minutes:</span> <%= number_to_currency(@knockee.phone_call_price, percision: 2) %></p>
-      <%else%>
-          <p><span class="user-show-db-title">Calls: </span>This student does not accept calls.</p>
-      <%end%>
+            <% if @knockee.meeting_price %>
+              <li><span class="user-show-db-title">High School:</span> <%= @knockee.highschool %></li>
+            <%end%>
+            <% if @knockee.common_essay_path %>
+              <li><span class="user-show-db-title">Activities:</span> <%= @knockee.activities %></li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
 
-      <% if @knockee.video_price %>
-          <p><span class="user-show-db-title"><%= @knockee.first_name %>'s video call price per 15 minutes:</span> <%= number_to_currency(@knockee.video_price, percision: 2) %></p>
-      <%else%>
-          <p><span class="user-show-db-title">Calls: </span>This student does not accept calls.</p>
-      <%end%>
+      <br />
 
-      <% if @knockee.meeting_price %>
-          <p><span class="user-show-db-title"><%= @knockee.first_name %>'s meeting price per 15 minutes:</span> <%= number_to_currency(@knockee.meeting_price, percision: 2) %></p>
-      <%else%>
-          <p><span class="user-show-db-title">In-person Meetings: </span>This student does not accept in person meetings.</p>
-      <%end%>
+      <div class="panel panel-default">
+        <div class="panel-heading"><%= @knockee.display_name %> Pricing:</div>
+        <div class="panel-body">
+          <ul class="list-unstyled meetings-page-bullets">
+            <% if @knockee.phone_call_price %>
+              <li><span class="user-show-db-title">Phone calls:</span> <%= number_to_currency(@knockee.phone_call_price, percision: 2) %></li>
+            <%else%>
+              <li><span class="user-show-db-title">Phone calls:</span> This student does not accept calls.</li>
+            <%end%>
 
-      <% if @knockee.philanthropy_percent.present? && @knockee.philanthropy_percent != 0 %>
-          <p><span class="user-show-db-title">Philanthropic Option:</span> A portion of this student's earnings go to the Georgetown Scholarship Fund</p>
-      <%end%>
-      
+            <% if @knockee.video_price %>
+              <li><span class="user-show-db-title">Video calls:</span> <%= number_to_currency(@knockee.video_price, percision: 2) %></li>
+            <%else%>
+              <li><span class="user-show-db-title">Video calls:</span> This student does not video calls.</li>
+            <%end%>
 
-      <br/><br/>
+            <% if @knockee.meeting_price %>
+              <li><span class="user-show-db-title">In Person Meetings:</span> <%= number_to_currency(@knockee.meeting_price, percision: 2) %></li>
+            <%else%>
+              <li><span class="user-show-db-title">In Person Meetings: </span>This student does not accept in person meetings.</li>
+            <%end%>
 
-      <!-- only if user signed in then we allow them to schedule call or meetings with college students. The modal is also depends on whether user signed in.-->
-      <% if user_signed_in? %>
-
-          <p><span class="knock-text-color"> Knock to schedule a: </span></p>
-          <!-- For now, I assume that if the ***_price is present, then the knockee accpet the corresponding type of meeting. which means highschoolers can schedule it with them.  -->
-          <% if @knockee.phone_call_price.present? %>
-              <a class="btn btn-info global-knock-button profile-button-size" id="call-btn">Phone Call</a><!-- I will just puts the text for now, Mark will do the style or button title later, the same as in-person meeting and video call. -->
-          <% end %>
-          <% if @knockee.video_price.present? %>
-              <a class="btn btn-info global-knock-button profile-button-size" id="video-call-btn">Video Call</a>
-          <% end %>
-          <% if @knockee.meeting_price.present? %>
-              <a class="btn btn-info global-knock-button profile-button-size" id="meeting-btn">Meeting</a>
-          <% end %>
-          <!-- we need to know what do we need to add to cart, common essay? college application essay? or resume? -->
-          <%=link_to "Add Essay to Cart", carts_add_to_cart_path(user_id: @knockee.id), class: "btn btn-info global-knock-button add-cart-button" %>
-
-          <!-- Modal -->
-          <div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content" id="setup_meeting_request_modal_content">
-                <%=render partial: "users/meeting_form"%>
-              </div>
-            </div>
-          </div>
-          <!-- End Modal -->
-
-      <% else %>
-          <p class="cant-schedule-error-msg">You haven't login, please login or signup <%= link_to "here", new_user_registration_path %> to schedule a call or meeting with GU college students!</p>
-      <% end %>
-
-      <br/>
+            <% if @knockee.common_essay_path %>
+              <li><span class="user-show-db-title">Essay:</span> <%= number_to_currency('5', percision: 2) %></li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
+  
+  <br/>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-7 col-md-offset-1 hidden-xs">
+      <h2 class="knock-text-color"><%= @knockee.display_name %>'s Documents</h2>
+
+      <!-- common_essay_path -->
+      <% if @knockee.common_essay_path.present? %>
+        <img src="<%= @knockee.common_essay_path.url %>" class="user-documents col-sm-4" />
+      <% end %>
+      
+      <!-- college_essay_path -->
+      <% if @knockee.college_essay_path.present? %>
+        <img src="<%= @knockee.college_essay_path.url %>" class="user-documents col-sm-4" />
+      <% end %>
+
+      <!-- resume_path -->
+      <% if @knockee.resume_path.present? %>
+        <img src="<%= @knockee.resume_path.url %>" class="user-documents col-sm-4" />
+      <% end %>
+
+    </div>
+
+    <div class="col-md-4 col-sm-5 col-xs-12">
+    
+      <h2 class="knock-text-color">Schedule a:</h2>
+      <% if @knockee.phone_call_price.present? %>
+          <a class="btn btn-info global-knock-button profile-button col-xs-5" id="call-btn">Phone Call</a>
+      <% end %>
+      <% if @knockee.video_price.present? %>
+          <a class="btn btn-info global-knock-button profile-button col-xs-5" id="video-call-btn">Video Call</a>
+      <% end %>
+      <% if @knockee.meeting_price.present? %>
+          <a class="btn btn-info global-knock-button profile-button col-xs-5" id="meeting-btn">Meeting</a>
+      <% end %>
+      <% if @knockee.meeting_price.present? %>
+        <%=link_to "Buy Essay", carts_add_to_cart_path(user_id: @knockee.id), class: "btn btn-info global-knock-button profile-button col-xs-5" %>
+      <% end %>
+
+      <div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" id="setup_meeting_request_modal_content">
+            <%=render partial: "users/meeting_form"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

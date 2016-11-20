@@ -47,11 +47,10 @@ and (min-device-width: 1224px) {
   }
 }
 
-.profile-button-size {
-  height: 35px;
-  width: 110px;
+.profile-button {
   white-space:normal !important;
   word-wrap:break-word;
+  margin: 10px;
 }
 
 
@@ -91,12 +90,13 @@ and (min-device-width: 1224px) {
   margin-left: -50px;
 }
 
-.img-profile{
-  height: 65%;
-  width: 65%;
+.img-profile {
+  height: auto;
+  width: 90%;
+  max-width: 450px
 }
 
-.add-cart-button{
+.add-cart-button {
   border-style: none;
   height: 35px;
 }
@@ -198,4 +198,13 @@ and (min-device-width: 1224px) {
 
 .card-img-top {
   border-radius: 25px 25px 0px 0px;
+}
+
+.user-search-bar {
+  height: 34px;
+}
+
+.user-documents {
+  height: 100px;
+  width: 100px;
 }

@@ -36,14 +36,12 @@
 <br/>
 
 <div class="row">
-  <div class="col-md-6 col col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-    <div class="input-group">
-      <h4 class="search-label">Search for schools, activities, majors, or anything you want to connect on</h4>
-      <%= form_tag(search_tags_path, method: "post", id: "search-form") do %>
-        <%= text_field_tag :term, params[:term], placeholder: "Search for students to reach out to", class: 'form-control' %>
-        <span class="input-group-btn">
-          <%= submit_tag "Start Knocking", class: 'btn btn-default' %>
-        </span>
+  <div class="col-md-6 col col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+    <div class="row input-group">
+      <h4 class="search-label">Search for Schools, Activities, Majors, or anything you want to connect on</h4>
+      <%= form_tag search_tags_path, method: "post", id: "search-form", :class => "form-inline" do %>
+        <%= text_field_tag :term, params[:term], placeholder: "Search for students to reach out to", class: 'col-sm-9 user-search-bar' %>
+        <%= submit_tag "Start Knocking", class: 'btn btn-default col-xs-3' %>
       <% end %>
     </div>
   </div>
