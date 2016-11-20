@@ -76,6 +76,7 @@ class CartsController < ApplicationController
                #{params[:exp_month] || customer[:sources][:data].first[:exp_month]}",
                card_holder_name: params[:card_holder_name] || ""}
       PaymentMailer.payment_success(current_user, @card).deliver_now
+      PaymentMailer.send_essay(current_user, )
       # save the customer ID in your database so you can use it later
       current_user.update_column("stripe_customer_id", customer_id)
 
@@ -89,5 +90,14 @@ class CartsController < ApplicationController
 
   def payment_confirmation
 
+  end
+
+  private
+  def cart_total_price
+    if session[:cart]
+      items = session[:cart]
+      return items.inject(0) {|sum, item| sum + (item["quantity"] * item["price"])}
+    end
+    0
   end
 end

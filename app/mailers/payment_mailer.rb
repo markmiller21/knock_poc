@@ -10,4 +10,8 @@ class PaymentMailer < ApplicationMailer
     @user, @card = receiver, card
     mail(to: @user.email, subject: "Your payment was failed.")
   end
+
+  def send_essay(knocker, knockee)
+    attachments['filename.jpg'] = File.read('/path/to/filename.jpg')
+  end
 end
