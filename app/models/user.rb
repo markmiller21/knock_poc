@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates_format_of :cell_phone, with: Constants::VALID_PHONE_NUMBER_REGEX, message: "format is invalid.", if: "self.cell_phone.present?"
 
+  validates :phone_call_price, :cell_phone, presence: {message: "must be present if you accept phone calls."}, if: "self.accept_phone_call.present? && self.accept_phone_call == true"
+  validates :video_price, presence: {message: "must be present if you accept video calls."}, if: "self.accept_video_call.present? && self.accept_video_call == true"
+  validates :meeting_price, presence: {message: "must be present if you accept in person meeting."}, if: "self.accept_meeting.present? && self.accept_meeting == true"
+
   #since 3 prices are all in same format, we validate them by same regex
   validates_each :phone_call_price, :meeting_price, :video_price do |record, attr, value|
     record.errors.add(attr, ' is invalid, price should be between 0 and 999.99, no dollar sign please.') if value.present? &&  !(value =~ Constants::VALID_US_CURRENCY)
@@ -52,6 +56,7 @@ class User < ApplicationRecord
 
   #TODO keep this, may need this later even if it's doing the same thing in carts controller.
   def pay_with_current_bank_or_create(price)
+    Stripe.api_key = Constants::STRIPE_API_SECRET_KEY
     if self.stripe_customer_id.blank?
       return false
       # customer = Stripe::Customer.create(

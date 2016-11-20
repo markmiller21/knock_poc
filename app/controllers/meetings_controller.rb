@@ -88,13 +88,19 @@ class MeetingsController < ApplicationController
     begin
       meeting = Meeting.find(params[:custom])
       duration = params[:duration].to_i
-      if meeting && meeting.meeting_transaction.blank?
+     # if meeting && meeting.meeting_transaction.blank?
         knocker = User.find(meeting.knocker_id)
+        knockee = User.find(meeting.knockee_id)
         price = meeting.get_price_by_meeting_type(knocker, duration)
-        meeting.create_meeting_transaction(knocker_id: meeting.knocker_id, knockee_id: meeting.knockee_id,
+
+        transaction = meeting.build_meeting_transaction(knocker_id: meeting.knocker_id, knockee_id: meeting.knockee_id,
                                            price: price, duration: duration)
+        #donate money to charity no matter how much the philanthropy_percent is
+        money_donated = transaction.donate_to_charity(knockee)
+        knockee.update_column("total_money_donated", knockee.total_money_donated + money_donated)
+        transaction.save
         knocker.pay_with_current_bank_or_create((price*100).to_i)
-      end
+     # end
     rescue ActiveRecord::RecordNotFound
       render text: 'The parameter you sent is invalid, make sure you are operating within the website.' and return
     end

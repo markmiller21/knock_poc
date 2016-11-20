@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119203746) do
+ActiveRecord::Schema.define(version: 20161120014551) do
 
   create_table "meetings", force: :cascade do |t|
     t.integer  "knockee_id"
@@ -44,20 +44,21 @@ ActiveRecord::Schema.define(version: 20161119203746) do
     t.string   "description"
     t.float    "duration"
     t.float    "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
     t.integer  "meeting_id"
+    t.decimal  "money_for_philanthropy", precision: 8, scale: 2, default: "0.0"
     t.index ["knockee_id"], name: "index_transactions_on_knockee_id"
     t.index ["knocker_id"], name: "index_transactions_on_knocker_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                            default: "", null: false
-    t.string   "encrypted_password",               default: "", null: false
+    t.string   "email",                                                    default: "",                                null: false
+    t.string   "encrypted_password",                                       default: "",                                null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                    default: 0,  null: false
+    t.integer  "sign_in_count",                                            default: 0,                                 null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(version: 20161119203746) do
     t.string   "student_status"
     t.string   "activities"
     t.string   "personal_description"
-    t.float    "philanthropy_percent"
+    t.float    "philanthropy_percent",                                     default: 5.0
     t.string   "cell_phone"
     t.string   "highschool"
     t.string   "major"
@@ -80,12 +81,17 @@ ActiveRecord::Schema.define(version: 20161119203746) do
     t.string   "resume_path"
     t.string   "common_essay_path"
     t.string   "college_essay_path"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                                                                           null: false
+    t.datetime "updated_at",                                                                                           null: false
     t.string   "college"
     t.text     "bio"
     t.string   "year",                   limit: 5
     t.string   "stripe_customer_id"
+    t.decimal  "total_money_donated",              precision: 8, scale: 2, default: "0.0"
+    t.string   "philanthropy",                                             default: "Georgetown University Endowment"
+    t.boolean  "accept_phone_call",                                        default: true
+    t.boolean  "accept_video_call",                                        default: true
+    t.boolean  "accept_meeting",                                           default: true
     t.index ["activities"], name: "activities_full_text_index"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

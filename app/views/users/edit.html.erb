@@ -140,6 +140,22 @@
             </div>
 
             <div class="form-group row">
+              <!-- video call price field -->
+              <label for="phone_call_price" class="col-xs-2 col-form-label">Video Call Price:</label>
+              <div class="col-xs-10">
+                <%= f.input :video_price , input_html: { class: "form-control"}, label: false %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <!-- in person call price field -->
+              <label for="phone_call_price" class="col-xs-2 col-form-label">In-Person Meeting Price:</label>
+              <div class="col-xs-10">
+                <%= f.input :meeting_price , input_html: { class: "form-control"}, label: false %>
+              </div>
+            </div>
+
+            <div class="form-group row">
               <!-- venmo account field -->
               <label for="venmo" class="col-xs-2 col-form-label">Venmo username:</label>
               <div class="col-xs-10">
@@ -173,6 +189,30 @@
             <label for="resume_path" class="col-xs-4 col-form-label">Resume:</label>
             <div class="col-xs-8">
               <%= f.file_field :resume_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <!-- resume_path field -->
+            <label for="resume_path" class="col-xs-4 col-form-label">Accept Phone Call:</label>
+            <div class="col-xs-8">
+              <%= f.input :accept_phone_call, label: false, as: :radio_buttons %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <!-- resume_path field -->
+            <label for="resume_path" class="col-xs-4 col-form-label">Accept Video Call:</label>
+            <div class="col-xs-8">
+              <%= f.input :accept_video_call, label: false, as: :radio_buttons%>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <!-- resume_path field -->
+            <label for="resume_path" class="col-xs-4 col-form-label">Accept Meeting:</label>
+            <div class="col-xs-8">
+              <%= f.input :accept_meeting, label: false, as: :radio_buttons%>
             </div>
           </div>
         </div>

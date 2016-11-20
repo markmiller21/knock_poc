@@ -15,4 +15,29 @@ $(document).ready ->
   return
 
 $(document).ready ->
-  $("#phil-slider").slider();
+  phil_slider = $('#phil-slider').slider()
+  phil_slider.slider 'setValue', 5
+
+
+
+  #this is from legacy, we may use this later
+#$(document).ready ->
+#  $('#essay_college_app_essays_true').click ->
+#    $('#college_application_essays').show()
+#    return
+#  $('#essay_accept_phone_calls_true').click ->
+#    $('#accept_phone_calls').show()
+#    return
+#  $('#essay_meetup_inperson_true').click ->
+#    $('#in_person_meeting').show()
+#    return
+#  $('#essay_college_app_essays_false').click ->
+#    $('#college_application_essays').hide()
+#    return
+#  $('#essay_accept_phone_calls_false').click ->
+#    $('#accept_phone_calls').hide()
+#    return
+#  $('#essay_meetup_inperson_false').click ->
+#    $('#in_person_meeting').hide()
+#    return
+#  return
