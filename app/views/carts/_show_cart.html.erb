@@ -22,7 +22,7 @@
       <hr/>
     </table>
     <div class="row">
-      <div class="col-md-12"><p class="pull-right"><strong>Subtotal: $<%=total%></strong></p><br/></div>
+      <div class="col-md-12"><p class="pull-right"><strong>Subtotal: <%= number_to_currency(total, percision: 2) %></strong></p><br/></div>
       <% unless params[:action] == 'checkout' %>
           <div class="col-md-12"><p><%=link_to "CHECKOUT", carts_checkout_path, class: "btn btn-lg black-btn pull-right"%></p></div>
       <%end%>
