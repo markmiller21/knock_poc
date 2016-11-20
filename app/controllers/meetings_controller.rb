@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:disconnect_call_back]
   before_action :set_knocker_knockee_meeting, except: [:create, :disconnect_call_back]
   skip_before_action :verify_authenticity_token, only: [:disconnect_call_back]
 
@@ -93,11 +93,12 @@ class MeetingsController < ApplicationController
         price = meeting.get_price_by_meeting_type(knocker, duration)
         meeting.create_meeting_transaction(knocker_id: meeting.knocker_id, knockee_id: meeting.knockee_id,
                                            price: price, duration: duration)
+        knocker.pay_with_current_bank_or_create((price*100).to_i)
       end
     rescue ActiveRecord::RecordNotFound
       render text: 'The parameter you sent is invalid, make sure you are operating within the website.' and return
     end
-    render nothing: true
+    render json: "success"
   end
 
   private 

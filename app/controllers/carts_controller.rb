@@ -40,14 +40,37 @@ class CartsController < ApplicationController
 
     # Create a charge: this will charge the user's card
     begin
-      charge = Stripe::Charge.create(
-          :amount => 500, # Amount in cents
-          :currency => "usd",
-          :source => token,
-          :description => "Example charge",
-          :metadata => {"order_id" => "6735"}
+      #Keep this as a sample of basic Stripe payment
+      # charge = Stripe::Charge.create(
+      #     :amount => 500, # Amount in cents
+      #     :currency => "usd",
+      #     :source => token,
+      #     :description => "Example charge",
+      #     :metadata => {"order_id" => "6735"}
+      # )
+
+      #If the current_user has no stripe_customer_id in the DB, that means this is the first time he provide
+      #their bank account info, so let's create a Stripe Customer on the cloud to store their bank info for
+      #use it later.
+      if current_user.stripe_customer_id.blank?
+        customer = Stripe::Customer.create(
+            card: token,
+            description: "#{current_user.email}-#{current_user.display_name}",
+            email: current_user.email
+        )
+        customer_id = customer.id
+      else
+        customer_id = current_user.stripe_customer_id
+      end
+      Stripe::Charge.create(
+          amount: 500, # $15.00 this time
+          currency: 'usd',
+          customer: customer_id
       )
       PaymentMailer.payment_success(current_user, @card).deliver_now
+      # save the customer ID in your database so you can use it later
+      current_user.update_column("stripe_customer_id", customer_id)
+
     rescue Stripe::CardError => e
       @transaction_falied = true
       # The card has been declined
