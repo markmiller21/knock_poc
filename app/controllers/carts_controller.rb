@@ -5,6 +5,27 @@ class CartsController < ApplicationController
 
   end
 
+  # def add_to_cart
+  #   user = User.find(params[:user_id])
+  #   all_items = session[:cart]
+  #   new_item = Item.new(user.id, user.display_name, 1, Constants::ESSAY_DEFAULT_PRICE, user.avatar_path.url)
+  #   if session[:cart].blank?
+  #     session[:cart] = [new_item]
+  #   else
+  #     if all_items.any?{|i| i["user_id"] == user.id }
+  #       all_items.collect { |item|
+  #         if item["user_id"] == user.id
+  #           item["quantity"] += 1
+  #         end
+  #       }
+  #       session[:cart] = all_items
+  #     else
+  #       session[:cart] << new_item
+  #     end
+  #   end
+  #   redirect_to :back
+  # end
+
   def add_to_cart
     user = User.find(params[:user_id])
     all_items = session[:cart]
@@ -13,12 +34,8 @@ class CartsController < ApplicationController
       session[:cart] = [new_item]
     else
       if all_items.any?{|i| i["user_id"] == user.id }
-        all_items.collect { |item|
-          if item["user_id"] == user.id
-            item["quantity"] += 1
-          end
-        }
-        session[:cart] = all_items
+        flash[:duplicated_college_student] = "You already added this student into your cart."
+        redirect_to :back and return
       else
         session[:cart] << new_item
       end
