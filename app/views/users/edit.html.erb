@@ -80,7 +80,12 @@
               <!-- philanthropy percentage field -->
               <label for="philanthropy_percent" class="col-xs-2 col-form-label">Philanthropy percentage:</label>
               <div class="col-xs-10">
-                <input class="form-control" type="number" value="<%=@user.philanthropy_percent%>" id="philanthropy_percent">
+                <%= f.text_field :philanthropy_percent, id: 'phil-slider', type: 'text', 
+                  data: {'slider-id' => 'phil-slider', 
+                         'slider-min' => '0', 
+                         'slider-max' => '100', 
+                         'slider-step' => '5', 
+                         'slider-value' => '5' } %>
               </div>
             </div>
           <% end %>

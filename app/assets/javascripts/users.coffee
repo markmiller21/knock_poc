@@ -14,3 +14,5 @@ $(document).ready ->
     return
   return
 
+$(document).ready ->
+  $("#phil-slider").slider();
