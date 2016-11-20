@@ -128,7 +128,7 @@
       <% if @knockee.meeting_price.present? %>
           <a class="btn btn-info global-knock-button profile-button col-xs-5" id="meeting-btn">Meeting</a>
       <% end %>
-      <% if @knockee.meeting_price.present? %>
+      <% if @knockee.college_essay_path.url.present? || @knockee.common_essay_path.url.present? %>
         <%=link_to "Buy Essay", carts_add_to_cart_path(user_id: @knockee.id), class: "btn btn-info global-knock-button profile-button col-xs-5" %>
       <% end %>
 

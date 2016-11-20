@@ -26,6 +26,11 @@ class CartsController < ApplicationController
     redirect_to :back
   end
 
+  def clear_cart
+    session[:cart] = nil
+    redirect_to :back
+  end
+
   def checkout
     if current_user.stripe_customer_id.present?
       redirect_to carts_pay_path
@@ -63,23 +68,23 @@ class CartsController < ApplicationController
         customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
         customer_id = current_user.stripe_customer_id
       end
-      Stripe::Charge.create(
-          amount: 500, # $15.00 this time
-          currency: 'usd',
-          customer: customer_id
-      )
+      # Stripe::Charge.create(
+      #     amount: cart_total_price, # $15.00 this time
+      #     currency: 'usd',
+      #     customer: customer_id
+      # )
 
       #TODO I know this is ugly but it can define less functions, we can optimize this later
-      @card = {card_number: ("*****#{params[:card_number][-5...-1]}" rescue nil) || "*****#{customer[:sources][:data].first[:last4]}",
+      @card = {card_number: ("*****#{params[:card_number][-4..-1]}" rescue nil) || "*****#{customer[:sources][:data].first[:last4]}",
                cvv: params[:cvv] || "",
                exp_date: "#{params[:exp_year] || customer[:sources][:data].first[:exp_year]}-
                #{params[:exp_month] || customer[:sources][:data].first[:exp_month]}",
                card_holder_name: params[:card_holder_name] || ""}
       PaymentMailer.payment_success(current_user, @card).deliver_now
-      PaymentMailer.send_essay(current_user, )
+      PaymentMailer.send_essay(current_user, session[:cart]).deliver_now
+      session[:cart] = nil
       # save the customer ID in your database so you can use it later
       current_user.update_column("stripe_customer_id", customer_id)
-
     rescue Stripe::CardError => e
       @transaction_falied = true
       # The card has been declined
@@ -96,8 +101,9 @@ class CartsController < ApplicationController
   def cart_total_price
     if session[:cart]
       items = session[:cart]
-      return items.inject(0) {|sum, item| sum + (item["quantity"] * item["price"])}
+      return items.inject(0) {|sum, item| sum + (item["quantity"] * item["price"])} * 100
+    else
+      0
     end
-    0
   end
 end

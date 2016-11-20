@@ -1,4 +1,9 @@
 <div class="cart shopping-cart-margin">
   <span class="glyphicon glyphicon-shopping-cart pull-left">
-  </span><%=link_to "#{show_cart(session[:cart])} item(s) in cart", carts_index_path, style: "color: white;"%>
+  </span>
+  <p>
+    <%=link_to "#{show_cart(session[:cart])} item(s) in cart", carts_index_path, style: "color: white;"%>
+    &nbsp;&nbsp;&nbsp;
+    <%=link_to "Clear Cart", carts_clear_cart_path, style: "color: white;"%>
+  </p>
 </div>
