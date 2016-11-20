@@ -27,7 +27,9 @@ class CartsController < ApplicationController
   end
 
   def checkout
-
+    if current_user.stripe_customer_id.present?
+      redirect_to carts_pay_path
+    end
   end
 
   def pay
@@ -35,8 +37,6 @@ class CartsController < ApplicationController
 
     # Get the credit card details submitted by the form
     token = params[:stripeToken]
-    @card = {card_number: params[:card_number], cvv: params[:cvv], exp_date: "#{params[:exp_year]}-#{params[:exp_month]}", card_holder_name: params[:card_holder_name]}
-    # add transaction here
 
     # Create a charge: this will charge the user's card
     begin
@@ -60,6 +60,7 @@ class CartsController < ApplicationController
         )
         customer_id = customer.id
       else
+        customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
         customer_id = current_user.stripe_customer_id
       end
       Stripe::Charge.create(
@@ -67,6 +68,13 @@ class CartsController < ApplicationController
           currency: 'usd',
           customer: customer_id
       )
+
+      #TODO I know this is ugly but it can define less functions, we can optimize this later
+      @card = {card_number: ("*****#{params[:card_number][-5...-1]}" rescue nil) || "*****#{customer[:sources][:data].first[:last4]}",
+               cvv: params[:cvv] || "",
+               exp_date: "#{params[:exp_year] || customer[:sources][:data].first[:exp_year]}-
+               #{params[:exp_month] || customer[:sources][:data].first[:exp_month]}",
+               card_holder_name: params[:card_holder_name] || ""}
       PaymentMailer.payment_success(current_user, @card).deliver_now
       # save the customer ID in your database so you can use it later
       current_user.update_column("stripe_customer_id", customer_id)

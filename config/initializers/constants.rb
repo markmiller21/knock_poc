@@ -26,6 +26,7 @@ class Constants
   #Stripe API KEYs
   STRIPE_API_PUBLISHABLE_KEY = 'pk_test_nIplpPKMZLX2RsglbSfcHY6H'
   STRIPE_API_SECRET_KEY = 'sk_test_Qe3pGLNi0JcT9scG6Au6cs7O'
+  Stripe.api_key = STRIPE_API_SECRET_KEY
 
   #seconds for 15 mins
   PRICE_TIME_UNIT = 900
