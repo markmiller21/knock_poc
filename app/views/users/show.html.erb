@@ -83,6 +83,10 @@
             <% if @knockee.common_essay_path %>
               <li><span class="user-show-db-title">Essay:</span> <%= number_to_currency('5', percision: 2) %></li>
             <%end%>
+
+            <% if @knockee.avaliability %>
+              <li><span class="user-show-db-title">Availability:</span> <%= @knockee.avaliability %></li>
+            <%end%>
           </ul>
         </div>
       </div>
