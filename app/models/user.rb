@@ -60,7 +60,6 @@ class User < ApplicationRecord
   def pay_with_current_bank_or_create(price)
     Stripe.api_key = Constants::STRIPE_API_SECRET_KEY
     if self.stripe_customer_id.blank?
-      logger.info "--------------------------------fucking no credit card------------------------------"
       return false
       # customer = Stripe::Customer.create(
       #     card: token,
@@ -71,7 +70,7 @@ class User < ApplicationRecord
     else
       customer_id = self.stripe_customer_id
       Stripe::Charge.create(
-          amount: price,
+          amount: price+100, #Notice that the price need to be at least 50 cents, or it's gonna raise errors. So I will add 100 cents temprorlay here.
           currency: 'usd',
           customer: customer_id
       )
