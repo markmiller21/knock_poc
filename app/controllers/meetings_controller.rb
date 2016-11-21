@@ -128,21 +128,4 @@ class MeetingsController < ApplicationController
       @meeting = Meeting.find(params[:meeting_id])
     end
   end
-
-  #TODO will remove later, we don't need this cause you can actually specify the format in JS when you call datetimepicker
-  # This converts the datetimepicker gem data into db/ ruby friends dateTime format
-  def format_date_to_db(date)
-    original_date_array = date.split(' ')
-    
-    # logic to convert to military time
-    time = original_date_array[1].split(':')
-    hour = time[0].to_i
-    original_date_array[2] == 'PM' ? hour += 12 : hour
-    time[0]=hour.to_s
-    
-    # arrange date in proper format for DB
-    proper_date = original_date_array[0].split('/').rotate(2).join('-')
-    proper_time = time.push('00').join(':')
-    return proper_date + ' ' + proper_time
-  end
 end

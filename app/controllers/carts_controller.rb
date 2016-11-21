@@ -115,14 +115,17 @@ class CartsController < ApplicationController
   end
 
   def config_cc
-    token = params[:stripeToken]
-    customer = Stripe::Customer.create(
-        card: token,
-        description: "#{current_user.email}-#{current_user.display_name}",
-        email: current_user.email
-    )
-    current_user.update_column("stripe_customer_id", customer.id)
-    redirect_back fallback_location: root_path
+    if params[:stripeToken]
+      token = params[:stripeToken]
+      customer = Stripe::Customer.create(
+          card: token,
+          description: "#{current_user.email}-#{current_user.display_name}",
+          email: current_user.email
+      )
+      current_user.update_column("stripe_customer_id", customer.id)
+    elsif params[:back]
+      redirect_back fallback_location: users_path
+    end
   end
 
   def payment_confirmation
