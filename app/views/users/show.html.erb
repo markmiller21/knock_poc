@@ -139,6 +139,14 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="credit-card-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" id="credit_card_modal_content">
+            <%=render partial: "carts/payment_form", locals: {submit_btn_text: 'Submit', url: carts_config_cc_path}%>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

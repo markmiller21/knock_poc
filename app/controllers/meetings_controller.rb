@@ -23,9 +23,14 @@ class MeetingsController < ApplicationController
     @ticket = sinchAuth.get_auth_ticket(current_user.email, 3600, Constants::SINCH_API_KEY, Constants::SINCH_SECRET)
   end
 
+
   def create
+    #First we need to see whether the user already has CC setup.
+    if current_user.stripe_customer_id.blank?
+      return
+    end
     # use the format date method to massage the data to get it in proper form
-    meeting_params[:meeting_time] = format_date_to_db(meeting_params[:meeting_time])
+    meeting_params[:meeting_time] = meeting_params[:meeting_time]
 
   	#TODO I need devise integration finished to finish meeting creation.
   	@meeting = Meeting.new(meeting_params)
@@ -124,6 +129,7 @@ class MeetingsController < ApplicationController
     end
   end
 
+  #TODO will remove later, we don't need this cause you can actually specify the format in JS when you call datetimepicker
   # This converts the datetimepicker gem data into db/ ruby friends dateTime format
   def format_date_to_db(date)
     original_date_array = date.split(' ')

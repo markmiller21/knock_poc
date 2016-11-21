@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   get 'carts/clear_cart' => "carts#clear_cart"
   match 'carts/pay' => "carts#pay", via: [:get, :post]
   get 'carts/payment_confirmation' => "carts#payment_confirmation"
+  post 'carts/config_cc' => "carts#config_cc"
 
 end
