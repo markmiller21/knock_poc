@@ -19,13 +19,15 @@ class User < ApplicationRecord
   end
 
   scope :with_tags, -> {includes(:tags)}
-  # before_save do
-  #   if self.student_status == 'college_student'
-  #     self.student_status = 'georgetown log'
-  #   else
-  #     self.student_status = 'knocker logl'
-  #   end
-  # end
+
+  before_validation :set_other_prices, on: :update
+
+  def set_other_prices
+    if self.phone_call_price.present?
+      self.video_price = (self.phone_call_price.to_f / 0.9).round(2) if self.accept_video_call
+      self.meeting_price = (self.phone_call_price.to_f / 0.8).round(2) if self.accept_meeting
+    end
+  end
 
   #TODO I comment this just for now since we need to let user switch their roles when they signup
   #validates :highschool, presence: true
