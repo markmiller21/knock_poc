@@ -58,6 +58,7 @@ class User < ApplicationRecord
   def pay_with_current_bank_or_create(price)
     Stripe.api_key = Constants::STRIPE_API_SECRET_KEY
     if self.stripe_customer_id.blank?
+      logger.info "--------------------------------fucking no credit card------------------------------"
       return false
       # customer = Stripe::Customer.create(
       #     card: token,
