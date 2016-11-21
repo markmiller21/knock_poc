@@ -48,11 +48,15 @@ class CartsController < ApplicationController
     redirect_to :back
   end
 
-  def checkout
-    if current_user.stripe_customer_id.present?
-      redirect_to carts_pay_path
-    end
-  end
+  # def checkout
+  #   if current_user.stripe_customer_id.present? && params[:pay].present? && params[:pay] == 'yes' #we wanna make sure only the user click 'checkout' button then allow users to see the payment form
+  #     redirect_to carts_pay_path
+  #   end
+  #   #if the cart is empty then we won't allow them to see the payment form
+  #   if session[:cart].blank?
+  #     redirect_back fallback_location: root_path
+  #   end
+  # end
 
   def pay
     Stripe.api_key = Constants::STRIPE_API_SECRET_KEY
@@ -108,6 +112,20 @@ class CartsController < ApplicationController
       PaymentMailer.payment_failed(current_user, @card).deliver_now
     end
     render 'payment_confirmation'
+  end
+
+  def config_cc
+    if params[:stripeToken]
+      token = params[:stripeToken]
+      customer = Stripe::Customer.create(
+          card: token,
+          description: "#{current_user.email}-#{current_user.display_name}",
+          email: current_user.email
+      )
+      current_user.update_column("stripe_customer_id", customer.id)
+    elsif params[:back]
+      redirect_back fallback_location: users_path
+    end
   end
 
   def payment_confirmation
