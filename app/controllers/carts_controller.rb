@@ -126,6 +126,7 @@ class CartsController < ApplicationController
     elsif params[:back]
       redirect_back fallback_location: users_path
     end
+    #render json: "success", status: :ok
   end
 
   def payment_confirmation

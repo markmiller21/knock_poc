@@ -135,6 +135,7 @@
       <div class="modal fade" id="meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content" id="setup_meeting_request_modal_content">
+            <span class="global_success" id="cc-setup-success"></span>
             <%=render partial: "users/meeting_form"%>
           </div>
         </div>
@@ -142,8 +143,8 @@
 
       <div class="modal fade" id="credit-card-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-          <div class="modal-content" id="credit_card_modal_content">
-            <%=render partial: "carts/payment_form", locals: {submit_btn_text: 'Submit', url: carts_config_cc_path}%>
+          <div class="modal-content users-cc-setup-form" id="credit_card_modal_content">
+            <%=render partial: "carts/payment_form", locals: {submit_btn_text: 'Submit', url: carts_config_cc_path, submit_btn_type: 'button'}%>
           </div>
         </div>
       </div>

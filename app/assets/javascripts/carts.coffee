@@ -18,7 +18,20 @@ $ ->
       $form.append $('<input type="hidden" name="stripeToken">').val(token)
       # Submit the form:
       $form.get(0).submit()
-    return
+
+#      $('#payment_submit_btn').click (e) ->
+#        alert '123123123'
+#        $.ajax
+#          url: $form.attr('action')
+#          data: $form.serialize()
+#          type: 'POST'
+#          success: (data) ->
+#            alert '789789789'
+#            $('#credit-card-modal').modal 'hide'
+#            $('#cc-setup-success').html 'Credit Card setup success!'
+#            return
+#        false
+
 
   $form.submit (event) ->
     # Disable the submit button to prevent repeated clicks:
