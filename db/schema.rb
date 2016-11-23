@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20161123192135) do
     t.boolean  "accept_phone_call",                                        default: true
     t.boolean  "accept_video_call",                                        default: true
     t.boolean  "accept_meeting",                                           default: true
-    t.string   "username"
+    t.string   "user_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["stripe_customer_id"], name: "index_users_on_stripe_customer_id"

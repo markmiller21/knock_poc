@@ -15,22 +15,26 @@
 
           <div class="edit-fields-container">
             
-            <div class="form-group row">  
+            <div class="form-group row form-inline">  
               <!-- first name field -->
-              <div class="col-xs-6 form-inline">
-                <%= f.input :first_name, input_html: { class: "form-control" }, label: "First Name: " %>
+              <label for="first_name" class="col-xs-2 col-form-label">First name</label>
+
+              <div class="col-xs-4">
+                <%= f.input :first_name, input_html: { class: "form-control" }, label: false %>
               </div>
             
               <!-- last name field -->
-              <div class="col-xs-6 form-inline">
-                <%= f.input :last_name, input_html: { class: "form-control" }, label: "Last Name:" %>
+              <label for="last_name" class="col-xs-2 col-form-label">Last name</label>
+
+              <div class="col-xs-4">
+                <%= f.input :last_name, input_html: { class: "form-control" }, label: false %>
               </div>
             </div>
 
 
             <div class="form-group row">
               <!-- user avatar field -->
-              <label for="avatar_path" class="col-xs-2 col-form-label">Avatar:</label>
+              <label for="avatar_path" class="col-xs-2 col-form-label">Avatar</label>
               <div class="col-xs-10">
                 <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
               </div>
@@ -38,16 +42,25 @@
 
             <div class="form-group row">
               <!-- student status -->
-              <label for="student_status" class="col-xs-2 col-form-label">Education:</label>
+              <label for="student_status" class="col-xs-2 col-form-label">Education</label>
               <div class="col-xs-10">
                 <%=f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
               </div>
             </div>
 
+            <div class="form-group row">
+              <!-- username field -->
+              <label for="user_name" class="col-xs-2 col-form-label">Username</label>
+              <div class="col-xs-10">
+                <%= f.text_field :user_name, placeholder: "Username goes here", class: "form-control"%>
+              </div>
+            </div>
+
+
 
             <div class="form-group row">
               <!-- email field -->
-              <label for="email" class="col-xs-2 col-form-label">Email:</label>
+              <label for="email" class="col-xs-2 col-form-label">Email</label>
               <div class="col-xs-10">
                 <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "email@university.com", required: true, label: false %>
               </div>
@@ -64,7 +77,7 @@
 
               <div class="form-group row">
                 <!-- Knock @ me for -->
-                <label for="activities" class="col-xs-2 col-form-label">Knock @me for:</label>
+                <label for="activities" class="col-xs-2 col-form-label">Knock @me for</label>
                 <div class="col-xs-10">
                   <%= f.input :bio, input_html: { class: "form-control" }, placeholder: "Description of what people should reach out to you for", required: true, label: false %>
                 </div>
@@ -72,7 +85,7 @@
 
               <div class="form-group row">
               <!-- first name field -->
-              <label for="activities" class="col-xs-2 col-form-label">Activities:</label>
+              <label for="activities" class="col-xs-2 col-form-label">Activities</label>
               <div class="col-xs-10">
                 <%= f.input :activities, input_html: { class: "form-control" }, placeholder: "Activities (seperated by comma)", required: true, label: false %>
               </div>
@@ -80,7 +93,7 @@
 
             <div class="form-group row">
               <!-- cell phone field -->
-              <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone:</label>
+              <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone</label>
               <div class="col-xs-10">
                 <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, placeholder: "(555) 555 - 5555", label: false %>
               </div>
@@ -89,7 +102,7 @@
             <% if is_college_student?(@user) %>
               <div class="form-group row">
                 <!-- College field -->
-                <label for="college" class="col-xs-2 col-form-label">College:</label>
+                <label for="college" class="col-xs-2 col-form-label">College</label>
                 <div class="col-xs-10">
                   <%= f.text_field :college, placeholder: "Your University here", class: "form-control"%>
                 </div>
@@ -99,7 +112,7 @@
             <% if is_college_student?(@user) %>
               <div class="form-group row">
                 <!-- College field -->
-                <label for="major" class="col-xs-2 col-form-label">Major:</label>
+                <label for="major" class="col-xs-2 col-form-label">Major</label>
                 <div class="col-xs-10">
                   <%= f.text_field :major, placeholder: "Underwater Basket Weaving", class: "form-control"%>
                 </div>
@@ -108,7 +121,7 @@
 
             <div class="form-group row">
               <!-- High School field -->
-              <label for="highschool" class="col-xs-2 col-form-label">High School:</label>
+              <label for="highschool" class="col-xs-2 col-form-label">High School</label>
               <div class="col-xs-10">
                 <%= f.text_field :highschool, class: "form-control", label: false %>
               </div>
@@ -116,7 +129,7 @@
 
             <div class="form-group row">
               <!-- High School field -->
-              <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy:</label>
+              <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
               <div class="col-xs-10">
                 <%= f.text_field :philanthropy, placeholder: "Georgetown University Endownment", class: "form-control", label: false %>
               </div>
@@ -125,7 +138,7 @@
             <% if is_college_student?(@user) %>
               <div class="form-group row">
                 <!-- philanthropy percentage field -->
-                <label for="philanthropy_percent" class="col-xs-2 col-form-label">Donation %:</label>
+                <label for="philanthropy_percent" class="col-xs-2 col-form-label">Donation %</label>
                 <div class="col-xs-10 philanthropy-slider">
                   <%= f.text_field :philanthropy_percent, id: 'phil-slider', type: 'text', 
                     data: {'slider-id' => 'phil-slider', 
@@ -150,7 +163,7 @@
 
               <div class="form-group row">
                 <!-- Availability field -->
-                <label for="avaliability" class="col-xs-2 col-form-label">Availability:</label>
+                <label for="avaliability" class="col-xs-2 col-form-label">Availability</label>
                 <div class="col-xs-10">
                   <input class="form-control" type="text" value="<%=@user.avaliability%>" placeholder="Weekends 3PM - 6PM" id="avaliability">
                 </div>
@@ -158,7 +171,7 @@
 
               <div class="form-group row">
                 <!-- phone call price field -->
-                <label for="phone_call_price" class="col-xs-2 col-form-label">Cost / 15 min:</label>
+                <label for="phone_call_price" class="col-xs-2 col-form-label">Cost / 15 min</label>
                 <div class="col-xs-10">
                   <%= f.input :phone_call_price , input_html: { class: "form-control"}, placeholder: "15.00", label: false %>
                 </div>
@@ -166,7 +179,7 @@
 
               <div class="form-group row">
                 <!-- venmo account field -->
-                <label for="venmo" class="col-xs-2 col-form-label">Venmo:</label>
+                <label for="venmo" class="col-xs-2 col-form-label">Venmo</label>
                 <div class="col-xs-10">
                   <%= f.input :venmo , input_html: { class: "form-control" }, placeholder: "Venmo Username", label: false %>
                 </div>
@@ -181,7 +194,7 @@
             <div class="edit-fields-container">
             <div class="form-group row">
               <!-- common_essay_path field -->
-              <label for="common_essay_path" class="col-xs-3 col-form-label">Common Application Essay:</label>
+              <label for="common_essay_path" class="col-xs-3 col-form-label">Common Application Essay</label>
               <div class="col-xs-9">
                 <%= f.file_field :common_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
               </div>
@@ -189,7 +202,7 @@
 
             <div class="form-group row">
               <!-- college_essay_path field -->
-              <label for="college_essay_path" class="col-xs-3 col-form-label">College Specific Essay:</label>
+              <label for="college_essay_path" class="col-xs-3 col-form-label">College Specific Essay</label>
               <div class="col-xs-9">
                 <%= f.file_field :college_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
               </div>
@@ -197,7 +210,7 @@
 
             <div class="form-group row">
               <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Resume:</label>
+              <label for="resume_path" class="col-xs-3 col-form-label">Resume</label>
               <div class="col-xs-9">
                 <%= f.file_field :resume_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
               </div>
@@ -205,7 +218,7 @@
 
             <div class="form-group row">
               <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Accept Phone Call:</label>
+              <label for="resume_path" class="col-xs-3 col-form-label">Accept Phone Call</label>
               <div class="col-xs-9 form-inline">
                 <%= f.input :accept_phone_call, label: false, as: :radio_buttons %>
               </div>
@@ -213,7 +226,7 @@
 
             <div class="form-group row">
               <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Accept Video Call:</label>
+              <label for="resume_path" class="col-xs-3 col-form-label">Accept Video Call</label>
               <div class="col-xs-9 form-inline">
                 <%= f.input :accept_video_call, label: false, as: :radio_buttons%>
               </div>
@@ -221,7 +234,7 @@
 
             <div class="form-group row">
               <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Accept Meeting:</label>
+              <label for="resume_path" class="col-xs-3 col-form-label">Accept Meeting</label>
               <div class="col-xs-9 form-inline">
                 <%= f.input :accept_meeting, label: false, as: :radio_buttons%>
               </div>
