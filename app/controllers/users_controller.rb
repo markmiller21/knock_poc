@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(User::permitted(params))
       create_tags(@user)
-      binding.pry
+      #binding.pry
       redirect_to edit_user_path(current_user)
     else
       render :edit
