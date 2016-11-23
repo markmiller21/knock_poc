@@ -18,7 +18,7 @@
   </div>
 
   <!-- link to direct users back to users page -->
-  <small><%=link_to "← BACK TO VIEW STUDENTS", users_path%></small>
+  <small><%= link_to "← BACK TO VIEW STUDENTS", users_path %></small>
   <br/>
 
 
@@ -29,7 +29,7 @@
       <img src="<%= @knockee.avatar_path.url %>" class="img-thumbnail img-profile" />
     </div>
     <div class="col-md-5 col-sm-5 col-xs-12">
-      <h2 class="user-profile-name">Knock @<%= @knockee.display_name %> for:</h2>
+      <h2 class="user-profile-name">Knock @<%= @knockee.username %> for:</h2>
       <h4><%= @knockee.bio %></h4>
 
       <br />
