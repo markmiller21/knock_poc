@@ -13,9 +13,9 @@
     <div class="panel panel-default">
       <div class="panel-heading">High School Seniors:</div>
       <div class="panel-body">
-        <ul>
-          <li>View current students and schedule a call</li>
-          <li>Enjoy getting an inside look at the college application process like never before</li>
+        <ul class="description-list">
+          <li class="desription-list-bullet">View current students and schedule a call</li>
+          <li class="desription-list-bullet">Enjoy getting an inside look at the college application process like never before</li>
         </ul>
       </div>
     </div>
@@ -24,9 +24,9 @@
     <div class="panel panel-default">
       <div class="panel-heading">College Students:</div>
       <div class="panel-body">
-        <ul>
-          <li>Upload your credentials</li>
-          <li>Enjoy a passive source of income&nbsp;</li>
+        <ul class="description-list">
+          <li class="desription-list-bullet">Upload your credentials</li>
+          <li class="desription-list-bullet">Enjoy a passive source of income&nbsp;</li>
         </ul>
       </div>
     </div>
@@ -41,7 +41,7 @@
       <h4 class="search-label">Search for Schools, Activities, Majors, or anything you want to connect on</h4>
       <%= form_tag search_tags_path, method: "post", id: "search-form", :class => "form-inline" do %>
         <%= text_field_tag :term, params[:term], placeholder: "Search for students to reach out to", class: 'col-xs-9 user-search-bar' %>
-        <%= submit_tag "Start Knocking", class: 'btn btn-default col-xs-3' %>
+        <%= submit_tag "Search", class: 'btn btn-default col-xs-3' %>
       <% end %>
     </div>
   </div>
