@@ -15,15 +15,10 @@ class TagsController < ApplicationController
     		end
     	end
     end
-    # run a mode calculation on this to get the most relevant users to the top
 
-    #binding.pry
-
-    # SONG -- I am stuggling here.  I am trying to page the array but I cant seem to get it
-
-    #@users = potentialUserArray.limit(24).page(params[:page])
-    #@users = potentialUserArray.page(params[:page]).per(10)
-    @users = Kaminari.paginate_array(potentialUserArray.uniq).page(params[:page]).per(10)
+    # TODO: only show college students
+    # TODO: Calculate Mode
+    @users = Kaminari.paginate_array(potentialUserArray.uniq).page(params[:page]).per(12)
    	render "users/index"
   end
 end

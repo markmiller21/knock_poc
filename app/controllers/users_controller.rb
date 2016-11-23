@@ -12,9 +12,8 @@ class UsersController < ApplicationController
   end
 
   def index
-  	# returns 10 users per 'page'  
-  	# TODO We should change @esssays to @users
-    @users = User.all.page(params[:page]).per(10)
+  	# TODO: this should only return college students
+    @users = User.all.page(params[:page]).per(12)
   end
 
   def edit
