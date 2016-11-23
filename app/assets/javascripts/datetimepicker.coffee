@@ -1,4 +1,5 @@
 jQuery ->
 	$('#meeting_meeting_time').datetimepicker
-    format:'YYYY-MM-DD HH:mm:ss'
-		minDate: moment()
+		minDate: moment(),
+		inline: true,
+		sideBySide: true
