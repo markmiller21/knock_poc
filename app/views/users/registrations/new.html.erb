@@ -7,6 +7,7 @@
     <%= f.text_field  :first_name %>
     <%= f.text_field  :last_name %>
     <%= f.email_field :email %>
+    <%= f.email_field :username %>
     <%= f.password_field :password %>
     <%= f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {} %>
     <%= f.submit "Join Knock", class: "btn btn-success" %>
