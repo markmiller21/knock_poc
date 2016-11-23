@@ -12,9 +12,8 @@ class UsersController < ApplicationController
   end
 
   def index
-  	# returns 10 users per 'page'  
-  	# TODO We should change @esssays to @users
-    @users = User.all.page(params[:page]).per(10)
+  	# TODO: this should only return college students
+    @users = User.all.page(params[:page]).per(12)
   end
 
   def edit
@@ -23,6 +22,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(User::permitted(params))
+      create_tags(@user)
+      #binding.pry
       redirect_to edit_user_path(current_user)
     else
       render :edit
@@ -30,6 +31,25 @@ class UsersController < ApplicationController
   end
 
   private
+  # Creates all the tags based on the parameters we want to search by
+  # SEARCH PARAMS (activities, bio, highschool, major, college, email)
+  # Associates all tags to the user as well
+  def create_tags(user)
+    potential_tags = @user.bio.split(',').map(&:strip) # bio
+    potential_tags.push(@user.activities.split(',').map(&:strip)) # acitivites
+    potential_tags.push(@user.highschool) # highschool
+    potential_tags.push(@user.college) # college
+    potential_tags.push(@user.major) # major
+    potential_tags.push(@user.email).flatten! # email
+    potential_tags.each do |potential_tag|
+      added_tags = Tag.find_or_create_by(name: potential_tag)
+      unless @user.tags.include?(added_tags)
+        @user.tags << added_tags
+      end
+    end
+  end
+
+
   def is_current_user?
     if params[:id].present?
       @user = User.find(params[:id])
