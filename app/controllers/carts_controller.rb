@@ -117,6 +117,7 @@ class CartsController < ApplicationController
   def config_cc
     if params[:stripeToken]
       token = params[:stripeToken]
+      @knockee = User.find(params[:knockee_id])
       customer = Stripe::Customer.create(
           card: token,
           description: "#{current_user.email}-#{current_user.display_name}",
