@@ -50,9 +50,9 @@
 
             <div class="form-group row">
               <!-- username field -->
-              <label for="user_name" class="col-xs-2 col-form-label">Username</label>
+              <label for="user name" class="col-xs-2 col-form-label">Username</label>
               <div class="col-xs-10">
-                <%= f.text_field :user_name, placeholder: "Username goes here", class: "form-control"%>
+                <%= f.input :username, placeholder: "Username goes here", input_html: { class: "form-control" }, label: false %>
               </div>
             </div>
 
