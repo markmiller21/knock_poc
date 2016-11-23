@@ -8,16 +8,21 @@ class TagsController < ApplicationController
     	# run the term through a sql search based on if there are any
     	# tags that match -- something like 
     	# tagMatches = Tags.where("name like '%#{term}")
-    	tagMatches.each do |tag|
-    		potentialUserArray = tag.users
+    	tag_matches = Tag.where("name LIKE (?)", "%#{term}%")
+    	tag_matches.each do |tag|
+    		tag.users.each do |user|
+    			potentialUserArray.push(user)
+    		end
     	end
     end
+    # run a mode calculation on this to get the most relevant users to the top
+
     binding.pry
 
+    # SONG -- I am stuggling here.  I am trying to page the array but I cant seem to get it
 
-
-    @users = User.joins("LEFT JOIN tags_users ON tags_users.user_id = users.id LEFT JOIN tags ON
- tags.id = tags_users.tag_id").where("activities LIKE '%#{term}%' OR college LIKE '%#{term}%' OR major LIKE '%#{term}%' OR tags.name LIKE '%#{term}%'").page(params[:page]).per(10)
-    render "users/index"
+    @users = potentialUserArray.limit(24).page(params[:page])
+    @users = potentialUserArray.page(params[:page]).per(10)
+   	render "users/index"
   end
 end
