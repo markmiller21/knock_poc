@@ -129,6 +129,7 @@ class MeetingsController < ApplicationController
     end
   end
 
+  # TODO: move this to a helper file
   # This converts the datetimepicker gem data into db/ ruby friends dateTime format
   def format_date_to_db(date)
     original_date_array = date.split(' ')
