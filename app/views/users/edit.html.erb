@@ -74,7 +74,7 @@
               <!-- first name field -->
               <label for="activities" class="col-xs-2 col-form-label">Activities:</label>
               <div class="col-xs-10">
-                <input class="form-control" type="text" value="<%=@user.activities%>" placeholder="Activities (seperated by comma)" id="activities">
+                <%= f.input :activities, input_html: { class: "form-control" }, placeholder: "Activities (seperated by comma)", required: true, label: false %>
               </div>
             </div>
 
