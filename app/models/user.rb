@@ -24,7 +24,11 @@ class User < ApplicationRecord
 
   def set_other_prices
     if self.phone_call_price.present?
+      # convert phone call price to 15 minute rate
+      self.phone_call_price = self.phone_call_price.to_f / 4
+      # calculate video call price based on incoming phone call price -- only if they select accept_video_call radio box
       self.video_price = (self.phone_call_price.to_f / 0.9).round(2) if self.accept_video_call
+      # calculate meeting call price based on incoming phone call price -- only if they select accept_meeting_call radio box
       self.meeting_price = (self.phone_call_price.to_f / 0.8).round(2) if self.accept_meeting
     end
   end
