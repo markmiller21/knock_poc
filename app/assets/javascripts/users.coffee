@@ -18,6 +18,10 @@ $(document).ready ->
   phil_slider = $('#phil-slider').slider()
   phil_slider.slider 'setValue', 5 if phil_slider
 
+$(document).ready ->
+  $('#user_phone_call_price').change (currentValue) ->
+    $('input#ppm').val('$' + (currentValue.currentTarget.value / 60).toFixed(2))
+
 
 
   #this is from legacy, we may use this later
