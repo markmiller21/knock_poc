@@ -23,6 +23,11 @@ $(document).ready ->
     $('input#ppm').val('$' + (currentValue.currentTarget.value / 60).toFixed(2))
 
 
+$(document).ready ->
+  $('#phil-slider').change (currentValue) ->
+    $('input#philanthropyPercentStatic').val((currentValue.value.newValue) + ' %')
+
+
 
   #this is from legacy, we may use this later
 #$(document).ready ->
