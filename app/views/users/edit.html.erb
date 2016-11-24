@@ -130,7 +130,7 @@
             <div class="form-group row">
               <!-- High School field -->
               <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
-              <div class="col-xs-10">
+              <div class="col-xs-6">
                 <%= f.text_field :philanthropy, placeholder: "Georgetown University Endownment", class: "form-control", label: false %>
               </div>
             </div>
@@ -139,13 +139,16 @@
               <div class="form-group row">
                 <!-- philanthropy percentage field -->
                 <label for="philanthropy_percent" class="col-xs-2 col-form-label">Donation %</label>
-                <div class="col-xs-10 philanthropy-slider">
+                <div class="col-xs-5 philanthropy-slider">
                   <%= f.text_field :philanthropy_percent, id: 'phil-slider', type: 'text', 
                     data: {'slider-id' => 'phil-slider', 
                            'slider-min' => '0', 
                            'slider-max' => '100', 
                            'slider-step' => '5', 
                            'slider-value' => '5' } %>
+                </div>
+                <div class="col-xs-2">
+                  <input class="form-control" type="text" value="<%=@user.activities%>%" id="philanthropyPercentStatic" disabled>
                 </div>
               </div>
             <% end %>
@@ -175,9 +178,7 @@
                 <div class="col-xs-4">
                   <%= f.input :phone_call_price , input_html: { class: "form-control"}, placeholder: "15.00", label: false %>
                 </div>
-              </div>
 
-              <div class="form-group row">
                 <label class="col-xs-2 col-form-label">Price per minute</label>
                 <div class="col-xs-4">
                   <input class="form-control" type="text" value="<%=@user.activities%>" id="ppm" placeholder="calculate from hourly rate" disabled>
