@@ -31,40 +31,37 @@
               </div>
             </div>
 
+            <div class="form-group row">
+              <!-- username field -->
+              <label for="user name" class="col-xs-2 col-form-label">Username</label>
+              <div class="col-xs-4">
+                <%= f.input :username, placeholder: "Username goes here", input_html: { class: "form-control" }, label: false %>
+              </div>
 
+              <!-- email field -->
+              <label for="email" class="col-xs-2 col-form-label">Email</label>
+              <div class="col-xs-4">
+                <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "email@university.com", required: true, label: false %>
+              </div>
+
+            </div>
+
+
+            
             <div class="form-group row">
               <!-- user avatar field -->
               <label for="avatar_path" class="col-xs-2 col-form-label">Avatar</label>
-              <div class="col-xs-10">
+              <div class="col-xs-4">
                 <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
               </div>
-            </div>
 
-            <div class="form-group row">
               <!-- student status -->
               <label for="student_status" class="col-xs-2 col-form-label">Education</label>
-              <div class="col-xs-10">
+              <div class="col-xs-4">
                 <%=f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
               </div>
             </div>
 
-            <div class="form-group row">
-              <!-- username field -->
-              <label for="user name" class="col-xs-2 col-form-label">Username</label>
-              <div class="col-xs-10">
-                <%= f.input :username, placeholder: "Username goes here", input_html: { class: "form-control" }, label: false %>
-              </div>
-            </div>
-
-
-
-            <div class="form-group row">
-              <!-- email field -->
-              <label for="email" class="col-xs-2 col-form-label">Email</label>
-              <div class="col-xs-10">
-                <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "email@university.com", required: true, label: false %>
-              </div>
-            </div>
           </div>
         </div>
 
