@@ -10,11 +10,12 @@
 <body class="<%="#{controller_name}-#{action_name}"%>">
 	<%= render partial: "layouts/header" %>
   <%= render partial: "layouts/shopping_cart" if session[:cart]%>
- 		<%= render 'layouts/messages' %>
-		<%= yield %>
-		<br/><br/><br/><br/>
-		<%unless @nofooter%>
-		  <%= render partial: "layouts/footer" %>
-		<%end%>
+	<%= render 'layouts/messages' %>
+	<br />
+	<%= yield %>
+	<br/><br/><br/><br/>
+	<%unless @nofooter%>
+	  <%= render partial: "layouts/footer" %>
+	<%end%>
 </body>
 </html>
