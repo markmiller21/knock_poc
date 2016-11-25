@@ -20,51 +20,48 @@
               <label for="first_name" class="col-xs-2 col-form-label">First name</label>
 
               <div class="col-xs-4">
-                <%= f.input :first_name, input_html: { class: "form-control" }, label: false %>
+                <%= f.input :first_name, input_html: { class: "form-control", id: "user-name-input" }, label: false %>
               </div>
             
               <!-- last name field -->
               <label for="last_name" class="col-xs-2 col-form-label">Last name</label>
 
               <div class="col-xs-4">
-                <%= f.input :last_name, input_html: { class: "form-control" }, label: false %>
-              </div>
-            </div>
-
-
-            <div class="form-group row">
-              <!-- user avatar field -->
-              <label for="avatar_path" class="col-xs-2 col-form-label">Avatar</label>
-              <div class="col-xs-10">
-                <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- student status -->
-              <label for="student_status" class="col-xs-2 col-form-label">Education</label>
-              <div class="col-xs-10">
-                <%=f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
+                <%= f.input :last_name, input_html: { class: "form-control", id: "user-name-input" }, label: false %>
               </div>
             </div>
 
             <div class="form-group row">
               <!-- username field -->
               <label for="user name" class="col-xs-2 col-form-label">Username</label>
-              <div class="col-xs-10">
+              <div class="col-xs-4">
                 <%= f.input :username, placeholder: "Username goes here", input_html: { class: "form-control" }, label: false %>
               </div>
+
+              <!-- email field -->
+              <label for="email" class="col-xs-2 col-form-label">Email</label>
+              <div class="col-xs-4">
+                <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "email@university.com", required: true, label: false %>
+              </div>
+
             </div>
 
 
 
             <div class="form-group row">
-              <!-- email field -->
-              <label for="email" class="col-xs-2 col-form-label">Email</label>
-              <div class="col-xs-10">
-                <%= f.input :email, as: :email, input_html: { class: "form-control" }, placeholder: "email@university.com", required: true, label: false %>
+              <!-- user avatar field -->
+              <label for="avatar_path" class="col-xs-2 col-form-label">Avatar</label>
+              <div class="col-xs-4">
+                <%= f.file_field :avatar_path, value: @user.avatar_path.path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
+
+              <!-- student status -->
+              <label for="student_status" class="col-xs-2 col-form-label">Education</label>
+              <div class="col-xs-4">
+                <%=f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -94,8 +91,14 @@
             <div class="form-group row">
               <!-- cell phone field -->
               <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone</label>
-              <div class="col-xs-10">
+              <div class="col-xs-4">
                 <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, placeholder: "(555) 555 - 5555", label: false %>
+              </div>
+
+              <!-- High School field -->
+              <label for="highschool" class="col-xs-2 col-form-label">High School</label>
+              <div class="col-xs-4">
+                <%= f.text_field :highschool, class: "form-control", label: false %>
               </div>
             </div>
 
@@ -103,32 +106,20 @@
               <div class="form-group row">
                 <!-- College field -->
                 <label for="college" class="col-xs-2 col-form-label">College</label>
-                <div class="col-xs-10">
+                <div class="col-xs-4">
                   <%= f.text_field :college, placeholder: "Your University here", class: "form-control"%>
                 </div>
-              </div>
-            <% end %>
 
-            <% if is_college_student?(@user) %>
-              <div class="form-group row">
-                <!-- College field -->
+                <!-- Major field -->
                 <label for="major" class="col-xs-2 col-form-label">Major</label>
-                <div class="col-xs-10">
+                <div class="col-xs-4">
                   <%= f.text_field :major, placeholder: "Economics", class: "form-control"%>
                 </div>
               </div>
             <% end %>
 
             <div class="form-group row">
-              <!-- High School field -->
-              <label for="highschool" class="col-xs-2 col-form-label">High School</label>
-              <div class="col-xs-10">
-                <%= f.text_field :highschool, class: "form-control", label: false %>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- High School field -->
+              <!-- Philanthropy field -->
               <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
               <div class="col-xs-6">
                 <%= f.text_field :philanthropy, placeholder: "Georgetown University Endownment", class: "form-control", label: false %>
