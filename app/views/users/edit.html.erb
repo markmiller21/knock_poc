@@ -139,7 +139,7 @@
                            'slider-value' => '5' } %>
                 </div>
                 <div class="col-xs-2 user-edit-form-input">
-                  <input class="form-control" type="text" value="<%=@user.philanthropy_percent%>%" id="philanthropyPercentStatic" disabled>
+                  <input class="form-control" type="text" value="<%=@user.activities%>%" id="philanthropyPercentStatic" disabled>
                 </div>
               </div>
             <% end %>
@@ -240,7 +240,7 @@
             </div>
           </div>
         </div>
-        <%= f.submit :Submit, class: "btn btn-primary"%>
+        <%= f.button :submit, "Stark making money", class: "btn btn-primary col-lg-6 col-lg-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 form-submit-button" %>
       <%end%>
     </div>
 
