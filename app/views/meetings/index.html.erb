@@ -8,7 +8,7 @@
         
         <% if @knocker_meetings.size > 0 %>
           <% @knocker_meetings.each do |meeting| %>
-            <h4><%= full_name(meeting.knockee) %></h4>
+            <h4><%= link_to full_name(meeting.knockee), user_path(meeting.knockee.id) %></h4>
             <ul class="list-unstyled meetings-page-bullets">
               <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
                 <li>
@@ -41,7 +41,7 @@
       <div class="panel-body">
         <% if @knockee_meetings.size > 0 %>
           <% @knockee_meetings.each do |meeting| %>
-            <h4><%= full_name(meeting.knocker) %></h4>
+            <h4><%= link_to full_name(meeting.knocker), user_path(meeting.knocker.id) %></h4>
             <ul class="list-unstyled meetings-page-bullets">
               <% if meeting.meeting_type == Constants::VIDEO_TYPE %>
                 <li>
