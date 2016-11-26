@@ -1,6 +1,9 @@
 class Tag < ApplicationRecord
 	# Associations
-  has_and_belongs_to_many :users
+  #Same as in User modal
+  #has_and_belongs_to_many :users
+  has_many :tags_users
+  has_many :users, through: :tags_users
 
   scope :with_users, -> {includes(:users)}
 end

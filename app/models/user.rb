@@ -25,7 +25,7 @@ class User < ApplicationRecord
   def set_other_prices
     if self.phone_call_price.present?
       # convert phone call price to 15 minute rate
-      self.phone_call_price = self.phone_call_price.to_f / 4
+      self.phone_call_price = (self.phone_call_price.to_f / 4).round(2)
       # calculate video call price based on incoming phone call price -- only if they select accept_video_call radio box
       self.video_price = (self.phone_call_price.to_f / 0.9).round(2) if self.accept_video_call
       # calculate meeting call price based on incoming phone call price -- only if they select accept_meeting_call radio box
@@ -48,7 +48,11 @@ class User < ApplicationRecord
   has_many :knocker_meetings, class_name: 'Meeting', foreign_key: 'knocker'
   has_many :knockee_transactions, class_name: 'Transaction', foreign_key: 'knockee'
   has_many :knocker_transactions, class_name: 'Transaction', foreign_key: 'knocker'
-  has_and_belongs_to_many :tags
+
+  #This is a solution but sometimes use has_many :through would be better
+  #has_and_belongs_to_many :tags
+  has_many :tags_users
+  has_many :tags, through: :tags_users
 
   # Methods 
   
