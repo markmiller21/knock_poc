@@ -35,7 +35,7 @@
               <!-- username field -->
               <label for="user name" class="col-xs-2 col-form-label">Username</label>
               <div class="col-xs-4 user-edit-form-input">
-                <%= f.input :username, placeholder: "Username goes here", input_html: { class: "form-control" }, label: false %>
+                <%= f.input :username, placeholder: "Username goes here", input_html: { class: "form-control" }, label: false, required: true %>
               </div>
 
               <!-- email field -->
@@ -107,13 +107,13 @@
                 <!-- College field -->
                 <label for="college" class="col-xs-2 col-form-label">College</label>
                 <div class="col-xs-4 user-edit-form-input">
-                  <%= f.text_field :college, placeholder: "Your University here", class: "form-control"%>
+                  <%= f.text_field :college, placeholder: "Your University here", required: true, class: "form-control"%>
                 </div>
 
                 <!-- Major field -->
                 <label for="major" class="col-xs-2 col-form-label">Major</label>
                 <div class="col-xs-4 user-edit-form-input">
-                  <%= f.text_field :major, placeholder: "Economics", class: "form-control"%>
+                  <%= f.text_field :major, placeholder: "Economics", class: "form-control", required: true,%>
                 </div>
               </div>
             <% end %>

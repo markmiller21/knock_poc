@@ -11,7 +11,7 @@
 <div class="row">
   <div class="col-sm-4 col-sm-offset-1">
     <div class="panel panel-default">
-      <div class="panel-heading">High School Seniors:</div>
+      <div class="panel-heading">High School Seniors (Knockers)</div>
       <div class="panel-body">
         <ul class="description-list">
           <li class="desription-list-bullet">View current students and schedule a call</li>
@@ -22,7 +22,7 @@
   </div>
   <div class="col-sm-4 col-sm-offset-2">
     <div class="panel panel-default">
-      <div class="panel-heading">College Students:</div>
+      <div class="panel-heading">College Students (Knockees)</div>
       <div class="panel-body">
         <ul class="description-list">
           <li class="desription-list-bullet">Upload your credentials</li>
@@ -38,7 +38,7 @@
 <div class="row">
   <div class="col-md-6 col col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
     <div class="row input-group">
-      <h4 class="search-label">Search for Schools, Activities, Majors, or anything you want to connect on</h4>
+      <h4 class="search-label">Search for schools, activities, majors, or anything you want to connect on.</h4>
       <%= form_tag search_tags_path, method: "post", id: "search-form", :class => "form-inline" do %>
         <%= text_field_tag :term, params[:term], placeholder: "Search for students to reach out to", class: 'col-xs-9 user-search-bar' %>
         <%= submit_tag "Search", class: 'btn btn-default col-xs-3' %>
