@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   #Other than devise user auth, we must check that the passed params[:id] belongs to
   # the current_user, in case bad guy change the id in the browser URL bar to view or
   # update other user's profile without permission
