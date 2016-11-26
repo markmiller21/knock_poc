@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   def update
     if @user.update(User::permitted(params))
       create_tags(@user)
-      #binding.pry
       redirect_to edit_user_path(current_user)
     else
       render :edit
@@ -41,11 +40,26 @@ class UsersController < ApplicationController
     potential_tags.push(@user.college) # college
     potential_tags.push(@user.major) # major
     potential_tags.push(@user.email).flatten! # email
-    potential_tags.each do |potential_tag|
-      added_tags = Tag.find_or_create_by(name: potential_tag)
-      unless @user.tags.include?(added_tags)
-        @user.tags << added_tags
-      end
+    potential_tags.select!{|w| w.present? }
+
+    # potential_tags.each do |potential_tag|
+    #   added_tags = Tag.find_or_create_by(name: potential_tag)
+    #   #unless @user.tags.include?(added_tags)
+    #     #@user.tags << added_tags
+    #   #end
+    #
+    #   #the reason why I didn't do @user.tags << added_tags is because I wanna show explicitly that
+    #   #this is persisting data to DB by using 'create' keyword.
+    #   @user.tags_users.create(tag_id: added_tags.id)
+    # end
+
+    ActiveRecord::Base.transaction do
+      found = Tag.where(name: potential_tags)
+      not_found = potential_tags - found.pluck(:name)
+      #now create the tag in 'tags' table
+      not_found.map! { |tag| Tag.create(name: tag) }
+      #now create record in 'tags_users' table
+      (found + not_found).each { |tag_obj| TagsUser.create(user_id: @user.id, tag_id: tag_obj.id) }
     end
   end
 
