@@ -21,7 +21,7 @@
                 <li>LOCATION HERE</li>
               <% end %>
               <li><%= convert_db_time(meeting.meeting_time) %></li>
-              <li>Price: number_to_currency(meeting.meeting_price, percision: 2) per 15 minutes</li>
+              <li>Price: <%= number_to_currency(meeting.meeting_price, percision: 2) %> per 15 minutes</li>
               <li><%=link_to "Click here to reschedule", edit_meeting_path(meeting) %></li>
             </ul>
           <% end %>
@@ -54,7 +54,7 @@
                 <li>LOCATION HERE</li>
               <% end %>
               <li><%= convert_db_time(meeting.meeting_time) %></li>
-              <li>Price: number_to_currency(meeting.meeting_price, percision: 2) per 15 minutes</li>
+              <li>Price: <%= number_to_currency(meeting.meeting_price, percision: 2) %> per 15 minutes</li>
               <li><%=link_to "Click here to reschedule", edit_meeting_path(meeting) %></li>
             </ul>
           <% end %>

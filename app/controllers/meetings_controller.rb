@@ -48,6 +48,19 @@ class MeetingsController < ApplicationController
     end
   end
 
+
+  def edit
+    @meeting = Meeting.find(params[:id])
+  end
+
+  def update
+    if @meeting.update(Meeting::permitted(params))
+      meetings(current_user)
+    else
+      render :edit
+    end
+  end
+
   #basically all below actions need to pass 3 params by the URL queries, which is by GET or POST method:
   #1, knocker_id
   #2, knockee_id
