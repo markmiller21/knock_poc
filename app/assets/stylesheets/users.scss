@@ -263,10 +263,24 @@ span.radio {
   margin-left: -5px;
 }
 
+.edit-form-radio-button .radio_buttons {
+  margin-right: 15px;
+}
+
 .form-submit-button {
+  background-color: #5AA7B4;
   font-size: 24px;
+  width: 440px;
+  position:relative;
+  text-align: center;
+  margin-left: -220px;
+  left: 50%;
 }
 
 #meeting_knocking_for {
   width: 100%
+}
+
+.knocking-for-field {
+  margin-left: -25px;
 }

@@ -24,9 +24,9 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="knocking_for" class="col-xs-2 col-form-label">Knocking for</label>
-          <div class="col-xs-10">
-            <%= f.text_field :knocking_for, placeholder: "Information about ...",label: false %>
+        <label for="knocking_for" class="col-xs-3 col-form-label">Knocking for</label>
+          <div class="col-xs-8 knocking-for-field">
+            <%= f.text_field :knocking_for, placeholder: "Information about ...", label: false %>
           </div>
       </div>
     </div>
@@ -35,6 +35,6 @@
       <%=f.hidden_field :knockee_id, value: @knockee.id%>
       <%=f.hidden_field :knocker_id, value: current_user.id%>
       <%=f.hidden_field :meeting_type %>
-      <%=f.submit "Set up", class: "btn btn-success"%>
+      <%=f.submit "Set Up", class: "btn global-knock-button"%>
     </div>
 <%end%>

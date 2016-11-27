@@ -3,7 +3,7 @@
   <!-- Knockee meetings -->
   <div class="col-sm-5 col-sm-offset-1">
     <div class="panel panel-default">
-      <div class="panel-heading">Meetings setup by you:</div>
+      <div class="panel-heading meeting-header-message">Confirmed Meetings Setup by You (Knocker)</div>
       <div class="panel-body">
         
         <% if @knocker_meetings.size > 0 %>
@@ -37,7 +37,7 @@
   <!-- Knocker meetings -->
   <div class="col-sm-5">
     <div class="panel panel-default">
-      <div class="panel-heading">Meetings reaching out to you:</div>
+      <div class="panel-heading meeting-header-message">Confirmed Meetings Awaiting You as a Knockee</div>
       <div class="panel-body">
         <% if @knockee_meetings.size > 0 %>
           <% @knockee_meetings.each do |meeting| %>

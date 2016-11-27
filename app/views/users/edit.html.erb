@@ -1,14 +1,67 @@
 <div class="container-fluid">
-  <div class="row">
+  <%= simple_form_for @user do |f| %>
+    <div class="row">
 
-    <div class="user-preview-container col-md-4 hidden-sm hidden-xs">
-      <h2 class="user-profile-name"><%= @user.display_name %></h2>
-      <img src="<%= @user.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
-    </div>
+      <div class="user-preview-container col-md-4 hidden-sm hidden-xs">
+        <h2 class="user-profile-name"><%= @user.display_name %></h2>
+        <img src="<%= @user.avatar_path.url%>" class="img-thumbnail img-rounded img-profile" />
+        <div class="document-management-fields">
+          <!-- User documents -->
+          <h2 class="edit-profile-titles">Document Management</h2>
+            <div class="edit-fields-container">
+            <div class="form-group row">
+              <!-- common_essay_path field -->
+              <label for="common_essay_path" class="col-xs-6 col-form-label">Common Application</label>
+              <div class="col-xs-6 user-edit-form-input">
+                <%= f.file_field :common_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
+            </div>
 
-    <div class="edit-form-container col-md-8 col-sm-12">
+            <div class="form-group row">
+              <!-- college_essay_path field -->
+              <label for="college_essay_path" class="col-xs-6 col-form-label">College Specific Essay</label>
+              <div class="col-xs-6 user-edit-form-input">
+                <%= f.file_field :college_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-6 col-form-label">Resume</label>
+              <div class="col-xs-6 user-edit-form-input">
+                <%= f.file_field :resume_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-6 col-form-label">Accept Phone Call</label>
+              <div class="col-xs-6 form-inline user-edit-form-input edit-form-radio-button">
+                <%= f.input :accept_phone_call, label: false, as: :radio_buttons %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-6 col-form-label">Accept Video Call</label>
+              <div class="col-xs-6 form-inline user-edit-form-input edit-form-radio-button">
+                <%= f.input :accept_video_call, label: false, as: :radio_buttons%>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <!-- resume_path field -->
+              <label for="resume_path" class="col-xs-6 col-form-label">Accept Meeting</label>
+              <div class="col-xs-6 form-inline user-edit-form-input edit-form-radio-button">
+                <%= f.input :accept_meeting, label: false, as: :radio_buttons%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- User Edit form -->
-      <%= simple_form_for @user do |f| %>
+      <div class="edit-form-container col-md-8 col-sm-12">
         <div class="account-information-fields">
           <!-- fields for all users -->
           <h2 class="edit-profile-titles">Account Information</h2>
@@ -187,7 +240,7 @@
           </div>
         <% end %>
 
-        <div class="document-management-fields">
+        <div class="document-management-fields hidden-md hidden-lg">
           <!-- User documents -->
           <h2 class="edit-profile-titles">Document Management</h2>
             <div class="edit-fields-container">
@@ -218,7 +271,7 @@
             <div class="form-group row">
               <!-- resume_path field -->
               <label for="resume_path" class="col-xs-3 col-form-label">Accept Phone Call</label>
-              <div class="col-xs-9 form-inline user-edit-form-input">
+              <div class="col-xs-9 form-inline user-edit-form-input edit-form-radio-button">
                 <%= f.input :accept_phone_call, label: false, as: :radio_buttons %>
               </div>
             </div>
@@ -226,7 +279,7 @@
             <div class="form-group row">
               <!-- resume_path field -->
               <label for="resume_path" class="col-xs-3 col-form-label">Accept Video Call</label>
-              <div class="col-xs-9 form-inline user-edit-form-input">
+              <div class="col-xs-9 form-inline user-edit-form-input edit-form-radio-button">
                 <%= f.input :accept_video_call, label: false, as: :radio_buttons%>
               </div>
             </div>
@@ -234,15 +287,17 @@
             <div class="form-group row">
               <!-- resume_path field -->
               <label for="resume_path" class="col-xs-3 col-form-label">Accept Meeting</label>
-              <div class="col-xs-9 form-inline user-edit-form-input">
+              <div class="col-xs-9 form-inline user-edit-form-input edit-form-radio-button">
                 <%= f.input :accept_meeting, label: false, as: :radio_buttons%>
               </div>
             </div>
           </div>
         </div>
-        <%= f.button :submit, "Stark making money", class: "btn btn-primary col-lg-6 col-lg-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 form-submit-button" %>
-      <%end%>
-    </div>
 
-  </div>
+        <div class="row">
+          <%= f.button :submit, "Submit and Start Being Incentivized", class: "btn btn-primary col-xs-12 form-submit-button"  %>
+        </div>
+      </div>
+    </div>
+  <%end%>
 </div>
