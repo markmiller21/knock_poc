@@ -5,7 +5,7 @@ module ApplicationHelper
 
   # converts rails Time object into a digestable format
   def convert_db_time(date)
-  	return date.strftime("%m/%d/%Y %I:%M %P")
+  	return date.strftime("%m/%d/%Y  |  %I:%M %P")
   end
 
   def show_error_flash_by_key(key)

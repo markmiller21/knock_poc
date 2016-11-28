@@ -7,7 +7,7 @@
       <%end%>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 col-xs-12">
         <div class="form-group">
           <label for="exampleInputPassword1">Meeting Time</label>
           <%=f.text_field :meeting_time %>
@@ -15,18 +15,20 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="knocking_for" class="col-xs-2 col-form-label">Knocking for</label>
-        <div class="col-xs-10">
+      <label for="knocking_for" class="col-xs-4 col-form-label">Knocking for</label>
+        <div class="col-xs-8">
           <%= f.text_field :knocking_for, placeholder: "Information about ...", label: false %>
         </div>
     </div>
     <br />
-    <div class="edit-meeting-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-      <%=f.hidden_field :knockee_id, value: @meeting.knockee_id %>
-      <%=f.hidden_field :knocker_id, value: @meeting.knocker_id %>
-      <%=f.hidden_field :meeting_type %>
-      <%=f.submit "Set up", class: "btn btn-success"%>
+    <div class="row">
+      <div class="edit-meeting-footer col-xs-12">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <%=f.hidden_field :knockee_id, value: @meeting.knockee_id %>
+        <%=f.hidden_field :knocker_id, value: @meeting.knocker_id %>
+        <%=f.hidden_field :meeting_type %>
+        <%=f.submit "Set up", class: "btn btn-success"%>
+      </div>
     </div>
   </div>
 <%end%>

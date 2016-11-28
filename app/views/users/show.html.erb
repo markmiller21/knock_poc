@@ -126,7 +126,7 @@
           <a class="btn btn-info global-knock-button profile-button col-xs-5" id="video-call-btn">Video Call</a>
       <% end %>
       <% if @knockee.accept_meeting && @knockee.meeting_price.present? %>
-          <a class="btn btn-info global-knock-button profile-button col-xs-5" id="meeting-btn">Meeting</a>
+          <a class="btn btn-info global-knock-button profile-button col-xs-5" id="meeting-btn">In Person Meeting</a>
       <% end %>
       <% if @knockee.college_essay_path.url.present? || @knockee.common_essay_path.url.present? || @knockee.resume_path.url.present? %>
         <%=link_to "Buy Essay", carts_add_to_cart_path(user_id: @knockee.id), class: "btn btn-info global-knock-button profile-button col-xs-5" %>

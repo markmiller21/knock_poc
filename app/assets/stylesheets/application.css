@@ -19,7 +19,9 @@
  *= require rails_bootstrap_forms
  */
 
-.header-container {}
+.header-container {
+  height: 60px
+}
 
 .navbar.navbar-inverse {
   height: 80px;
@@ -70,10 +72,12 @@
 .no-rounded-corner {
   border-radius: 0 !important;
 }
-
+/*width="60" height="80" */
 .knock-logo {
   padding: 3px;
-  margin-top: -33px;
+  margin-top: -20px;
+  width: 45px;
+  height: 60px;
 }
 
 .knock-brand-text, .knock-brand-text:hover, .knock-brand-text:visited, .knock-brand-text:link {
