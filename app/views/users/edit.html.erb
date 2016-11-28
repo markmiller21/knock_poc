@@ -220,12 +220,12 @@
                 <!-- phone call price field -->
                 <label for="phone_call_price" class="col-xs-2 col-form-label">Hourly rate</label>
                 <div class="col-xs-4 user-edit-form-input">
-                  <%= f.input :phone_call_price , input_html: { class: "form-control"}, placeholder: "15.00", label: false %>
+                  <%= f.input :phone_call_price, input_html: { class: "form-control"}, placeholder: "15.00", label: false %>
                 </div>
 
                 <label class="col-xs-2 col-form-label">Price per minute</label>
                 <div class="col-xs-4 user-edit-form-input">
-                  <input class="form-control" type="text" value="<%=@user.activities%>" id="ppm" placeholder="calculate from hourly rate" disabled>
+                  <input class="form-control" type="text" value="<%=(@user.phone_call_price.to_f / 4).round(2)%>" id="ppm" placeholder="calculate from hourly rate" disabled>
                 </div>
               </div>
 
