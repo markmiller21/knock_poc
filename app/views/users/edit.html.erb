@@ -115,6 +115,14 @@
               </div>
             </div>
 
+            <div class="form-group row">
+              <!-- cell phone field -->
+              <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone</label>
+              <div class="col-xs-4 user-edit-form-input">
+                <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, placeholder: "(555) 555 - 5555", required: true, label: false %>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -141,20 +149,6 @@
               </div>
             </div>
 
-            <div class="form-group row">
-              <!-- cell phone field -->
-              <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone</label>
-              <div class="col-xs-4 user-edit-form-input">
-                <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, placeholder: "(555) 555 - 5555", required: true, label: false %>
-              </div>
-
-              <!-- High School field -->
-              <label for="highschool" class="col-xs-2 col-form-label">High School</label>
-              <div class="col-xs-4 user-edit-form-input">
-                <%= f.text_field :highschool, class: "form-control", placeholder: "Salisbury School", label: false, required: true %>
-              </div>
-            </div>
-
             <% if is_college_student?(@user) %>
               <div class="form-group row">
                 <!-- College field -->
@@ -169,7 +163,35 @@
                   <%= f.text_field :major, placeholder: "Economics", class: "form-control", required: true %>
                 </div>
               </div>
+            <% end %>
 
+            <div class="form-group row">
+              <% if is_college_student?(@user) %>
+                <!-- year field -->
+                <label for="major" class="col-xs-2 col-form-label">Year</label>
+                <div class="col-xs-4 user-edit-form-input">
+                  <%= f.input :year, input_html: { class: "form-control" }, placeholder: "Sophomore", required: true, label: false %>
+                </div>
+              <% end %>
+
+              <!-- High School field -->
+              <label for="highschool" class="col-xs-2 col-form-label">High School</label>
+              <div class="col-xs-4 user-edit-form-input">
+                <%= f.text_field :highschool, class: "form-control", placeholder: "Salisbury School", label: false, required: true %>
+              </div>
+
+              <% if !(is_college_student?(@user)) %>
+                <!-- year field -->
+                <label for="major" class="col-xs-2 col-form-label">Year</label>
+                <div class="col-xs-4 user-edit-form-input">
+                  <%= f.input :year, input_html: { class: "form-control" }, placeholder: "Sophomore", required: true, label: false %>
+                </div>
+              <% end %>
+            </div>
+
+
+
+            <% if is_college_student?(@user) %>
               <div class="form-group row">
                 <!-- Philanthropy field -->
                 <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
