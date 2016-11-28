@@ -7,56 +7,57 @@
 <br />
 
 <br />
-
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-1">
-    <div class="panel panel-default">
-      <div class="panel-heading">High School Seniors (Knockers)</div>
-      <div class="panel-body">
-        <ul class="description-list">
-          <li class="desription-list-bullet">View current students and schedule a call</li>
-          <li class="desription-list-bullet">Enjoy getting an inside look at the college application process like never before</li>
-        </ul>
+<div class="container">
+  <div class="row descriptive-panel-box">
+    <div class="col-sm-6 col-sm-offset-0 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">High School Seniors (Knockers)</div>
+        <div class="panel-body">
+          <ul class="description-list">
+            <li class="desription-list-bullet">View current students and schedule a call</li>
+            <li class="desription-list-bullet">Enjoy the best college application advice</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-sm-offset-0 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">College Students (Knockees)</div>
+        <div class="panel-body">
+          <ul class="description-list">
+            <li class="desription-list-bullet">Upload your credentials</li>
+            <li class="desription-list-bullet">Enjoy a passive source of income&nbsp;</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-4 col-sm-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">College Students (Knockees)</div>
-      <div class="panel-body">
-        <ul class="description-list">
-          <li class="desription-list-bullet">Upload your credentials</li>
-          <li class="desription-list-bullet">Enjoy a passive source of income&nbsp;</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
-<br/>
+  <br/>
 
-<div class="row">
-  <div class="col-md-6 col col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
-    <div class="row input-group">
-      <h4 class="search-label col-xs-12">Search for schools, activities, majors, or anything you want to connect on.</h4>
-      <%= form_tag search_tags_path, method: "post", id: "search-form", :class => "form-inline" do %>
-        <%= text_field_tag :term, params[:term], placeholder: "Search for name or keywords", class: 'col-xs-9 user-search-bar' %>
-        <%= submit_tag "Search", class: 'btn btn-default col-xs-3' %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-
-<br/>
-
-<div class="container" id="essays">
   <div class="row">
-    <% @users.each do |user|%>
-      <div class="col-md-4 col-md-offset-0 col-sm-offset-0  col-sm-6 col-xs-12 essays">
-        <%= render partial: "users/user_card", locals: { user: user } %>
+    <div class="col-md-6 col col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+      <div class="row input-group">
+        <h4 class="search-label col-xs-12">Search for schools, activities, majors, or anything you want to connect on.</h4>
+        <%= form_tag search_tags_path, method: "post", id: "search-form", :class => "form-inline" do %>
+          <%= text_field_tag :term, params[:term], placeholder: "Search for name or keywords", class: 'col-xs-9 user-search-bar' %>
+          <%= submit_tag "Search", class: 'btn btn-default col-xs-3' %>
+        <% end %>
       </div>
-    <%end%>
+    </div>
   </div>
-  <%= paginate @users %>
+
+
+  <br/>
+
+  <div class="container" id="essays">
+    <div class="row">
+      <% @users.each do |user|%>
+        <div class="col-md-4 col-md-offset-0 col-sm-offset-0  col-sm-6 col-xs-12 essays">
+          <%= render partial: "users/user_card", locals: { user: user } %>
+        </div>
+      <%end%>
+    </div>
+    <%= paginate @users %>
+  </div>
 </div>

@@ -206,6 +206,8 @@ and (min-device-width: 1224px) {
 
 .user-search-bar {
   height: 34px;
+  margin-left: 10px;
+  margin-right: -10px
 }
 
 .user-documents {
@@ -287,4 +289,12 @@ span.radio {
 
 .philanthropy-dropdown-field {
   width: 90%
+}
+
+.descriptive-panel-box {
+  margin-left: 15px;
+}
+
+li.desription-list-bullet {
+  margin-left: -25px;
 }
