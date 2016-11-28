@@ -73,14 +73,14 @@
               <label for="first_name" class="col-xs-2 col-form-label">First name</label>
 
               <div class="col-xs-4 user-edit-form-input">
-                <%= f.input :first_name, input_html: { class: "form-control", id: "user-name-input" }, label: false %>
+                <%= f.input :first_name, input_html: { class: "form-control", id: "user-name-input" }, label: false, required: true %>
               </div>
             
               <!-- last name field -->
               <label for="last_name" class="col-xs-2 col-form-label">Last name</label>
 
               <div class="col-xs-4 user-edit-form-input">
-                <%= f.input :last_name, input_html: { class: "form-control", id: "user-name-input" }, label: false %>
+                <%= f.input :last_name, input_html: { class: "form-control", id: "user-name-input" }, label: false, required: true %>
               </div>
             </div>
 
@@ -111,7 +111,7 @@
               <!-- student status -->
               <label for="student_status" class="col-xs-2 col-form-label">Education</label>
               <div class="col-xs-4 user-edit-form-input">
-                <%= f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {}, {class: "form-control user-edit-profile-selectbox-style"} %>
+                <%= f.select :student_status, [['College', 'college_student'],['Highschool', 'highschooler']], {required: true}, {class: "form-control user-edit-profile-selectbox-style"} %>
               </div>
             </div>
 
@@ -134,7 +134,7 @@
               </div>
 
               <div class="form-group row">
-              <!-- first name field -->
+              <!-- activities field -->
               <label for="activities" class="col-xs-2 col-form-label">Activities</label>
               <div class="col-xs-10 user-edit-form-input">
                 <%= f.input :activities, input_html: { class: "form-control" }, placeholder: "Activities (seperated by comma)", required: true, label: false %>
@@ -145,13 +145,13 @@
               <!-- cell phone field -->
               <label for="cell_phone" class="col-xs-2 col-form-label">Cell Phone</label>
               <div class="col-xs-4 user-edit-form-input">
-                <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, placeholder: "(555) 555 - 5555", label: false %>
+                <%= f.input :cell_phone, as: :tel, input_html: { class: "form-control" }, placeholder: "(555) 555 - 5555", required: true, label: false %>
               </div>
 
               <!-- High School field -->
               <label for="highschool" class="col-xs-2 col-form-label">High School</label>
               <div class="col-xs-4 user-edit-form-input">
-                <%= f.text_field :highschool, class: "form-control", placeholder: "Salisbury School", label: false %>
+                <%= f.text_field :highschool, class: "form-control", placeholder: "Salisbury School", label: false, required: true %>
               </div>
             </div>
 
