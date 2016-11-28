@@ -36,7 +36,7 @@
             <% if user_signed_in? %>
               <%=link_to "Sign out", destroy_user_session_path, method: :delete %>
             <% else %>
-              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2" id="header-signin-button">Sign in</a>
             <%end%>
           </li>
         </ul>
@@ -51,7 +51,7 @@
                 <label class="sr-only" for="Password">Password</label>
                 <%= f.password_field :password, autocomplete: "off", class: "form-control", required: true, placeholder: "Password" %>
               </div>
-              <%=f.submit "Sign in", class: "btn btn-success"%>
+              <%= f.submit "Sign in", class: "btn global-knock-button" %>
           <%end%>
         </div>
       </div><!-- /.navbar-collapse -->
