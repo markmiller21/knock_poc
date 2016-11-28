@@ -19,3 +19,17 @@
 //= require underscore
 //= require sinch.min.js
 //= require_tree .
+
+
+// $(document).ready ->
+// 	$('a#header-signin-button')
+
+$(document).ready(function() {
+    $('a#header-signin-button').click(function(element) {
+    	if ($('a#header-signin-button').text() === "Sign in") {
+    		$('a#header-signin-button').text("Cancel");
+    	} else {
+    		$('a#header-signin-button').text("Sign in");
+    	};
+    });
+});
