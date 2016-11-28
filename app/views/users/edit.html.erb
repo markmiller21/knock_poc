@@ -169,15 +169,15 @@
                   <%= f.text_field :major, placeholder: "Economics", class: "form-control", required: true %>
                 </div>
               </div>
-            <% end %>
 
-            <div class="form-group row">
-              <!-- Philanthropy field -->
-              <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
-              <div class="col-xs-6 user-edit-form-input">
-                <%= f.text_field :philanthropy, placeholder: "Georgetown University Endownment", class: "form-control", label: false %>
+              <div class="form-group row">
+                <!-- Philanthropy field -->
+                <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
+                <div class="col-xs-6 user-edit-form-input">
+                  <%= f.select :philanthropy, ['The Harvard Campaign', 'The Stanford Fund', 'The 1789 Scholarship Imperative', 'Annual Giving', 'The Penn Fund', 'Parents Annual Fund for Financial Aid', 'General Scholarship', 'General Scholarship Fund', 'Alumni Endowed Undergraduate Scholarship', 'The Dean E. Smith Opening Doors Fund'], {}, {class: "form-control philanthropy-dropdown-field"} %>
+                </div>
               </div>
-            </div>
+            <% end %>
 
             <% if is_college_student?(@user) %>
               <div class="form-group row">
