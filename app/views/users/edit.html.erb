@@ -172,7 +172,7 @@
                 <div class="col-xs-4 user-edit-form-input">
                   <%= f.input :year, input_html: { class: "form-control" }, placeholder: "Sophomore", required: true, label: false %>
                 </div>
-              <% end %>
+              <% end %> 
 
               <!-- High School field -->
               <label for="highschool" class="col-xs-2 col-form-label">High School</label>
@@ -196,7 +196,7 @@
                 <!-- Philanthropy field -->
                 <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
                 <div class="col-xs-6 user-edit-form-input">
-                  <%= f.select :philanthropy, ['Harvard: The Harvard Campaign', 'Stanford: The Stanford Fund', 'Georgetown: The 1789 Scholarship Imperative', 'Princeton: Annual Giving', 'Penn: The Penn Fund', 'Yale: Parents Annual Fund for Financial Aid', 'Columbia: General Scholarship', 'JMU: General Scholarship Fund', 'Duke: Alumni Endowed Undergraduate Scholarship', 'UNC: The Dean E. Smith Opening Doors Fund'], {}, {class: "form-control philanthropy-dropdown-field"} %>
+                  <%= f.select :philanthropy, ['Harvard: The Harvard Campaign', 'Stanford: The Stanford Fund', 'Georgetown: The 1789 Scholarship Imperative', 'Princeton: Annual Giving', 'Penn: The Penn Fund', 'Yale: Parents Annual Fund for Financial Aid', 'Columbia: General Scholarship', 'JMU: General Scholarship Fund', 'Duke: Alumni Endowed Undergraduate Scholarship', 'UNC: The Dean E. Smith Opening Doors Fund'], {prompt: "id like to donate this of my earnings"}, {class: "form-control philanthropy-dropdown-field"} %>
                 </div>
               </div>
             <% end %>
