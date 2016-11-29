@@ -208,7 +208,7 @@
               <div class="form-group row">
                 <!-- philanthropy percentage field -->
                 <label for="philanthropy_percent" class="col-xs-2 col-form-label">Donation %</label>
-                <div class="col-xs-5 philanthropy-slider user-edit-form-input">
+                <div class="col-md-4 col-sm-5 col-xs-7 philanthropy-slider user-edit-form-input">
                   <%= f.text_field :philanthropy_percent, id: 'phil-slider', type: 'text', 
                     data: {'slider-id' => 'phil-slider', 
                            'slider-min' => '0', 
@@ -216,7 +216,7 @@
                            'slider-step' => '5', 
                            'slider-value' => '5' } %>
                 </div>
-                <div class="col-xs-2 user-edit-form-input">
+                <div class="col-sm-2 col-xs-3 user-edit-form-input">
                   <input class="form-control" type="text" value="<%=@user.philanthropy_percent%>%" id="philanthropyPercentStatic" placholder="5%" disabled>
                 </div>
               </div>
