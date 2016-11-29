@@ -192,11 +192,14 @@
 
 
             <% if is_college_student?(@user) %>
+              <div class="row philanthropy-label">
+                <h5>I'd like to donate a portion of my earnings to:</h5>
+              </div>
               <div class="form-group row">
                 <!-- Philanthropy field -->
                 <label for="philanthropy" class="col-xs-2 col-form-label">Philanthropy</label>
                 <div class="col-xs-6 user-edit-form-input">
-                  <%= f.select :philanthropy, ['Harvard: The Harvard Campaign', 'Stanford: The Stanford Fund', 'Georgetown: The 1789 Scholarship Imperative', 'Princeton: Annual Giving', 'Penn: The Penn Fund', 'Yale: Parents Annual Fund for Financial Aid', 'Columbia: General Scholarship', 'JMU: General Scholarship Fund', 'Duke: Alumni Endowed Undergraduate Scholarship', 'UNC: The Dean E. Smith Opening Doors Fund'], {prompt: "id like to donate this of my earnings"}, {class: "form-control philanthropy-dropdown-field"} %>
+                  <%= f.select :philanthropy, ['Harvard: The Harvard Campaign', 'Stanford: The Stanford Fund', 'Georgetown: The 1789 Scholarship Imperative', 'Princeton: Annual Giving', 'Penn: The Penn Fund', 'Yale: Parents Annual Fund for Financial Aid', 'Columbia: General Scholarship', 'JMU: General Scholarship Fund', 'Duke: Alumni Endowed Undergraduate Scholarship', 'UNC: The Dean E. Smith Opening Doors Fund'], {}, {class: "form-control philanthropy-dropdown-field", prompt: "id like to donate this of my earnings"} %>
                 </div>
               </div>
             <% end %>
