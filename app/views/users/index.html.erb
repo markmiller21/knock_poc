@@ -8,7 +8,7 @@
 
 <br />
 <div class="container">
-  <div class="row descriptive-panel-box">
+  <div class="row">
     <div class="col-sm-6 col-sm-offset-0 col-xs-12">
       <div class="panel panel-default">
         <div class="panel-heading">High School Seniors (Knockers)</div>
@@ -41,7 +41,7 @@
         <h4 class="search-label col-xs-12">Search for schools, activities, majors, or anything you want to connect on.</h4>
         <%= form_tag search_tags_path, method: "post", id: "search-form", :class => "form-inline" do %>
           <%= text_field_tag :term, params[:term], placeholder: "Search for name or keywords", class: 'col-xs-9 user-search-bar' %>
-          <%= submit_tag "Search", class: 'btn btn-default col-xs-3' %>
+          <%= submit_tag "Search", class: 'btn btn-default submit-search-button' %>
         <% end %>
       </div>
     </div>
