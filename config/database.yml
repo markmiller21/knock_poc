@@ -40,11 +40,13 @@ test:
   username: yusong1
   password: admin
 
-
-
-
-
-
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: knock_poc_production
+  pool: 5
+  username: yusong1
+  password: admin
 
 
 
