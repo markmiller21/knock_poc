@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def index
   	# TODO: this should only return college students
-    @users = User.all.page(params[:page]).per(12)
+    @users = User.college_students.page(params[:page]).per(12)
   end
 
   def edit
