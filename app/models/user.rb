@@ -19,6 +19,8 @@ class User < ApplicationRecord
   end
 
   scope :with_tags, -> {includes(:tags)}
+  scope :college_students, -> {where(student_status: "college_student")}
+  scope :highschoolers, -> {where(student_status: "highschooler")}
 
   before_validation :set_other_prices, on: :update
 
