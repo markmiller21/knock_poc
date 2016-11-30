@@ -39,6 +39,8 @@ class UsersController < ApplicationController
     potential_tags.push(@user.highschool) # highschool
     potential_tags.push(@user.college) # college
     potential_tags.push(@user.major) # major
+    potential_tags.push(@user.year)
+    potential_tags.push(@user.philanthropy)
     potential_tags.push(@user.email).flatten! # email
     potential_tags.select!{|w| w.present? }
 
