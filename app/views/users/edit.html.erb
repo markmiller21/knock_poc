@@ -265,60 +265,6 @@
           </div>
         <% end %>
 
-        <div class="document-management-fields hidden-md hidden-lg">
-          <!-- User documents -->
-          <h2 class="edit-profile-titles">Document Management</h2>
-            <div class="edit-fields-container">
-            <div class="form-group row">
-              <!-- common_essay_path field -->
-              <label for="common_essay_path" class="col-xs-3 col-form-label">Common Application Essay</label>
-              <div class="col-xs-9 user-edit-form-input">
-                <%= f.file_field :common_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- college_essay_path field -->
-              <label for="college_essay_path" class="col-xs-3 col-form-label">College Specific Essay</label>
-              <div class="col-xs-9 user-edit-form-input">
-                <%= f.file_field :college_essay_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Resume</label>
-              <div class="col-xs-9 user-edit-form-input">
-                <%= f.file_field :resume_path, class: "form-control-file", "aria-describedby" => "fileHelp" %>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Accept Phone Call</label>
-              <div class="col-xs-9 form-inline user-edit-form-input edit-form-radio-button">
-                <%= f.input :accept_phone_call, label: false, as: :radio_buttons %>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Accept Video Call</label>
-              <div class="col-xs-9 form-inline user-edit-form-input edit-form-radio-button">
-                <%= f.input :accept_video_call, label: false, as: :radio_buttons%>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <!-- resume_path field -->
-              <label for="resume_path" class="col-xs-3 col-form-label">Accept Meeting</label>
-              <div class="col-xs-9 form-inline user-edit-form-input edit-form-radio-button">
-                <%= f.input :accept_meeting, label: false, as: :radio_buttons%>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="row">
           <%= f.button :submit, "Submit and Start Knocking", class: "btn btn-primary col-xs-12 form-submit-button"  %>
         </div>

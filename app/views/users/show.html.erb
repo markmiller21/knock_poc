@@ -101,17 +101,26 @@
 
       <!-- common_essay_path -->
       <% if @knockee.common_essay_path.present? %>
-        <img src="<%= @knockee.common_essay_path.url %>" class="user-documents col-sm-4" />
+        <div class="col-xs-3">
+          <h6 class="document-descriptions">Common Essay</h6>
+          <img src="/images/photos/common-app-template-essay.jpg" class="user-document-container">
+        </div>
       <% end %>
       
       <!-- college_essay_path -->
       <% if @knockee.college_essay_path.present? %>
-        <img src="<%= @knockee.college_essay_path.url %>" class="user-documents col-sm-4" />
+        <div class="col-xs-3">
+          <h6 class="document-descriptions">College Essay</h6>
+          <img src="/images/photos/common-app-template-essay.jpg" class="user-document-container">
+        </div>
       <% end %>
 
       <!-- resume_path -->
       <% if @knockee.resume_path.present? %>
-        <img src="<%= @knockee.resume_path.url %>" class="user-documents col-sm-4" />
+        <div class="col-xs-3">
+          <h6 class="document-descriptions">Resume</h6>
+          <img src="/images/photos/college-template-resume.jpg" class="user-document-container">
+        </div>
       <% end %>
 
     </div>
