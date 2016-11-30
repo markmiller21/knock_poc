@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  #records = Article.search(query: {match: {_all: {query: 'wold', fuzziness: 2}}}).records
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

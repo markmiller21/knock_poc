@@ -15,6 +15,8 @@ gem 'underscore-rails'
 gem 'kaminari'
 gem 'sidekiq'
 gem 'rest-client'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 #gem 'mini_magick'
 gem "rmagick", "~> 2.13.1"
 gem 'pg'
