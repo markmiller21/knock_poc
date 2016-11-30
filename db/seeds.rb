@@ -2,62 +2,117 @@ User.destroy_all
 
 mark = User.new(:email => "mark.kilpatrick.miller@gmail.com", 
   bio: 'surving the QFIN program at JMU',
-  password: 'password', 
-  password_confirmation: 'password', 
-  username: 'markmiller',
+  password: 'password1', 
+  password_confirmation: 'password1', 
+  username: 'markmiller21',
   first_name: 'Mark', 
   last_name: 'Miller', 
   year: 'Senior',
   student_status: 'college_student', 
   activities: 'Football, Chess Team, Basketball, and Entrepreneurship', 
-  personal_description: 'Great guy with a better personality', 
+  personal_description: 'Highschool athlete turned coder', 
   cell_phone: '2024365781', 
   highschool: 'Salisbury School', 
   college: 'James Madison University',
   major: 'Quantitative Finance', 
-  avaliability: 'Afternoons 6 PM - 9 PM', 
-  phone_call_price:  25.00,
+  avaliability: 'Afternoons 6 PM - 9 PM',
+  philanthropy_percent: 5, 
+  phone_call_price:  15.00,
   meeting_price:  20.00, 
-  video_price:  15.00, 
-  venmo: 'markmiller21', 
-  resume_path: '' , 
-  common_essay_path: '', 
-  college_essay_path: ''
+  video_price:  25.00, 
+  venmo: 'markmiller21',
+  philanthropy: "JMU: Madison Investment Fund",
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
 )
-# mark.avatar_path = File.open(File.expand_path('../fixtures/mark_knock.png', __FILE__))
 mark.save
 
 
-ryan = User.new(:email => "ryan@georgetown.edu", 
+
+magge = User.new(
+  bio: 'surving the QFIN program at JMU',
+  password: 'password1', 
+  password_confirmation: 'password1', 
+  username: 'markmiller21',
+  first_name: 'Mark', 
+  last_name: 'Miller', 
+  year: 'Senior',
+  student_status: 'college_student', 
+  activities: 'Football, Chess Team, Basketball, and Entrepreneurship', 
+  personal_description: 'Highschool athlete turned coder', 
+  cell_phone: '2024365781', 
+  highschool: 'Salisbury School', 
+  college: 'James Madison University',
+  major: 'Quantitative Finance', 
+  avaliability: 'Afternoons 6 PM - 9 PM',
+  philanthropy_percent: 5, 
+  phone_call_price:  15.00,
+  meeting_price:  20.00, 
+  video_price:  25.00, 
+  venmo: 'markmiller21',
+  philanthropy: "JMU: Madison Investment Fund",
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
+)
+
+ryan = User.new(email: "ryan@georgetown.edu", 
   bio: 'Georgetown advice, financial consulting',
-  password: 'password', 
-  password_confirmation: 'password',
-  username: 'ryanmerlini',
+  password: 'password1', 
+  password_confirmation: 'password1',
+  username: 'ryanmerlini13',
   year: 'Freshman', 
   first_name: 'Ryan', 
   last_name: 'Merlini', 
   student_status: 'college_student', 
-  activities: 'Football, Chess Team, Basketball, and Entrepreneurship', 
+  activities: 'Entrepreneurship, writing, cooking, traveling, growing my', 
   personal_description: 'Would love to chat about Georgetown',
   cell_phone: '2024365781', 
   college: 'Georgetown',
   highschool: 'Upper Dublin',
   major: 'Economics', 
-  phone_call_price: 25.00,
-  meeting_price: 20.00, 
-  video_price: 15.00, 
-  venmo: 'ryanMerlini', 
-  resume_path: '' , 
-  common_essay_path: '', 
-  college_essay_path: ''
+  phone_call_price: 15.00,
+  meeting_price: 12.50, 
+  video_price: 10.00, 
+  philanthropy: "Georgetown: The 1789 Scholarship Imperative",
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
 )
-# ryan.avatar_path = File.open(File.expand_path('../fixtures/ryan_knock.png', __FILE__))
 ryan.save
+
+michael = User.new (
+  bio: 'Athletics at ` University',
+  password: 'password1', 
+  password_confirmation: 'password1', 
+  username: 'michael33miller',
+  first_name: 'Michael', 
+  last_name: 'Miller', 
+  year: 'Senior',
+  student_status: 'college_student', 
+  activities: 'Lacrosse, Chess, Finance, Ecoomics, Fraternity, Student Government', 
+  personal_description: 'Would love to talk brown and college lacrosse', 
+  cell_phone: '2024365781', 
+  highschool: 'Salisbury School', 
+  college: 'James Madison University',
+  major: 'Quantitative Finance', 
+  avaliability: 'Sunday afternoons after football',
+  philanthropy_percent: 25, 
+  phone_call_price:  30.00,
+  meeting_price:  33.33, 
+  video_price:  35.00, 
+  venmo: 'markmiller21',
+  philanthropy: "Brown: Brown University Sustainable Investment Fund",
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
+)
 
 song = User.new(:email => "terrorgeek@gmail.com", 
   bio: 'Advice on CS program',
-  password: 'password', 
-  password_confirmation: 'password', 
+  password: 'password1', 
+  password_confirmation: 'password1', 
   username: 'songyu',
   year: 'Sophomore', 
   first_name: 'Yu', 
@@ -82,8 +137,8 @@ song.save
 
 yahya = User.new(:email => "yahya@georgetown.edu", 
   bio: 'Entrepreneurship advice',
-  password: 'password', 
-  password_confirmation: 'password', 
+  password: 'password1', 
+  password_confirmation: 'password1', 
   username: 'yahyaasfor42',
   year: 'Junior', 
   first_name: 'Yahya', 
@@ -106,4 +161,7 @@ yahya = User.new(:email => "yahya@georgetown.edu",
 )
 # yahya.avatar_path = File.open(File.expand_path('../fixtures/yahya_knock.png', __FILE__))
 yahya.save
+
+
+ ['Harvard: The Harvard Campaign', 'Stanford: The Stanford Fund', 'Georgetown: The 1789 Scholarship Imperative', 'Princeton: Annual Giving', 'Penn: The Penn Fund', 'Yale: Parents Annual Fund for Financial Aid', 'Columbia: General Scholarship', 'JMU: General Scholarship Fund', 'Duke: Alumni Endowed Undergraduate Scholarship', 'UNC: The Dean E. Smith Opening Doors Fund'], 
 
