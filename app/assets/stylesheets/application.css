@@ -157,3 +157,12 @@ body li {
     position: absolute;
   }
 }
+
+@media(max-width:767px){
+  #user-card-main-container {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+
