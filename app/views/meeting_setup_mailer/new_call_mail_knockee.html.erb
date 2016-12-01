@@ -7,7 +7,7 @@
 
 <br/><br/>
 
-<p><strong>We decided we should inform you right away that <%= @knocker.display_name %> from <%= @knocker.highschool %> would like to learn about <%= @knockee.bio %> and pay you your price of <%= @knockee.phone_call_price %> for a <%= Constants::MEETING_TYPES[@meeting.meeting_type]%> for the expected length of 15 minutes.</strong></p>
+<p><strong>We decided we should inform you right away that <%= @knocker.display_name %> from <%= @knocker.highschool %> would like to learn about <%= @knockee.bio %> and pay you your price of <%= number_to_currency(@knockee.phone_call_price, percision: 2) %> for a <%= Constants::MEETING_TYPES[@meeting.meeting_type]%> for the expected length of 15 minutes.</strong></p>
 
 <br/><br/>
 
