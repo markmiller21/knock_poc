@@ -1,6 +1,7 @@
 User.destroy_all
 
-mark = User.new(:email => "mark.kilpatrick.miller@gmail.com", 
+mark = User.new(
+  email: "mark.kilpatrick.miller@gmail.com", 
   bio: 'surving the QFIN program at JMU',
   password: 'password1', 
   password_confirmation: 'password1', 
@@ -30,34 +31,37 @@ mark.save
 
 
 
-magge = User.new(
-  bio: 'surving the QFIN program at JMU',
+maggie = User.new(
+  email: "maggieE703@gmail.com",
+  bio: 'anything and everything JMU related',
   password: 'password1', 
   password_confirmation: 'password1', 
-  username: 'markmiller21',
-  first_name: 'Mark', 
-  last_name: 'Miller', 
+  username: 'magswag',
+  first_name: 'Maggie', 
+  last_name: 'Gallagher', 
   year: 'Senior',
   student_status: 'college_student', 
-  activities: 'Football, Chess Team, Basketball, and Entrepreneurship', 
-  personal_description: 'Highschool athlete turned coder', 
+  activities: 'Wineries, Marketing program, JMU democrats', 
+  personal_description: 'I love JMU and think you would to ', 
   cell_phone: '2024365781', 
   highschool: 'Salisbury School', 
   college: 'James Madison University',
-  major: 'Quantitative Finance', 
-  avaliability: 'Afternoons 6 PM - 9 PM',
+  major: 'Marketing', 
+  avaliability: 'Weekends 6 PM - 8 PM',
   philanthropy_percent: 5, 
   phone_call_price:  15.00,
   meeting_price:  20.00, 
   video_price:  25.00, 
-  venmo: 'markmiller21',
+  venmo: 'maggieg703',
   philanthropy: "JMU: Madison Investment Fund",
   accept_phone_call: true,
   accept_video_call: true,
   accept_meeting: true
 )
+maggie.save
 
-ryan = User.new(email: "ryan@georgetown.edu", 
+ryan = User.new(
+  email: "rdm56@georgetown.edu", 
   bio: 'Georgetown advice, financial consulting',
   password: 'password1', 
   password_confirmation: 'password1',
@@ -66,24 +70,28 @@ ryan = User.new(email: "ryan@georgetown.edu",
   first_name: 'Ryan', 
   last_name: 'Merlini', 
   student_status: 'college_student', 
-  activities: 'Entrepreneurship, writing, cooking, traveling, growing my', 
+  activities: 'Entrepreneurship, writing, cooking, traveling, growing my hair out', 
   personal_description: 'Would love to chat about Georgetown',
   cell_phone: '2024365781', 
   college: 'Georgetown',
   highschool: 'Upper Dublin',
   major: 'Economics', 
+  avaliability: 'Tuesday and Thursday after 9 PM',
   phone_call_price: 15.00,
   meeting_price: 12.50, 
-  video_price: 10.00, 
+  video_price: 10.00,
+  venmo: "fakeFakeFake",
   philanthropy: "Georgetown: The 1789 Scholarship Imperative",
+  philanthropy_percent: 5, 
   accept_phone_call: true,
   accept_video_call: true,
   accept_meeting: true
 )
 ryan.save
 
-michael = User.new (
-  bio: 'Athletics at ` University',
+michael = User.new(
+  email: "michaelmiller@brown.edu",
+  bio: 'Athletics at Brown University',
   password: 'password1', 
   password_confirmation: 'password1', 
   username: 'michael33miller',
@@ -93,8 +101,8 @@ michael = User.new (
   student_status: 'college_student', 
   activities: 'Lacrosse, Chess, Finance, Ecoomics, Fraternity, Student Government', 
   personal_description: 'Would love to talk brown and college lacrosse', 
-  cell_phone: '2024365781', 
-  highschool: 'Salisbury School', 
+  cell_phone: '1234567890', 
+  highschool: 'St. Albans', 
   college: 'James Madison University',
   major: 'Quantitative Finance', 
   avaliability: 'Sunday afternoons after football',
@@ -108,8 +116,10 @@ michael = User.new (
   accept_video_call: true,
   accept_meeting: true
 )
+michael.save
 
-song = User.new(:email => "terrorgeek@gmail.com", 
+song = User.new(
+  email: "terrorgeek@gmail.com", 
   bio: 'Advice on CS program',
   password: 'password1', 
   password_confirmation: 'password1', 
@@ -122,20 +132,23 @@ song = User.new(:email => "terrorgeek@gmail.com",
   personal_description: 'Do you love ruby as much as me?', 
   cell_phone: '2024365782', 
   highschool: 'Salisbury School', 
-  college: 'University of Virginia',
+  college: 'University of North Carolina',
   major: 'Computer Science', 
+  avaliability: 'Monday 5PM-10PM',
   phone_call_price: 25.00,
   meeting_price: 20.00, 
   video_price: 15.00, 
-  venmo: 'yuSong', 
-  resume_path: '' , 
-  common_essay_path: '', 
-  college_essay_path: ''
+  venmo: 'yuSong',
+  philanthropy: 'UNC: The Dean E. Smith Opening Doors Fund',
+  philanthropy_percent: 20,
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
 )
-# song.avatar_path = File.open(File.expand_path('../fixtures/song_knock.png', __FILE__))
 song.save
 
-yahya = User.new(:email => "yahya@georgetown.edu", 
+yahya = User.new(
+  email: "yahya@georgetown.edu", 
   bio: 'Entrepreneurship advice',
   password: 'password1', 
   password_confirmation: 'password1', 
@@ -146,22 +159,107 @@ yahya = User.new(:email => "yahya@georgetown.edu",
   student_status: 'college_student', 
   activities: 'Football, Chess Team, Basketball, and Entrepreneurship', 
   personal_description: 'Entrepreneurship is my passion', 
-  philanthropy_percent: 21.12, 
+  philanthropy_percent: 15,
+  philanthropy: 'Harvard: The Harvard Campaign', 
   cell_phone: '2024365780', 
   highschool: 'Salisbury School',
-  college: 'George Washington University',
-  major: 'Finance', 
+  college: 'Harvard University',
+  major: 'Finance',
+  avaliability: 'Weekdays after 8PM',
   phone_call_price: 25.00,
   meeting_price: 20.00, 
   video_price: 15.00, 
   venmo: 'yayaya', 
-  resume_path: '' , 
-  common_essay_path: '', 
-  college_essay_path: ''
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
 )
-# yahya.avatar_path = File.open(File.expand_path('../fixtures/yahya_knock.png', __FILE__))
 yahya.save
 
+cody = User.new(
+  email: "cody@princeton.edu", 
+  bio: 'Princeton admissions process',
+  password: 'password1', 
+  password_confirmation: 'password1', 
+  username: 'codayeeee',
+  year: 'Sophomore', 
+  first_name: 'Cody', 
+  last_name: 'Weber', 
+  student_status: 'college_student', 
+  activities: 'Accounting, business, Redskins, Football, sports', 
+  personal_description: 'Accounting is life', 
+  philanthropy_percent: 15,
+  philanthropy: 'Princeton: Annual Giving', 
+  cell_phone: '1233211221', 
+  highschool: 'Woodson Highschool',
+  college: 'Princeton University',
+  major: 'Accounting',
+  avaliability: 'Weekdays after 8PM',
+  phone_call_price: 25.00,
+  meeting_price: 20.00, 
+  video_price: 15.00, 
+  venmo: 'codayeeee', 
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
+)
+cody.save
 
- ['Harvard: The Harvard Campaign', 'Stanford: The Stanford Fund', 'Georgetown: The 1789 Scholarship Imperative', 'Princeton: Annual Giving', 'Penn: The Penn Fund', 'Yale: Parents Annual Fund for Financial Aid', 'Columbia: General Scholarship', 'JMU: General Scholarship Fund', 'Duke: Alumni Endowed Undergraduate Scholarship', 'UNC: The Dean E. Smith Opening Doors Fund'], 
+tommy = User.new(
+  email: "tommy@princeton.edu", 
+  bio: 'Princeton advice and getting a job in finance',
+  password: 'password1', 
+  password_confirmation: 'password1', 
+  username: 'tommyeastman',
+  year: 'Freshman', 
+  first_name: 'Tommy', 
+  last_name: 'Eastman', 
+  student_status: 'college_student', 
+  activities: 'Finance, reading, lifting, investing club, traveling', 
+  personal_description: 'Accounting is life', 
+  philanthropy_percent: 15,
+  philanthropy: 'Princeton: Annual Giving', 
+  cell_phone: '1233211221', 
+  highschool: 'Woodson Highschool',
+  college: 'Princeton University',
+  major: 'Accounting',
+  avaliability: 'Weekdays after 8PM',
+  phone_call_price: 25.00,
+  meeting_price: 20.00, 
+  video_price: 15.00, 
+  venmo: 'eastman1', 
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
+)
+tommy.save
+
+sarah = User.new(
+  email: "sarah@Duke.edu", 
+  bio: 'Engineering at Duke',
+  password: 'password1', 
+  password_confirmation: 'password1', 
+  username: 'hollenbackgirl',
+  year: 'Freshman', 
+  first_name: 'Sarah', 
+  last_name: 'Hollenbeck', 
+  student_status: 'college_student', 
+  activities: 'Dance team, skiing, snowboarding, edm, ', 
+  personal_description: 'Accounting is life', 
+  philanthropy_percent: 15,
+  philanthropy: 'Princeton: Annual Giving', 
+  cell_phone: '1233211221', 
+  highschool: 'Woodson Highschool',
+  college: 'Princeton University',
+  major: 'Accounting',
+  avaliability: 'Weekdays after 8PM',
+  phone_call_price: 25.00,
+  meeting_price: 20.00, 
+  video_price: 15.00, 
+  venmo: 'hollenbackgirl', 
+  accept_phone_call: true,
+  accept_video_call: true,
+  accept_meeting: true
+)
+sarah.save
 
