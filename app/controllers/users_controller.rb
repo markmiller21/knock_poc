@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   def update
     if @user.update(User::permitted(params))
       create_tags(@user)
-      binding.pry
       if @user.student_status == 'college_student'
         redirect_to user_path(current_user)
       else
