@@ -38,19 +38,31 @@
         <div class="panel-heading">Basic Information:</div>
         <div class="panel-body">
           <ul class="list-unstyled meetings-page-bullets">
-            <% if @knockee.phone_call_price %>
+            <% if @knockee.college %>
               <li><span class="user-show-db-title">College:</span> <%= @knockee.college%></li>
             <%end%>
 
-            <% if @knockee.video_price %>
+            <% if @knockee.major %>
               <li><span class="user-show-db-title">Major:</span> <%= @knockee.major%></li>
             <%end%>
 
-            <% if @knockee.meeting_price %>
+            <% if @knockee.year %>
+              <li><span class="user-show-db-title">Year:</span> <%= @knockee.year %></li>
+            <%end%>
+
+            <% if @knockee.highschool %>
               <li><span class="user-show-db-title">High School:</span> <%= @knockee.highschool %></li>
             <%end%>
-            <% if @knockee.common_essay_path %>
+            <% if @knockee.activities %>
               <li><span class="user-show-db-title">Activities:</span> <%= @knockee.activities %></li>
+            <%end%>
+
+            <% if @knockee.avaliability %>
+              <li><span class="user-show-db-title">Avaliability:</span> <%= @knockee.avaliability %></li>
+            <%end%>
+
+            <% if (@knockee.philanthropy && (@knockee.philanthropy_percent != 0)) %>
+              <li><span class="user-show-db-title">Philanthropy:</span> <%= number_to_human(@knockee.philanthropy_percent, percision: 0) %>% contributed to <%= @knockee.philanthropy %></li>
             <%end%>
           </ul>
         </div>
