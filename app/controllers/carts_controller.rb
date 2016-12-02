@@ -124,6 +124,8 @@ class CartsController < ApplicationController
           email: current_user.email
       )
       current_user.update_column("stripe_customer_id", customer.id)
+      flash[:card_setup] = "Your card has been setup successfully, continue and happy knocking."
+      redirect_to users_path
     elsif params[:back]
       redirect_back fallback_location: users_path
     end

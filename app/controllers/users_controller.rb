@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 
   def index
   	# TODO: this should only return college students
-    @users = User.college_students.page(params[:page]).per(12)
+    @users = User.college_students.page(params[:page])
+    @users = @users.where("id != ? ", current_user.id) if user_signed_in?
+    @users = @users.per(12)
   end
 
   def edit
