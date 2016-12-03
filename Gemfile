@@ -24,6 +24,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
+  gem 'rails-assets-card-js'
 end
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -44,7 +45,7 @@ gem 'uuid'
 gem 'sinch_auth'
 gem 'stripe'
 gem 'bootstrap-slider-rails'
-gem 'card-js-rails', '~> 1.0'
+# gem 'card-js-rails', '~> 1.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

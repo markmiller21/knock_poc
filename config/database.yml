@@ -29,7 +29,7 @@ development:
   encoding: unicode
   database: knock_poc_development
   pool: 5
-  username: markmiller21
+  username: yusong1
   password: admin
 
 test:
