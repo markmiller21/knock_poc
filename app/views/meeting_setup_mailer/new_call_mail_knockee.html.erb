@@ -1,27 +1,31 @@
-<!--Here we are gonna use bunch of if to show different messages according to the meeting type -->
-Congrats <%=@knockee.display_name%>,<br/><br/>
+<p>Congrats <%=@knockee.display_name%>,</p>
 
-<p><%=@knocker.display_name%> just requested a <%= Constants::MEETING_TYPES[@meeting.meeting_type]%> for the following time:</p>
+<br/><br/>
 
-<p><%=call_time @meeting.meeting_time%></p>
+<p>Somewhere, in a land far, far away, a small and curious human picked your name out of a long list of experts, wrote it on a shining piece of golden fortune cookie paper, locked it in a jewel encrusted music box guarded by 16 saber wielding nuns, and delivered it to a cheering crowd that gathered outside of Knock Headquarters in Washington, DC. </p>
 
-<!-- show location if it's in-person -->
-<% if @meeting.meeting_type == Constants::IN_PERSON_TYPE %>
-  <p>The location of the meeting would be: <%= @meeting.meeting_location %></p>
-<%end%>
 
-<p>You will be paid your price of $<%= toggle_price(@meeting, @knockee) %> per 15 minutes. Remember that the first 3 minutes will be granted free to ensure you both can get acquainted with each other. Your earnings will start accruing immediately after.</p>
+<br/><br/>
 
-<p>
-  Would you like to accept this <%= Constants::MEETING_TYPES[@meeting.meeting_type] %>?
-  <%=link_to 'Sure thing.', accept_call_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-success'%>
-</p>
+<p><strong>We decided we should inform you right away that <%= @knocker.display_name %> from <%= @knocker.highschool %> would like to learn about <%= @knockee.bio %> and pay you your price of <%= number_to_currency(@knockee.phone_call_price, percision: 2) %> for a <%= Constants::MEETING_TYPES[@meeting.meeting_type]%> for the expected length of 15 minutes.</strong></p>
 
-<br/>
+<br/><br/>
 
-<p>You can provide another alternative time <%=link_to 'here.', alternative_time_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-warning'%></p>
-<br/>
+<p>All payments are automatically calculated, payout occurs on Venmo on Thursdays, Knock will call you at the time of the meeting, and the crowd will continue cheering until your meeting time.</p>
 
-<p>Or, you can <%=link_to 'reject this Knock.', reject_reason_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-danger'%>.</p>
-<br/>
-Happy Knocking!
+<br/><br/>
+
+<p><strong>Are you available at <%= call_time @meeting.meeting_time %> to accept this Knock?</strong></p>
+
+<br/><br/>
+
+<p><%=link_to 'Sure thing', accept_call_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-success'%></p>
+
+<p><%=link_to 'No thanks', reject_reason_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-danger'%>.</p>
+
+<p><%=link_to 'Yes, but I’d like to suggest a new time', alternative_time_meetings_url(meeting_id: @meeting.id, knockee_id: @knockee.id, knocker_id: @knocker.id), class: 'btn btn-warning'%></p>
+
+<br/><br/>
+
+<p>Happy Knocking,</p>
+<p>The Knock Team</p>

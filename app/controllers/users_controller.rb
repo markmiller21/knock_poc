@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 
   def index
   	# TODO: this should only return college students
-    @users = User.college_students.page(params[:page]).per(12)
+    @users = User.college_students.page(params[:page])
+    @users = @users.where("id != ? ", current_user.id) if user_signed_in?
+    @users = @users.per(12)
   end
 
   def edit
@@ -23,7 +25,11 @@ class UsersController < ApplicationController
   def update
     if @user.update(User::permitted(params))
       create_tags(@user)
-      redirect_to edit_user_path(current_user)
+      if @user.student_status == 'college_student'
+        redirect_to user_path(current_user)
+      else
+        redirect_to users_path
+      end
     else
       render :edit
     end
