@@ -29,7 +29,7 @@ development:
   encoding: unicode
   database: knock_poc_development
   pool: 5
-  username: yusong1
+  username: markmiller21
   password: admin
 
 test:
@@ -37,7 +37,7 @@ test:
   encoding: unicode
   database: knock_poc_test
   pool: 5
-  username: yusong1
+  username: markmiller21
   password: admin
 
 production:
@@ -45,7 +45,7 @@ production:
   encoding: unicode
   database: knock_poc_production
   pool: 5
-  username: yusong1
+  username: markmiller21
   password: admin
 
 

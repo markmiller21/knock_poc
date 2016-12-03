@@ -16,6 +16,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require bootstrap-slider
+//= require card-js
 //= require underscore
 //= require sinch.min.js
 //= require_tree .

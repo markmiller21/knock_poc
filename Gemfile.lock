@@ -53,6 +53,8 @@ GEM
     bootstrap_form (2.5.2)
     builder (3.2.2)
     byebug (9.0.6)
+    card-js-rails (1.0.7)
+      rails (>= 4.0.1)
     carrierwave (1.0.0.rc)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -233,6 +235,7 @@ DEPENDENCIES
   bootstrap_form
   bundler
   byebug
+  card-js-rails (~> 1.0)
   carrierwave (>= 1.0.0.rc, < 2.0)
   coffee-rails (~> 4.2)
   devise
