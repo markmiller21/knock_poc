@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       if @user.student_status == 'college_student'
         redirect_to user_path(current_user)
       else
-        redirect_to users_path()
+        redirect_to users_path
       end
     else
       render :edit

@@ -4,18 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  enum student_status: {college_student: "college_student", highschooler: "highschooler"}
+
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates_format_of :cell_phone, with: Constants::VALID_PHONE_NUMBER_REGEX, message: "format is invalid.", if: "self.cell_phone.present?"
 
-  validates :phone_call_price, :cell_phone, presence: {message: "must be present if you accept phone calls."}, if: "self.accept_phone_call.present? && self.accept_phone_call == true", on: :update
+  validates :phone_call_price, :cell_phone, presence: {message: "must be present if you accept phone calls."}, if: "self.accept_phone_call.present? && self.accept_phone_call == true && self.college_student?", on: :update
   #validates :video_price, presence: {message: "must be present if you accept video calls."}, if: "self.accept_video_call.present? && self.accept_video_call == true", on: :update
   #validates :meeting_price, presence: {message: "must be present if you accept in person meeting."}, if: "self.accept_meeting.present? && self.accept_meeting == true", on: :update
 
   #since 3 prices are all in same format, we validate them by same regex
   validates_each :phone_call_price, :meeting_price, :video_price do |record, attr, value|
-    record.errors.add(attr, ' is invalid, price should be between 0 and 999.99, no dollar sign please.') if value.present? &&  !(value =~ Constants::VALID_US_CURRENCY)
+    record.errors.add(attr, ' is invalid, price should be between 0 and 999.99, no dollar sign please.') if value.present? &&  !(value =~ Constants::VALID_US_CURRENCY) && record.college_student?
   end
 
   scope :with_tags, -> {includes(:tags)}
