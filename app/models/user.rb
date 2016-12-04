@@ -94,4 +94,37 @@ class User < ApplicationRecord
       self.update_column("stripe_customer_id", customer_id)
     end
   end
+
+  def self.search(query)
+    __elasticsearch__.search(
+        {
+            query: {
+                multi_match: {
+                    query: query,
+                    fields: ['bio', 'activities', 'highschool', 'college',
+                             'major', 'year', 'philanthropy', 'email'],
+                    fuzziness: 2
+                }
+            },
+            highlight: {
+                pre_tags: ['<em>'],
+                post_tags: ['</em>'],
+                fields: {
+                    title: {},
+                    text: {}
+                }
+            }
+        }
+    )
+  end
 end
+
+# Delete the previous users index in Elasticsearch
+User.__elasticsearch__.client.indices.delete index: User.index_name rescue nil
+
+# Create the new index with the new mapping
+User.__elasticsearch__.client.indices.create index: User.index_name,
+  body: { settings: User.settings.to_hash, mappings: User.mappings.to_hash }
+
+# Index all users records from the DB to Elasticsearch
+User.import
