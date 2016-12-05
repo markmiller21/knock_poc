@@ -70,7 +70,7 @@ class MeetingsController < ApplicationController
     time_to_call = Time.zone.parse("#{@meeting.meeting_time} -0400") - Time.zone.now
     MeetingSetupJob.set(wait: time_to_call.seconds).
         perform_later("+1#{@knockee.cell_phone}",
-                      "+1#{@knocker.cell_phone}", 
+                      "+1#{@knocker.cell_phone}",
                       @meeting.id) if @meeting.meeting_type == Constants::CALL_TYPE
 
     MeetingSetupMailer.accept_call_for_knocker_confirmation(@knocker, @knockee, @meeting).deliver_now
