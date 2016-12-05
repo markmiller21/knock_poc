@@ -122,3 +122,13 @@
 
     }
 }
+
+a.navbar-brand.header-logo-text {
+    margin-top: 5px;
+    color: #5AA7B4;
+    font-size: 32px;
+}
+
+ul.nav.navbar-nav.navbar-right {
+    margin-top: 5px;
+}

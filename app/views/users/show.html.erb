@@ -24,11 +24,11 @@
 
 
   <div class="row">
-    <div class="col-md-6 col-sm-7 col-md-offset-1 col-xs-12">
+    <div class="col-sm-5 col-xs-12">
       <h2 class="user-profile-name"><%= @knockee.display_name %></h2>
       <img src="<%= @knockee.avatar_path.url %>" class="img-thumbnail img-profile" />
     </div>
-    <div class="col-md-5 col-sm-5 col-xs-12">
+    <div class="col-sm-5 col-sm-offset-1 col-xs-12">
       <h2 class="user-profile-name">Knock @<%= @knockee.username %> for:</h2>
       <h4><%= @knockee.bio %></h4>
 
@@ -108,7 +108,7 @@
   <br/>
 
   <div class="row">
-    <div class="col-md-6 col-sm-7 col-md-offset-1 hidden-xs">
+    <div class="col-sm-5 col-xs-12">
       <h2 class="knock-text-color"><%= @knockee.display_name %>'s Documents</h2>
 
       <!-- common_essay_path -->
@@ -137,7 +137,7 @@
 
     </div>
 
-    <div class="col-md-4 col-sm-5 col-xs-12">
+    <div class="col-sm-5 col-sm-offset-1 col-xs-12">
     
       <h2 class="knock-text-color">Schedule a:</h2>
       <% if @knockee.accept_phone_call && @knockee.phone_call_price.present? %>
