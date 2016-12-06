@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   get 'carts/payment_confirmation' => "carts#payment_confirmation"
   post 'carts/config_cc' => "carts#config_cc"
 
+  mount ActionCable.server => '/chat'
+
 end

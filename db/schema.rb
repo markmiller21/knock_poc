@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202000409) do
+ActiveRecord::Schema.define(version: 20161206044145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "meetings", force: :cascade do |t|
     t.integer  "knockee_id"
@@ -31,6 +36,14 @@ ActiveRecord::Schema.define(version: 20161202000409) do
     t.string   "knocking_for"
     t.index ["knockee_id"], name: "index_meetings_on_knockee_id", using: :btree
     t.index ["knocker_id"], name: "index_meetings_on_knocker_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.text     "body"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "tags", force: :cascade do |t|

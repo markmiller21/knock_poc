@@ -52,15 +52,18 @@ class User < ApplicationRecord
 
   
   # Associations
-  has_many :knockee_meetings, class_name: 'Meeting', foreign_key: 'knockee'
-  has_many :knocker_meetings, class_name: 'Meeting', foreign_key: 'knocker'
-  has_many :knockee_transactions, class_name: 'Transaction', foreign_key: 'knockee'
-  has_many :knocker_transactions, class_name: 'Transaction', foreign_key: 'knocker'
+  has_many :knockee_meetings, class_name: 'Meeting', foreign_key: 'knockee', dependent: :destroy
+  has_many :knocker_meetings, class_name: 'Meeting', foreign_key: 'knocker', dependent: :destroy
+  has_many :knockee_transactions, class_name: 'Transaction', foreign_key: 'knockee', dependent: :destroy
+  has_many :knocker_transactions, class_name: 'Transaction', foreign_key: 'knocker', dependent: :destroy
 
+  #TODO may need to totally remove this
   #This is a solution but sometimes use has_many :through would be better
   #has_and_belongs_to_many :tags
   has_many :tags_users
   has_many :tags, through: :tags_users
+  has_many :messages
+  has_many :conversations, through: :messages
 
   # Methods 
   
