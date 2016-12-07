@@ -5,4 +5,4 @@
 
 this.App = {};
 
-App.cable = ActionCable.createConsumer();
+App.cable = ActionCable.createConsumer("/chat");

@@ -1,0 +1,3 @@
+var objDiv = document.getElementById("message-list");
+objDiv.scrollTop = objDiv.scrollHeight;
+$("#message-list").append("<%= j render partial: 'messages/message', locals: {message: @message}%>");

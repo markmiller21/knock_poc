@@ -11,8 +11,9 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    @message = Message.new
     # TODO: change the @knockee & @knocker references to @meeting.knockee / @meeting.knocker
-    @meeting = Meeting.find(params[:id])
+    @meeting = Meeting.with_messages.find(params[:id])
     @knockee = @meeting.knockee
     @knocker = @meeting.knocker
 

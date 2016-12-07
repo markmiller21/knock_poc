@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/chat'
   root to: 'home#index'
   get 'home/index'
 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :meetings, except: [:destroy] do
+    resources :messages
     collection do
       post 'disconnect_call_back'
       get 'accept_call'
@@ -38,7 +40,5 @@ Rails.application.routes.draw do
   match 'carts/pay' => "carts#pay", via: [:get, :post]
   get 'carts/payment_confirmation' => "carts#payment_confirmation"
   post 'carts/config_cc' => "carts#config_cc"
-
-  mount ActionCable.server => '/chat'
 
 end

@@ -30,6 +30,16 @@ class User < ApplicationRecord
 
   before_validation :set_other_prices, on: :update
 
+  #this method is to get the one who is speaking to me, because basically in this project's meeting
+  #page we need to get the opposite side of user no matter the current_user is a knocker or knockee
+  def get_target_user(knocker, knockee)
+    if knocker.class == User && knockee.class == User
+      self.id == knocker.id ? knockee : knocker
+    else
+      self.id == knocker ? knockee : knocker
+    end
+  end
+
   def set_other_prices
     if self.phone_call_price.present?
       # convert phone call price to 15 minute rate
@@ -63,7 +73,6 @@ class User < ApplicationRecord
   has_many :tags_users
   has_many :tags, through: :tags_users
   has_many :messages
-  has_many :conversations, through: :messages
 
   # Methods 
   

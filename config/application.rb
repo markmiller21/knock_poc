@@ -13,5 +13,6 @@ module KnockPoc
     # -- all .rb files in that directory are automatically loaded.
     config.active_job.queue_adapter = :sidekiq
     config.time_zone = 'Eastern Time (US & Canada)'
+    config.action_cable.mount_path = '/chat'
   end
 end

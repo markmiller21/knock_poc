@@ -10,7 +10,10 @@ class Meeting < ApplicationRecord
 	# Associations
 	belongs_to :knockee, class_name: 'User'
 	belongs_to :knocker, class_name: 'User'
+	has_many :messages
 	has_one :meeting_transaction, class_name: 'Transaction'
+
+	scope :with_messages, -> {includes(:messages)}
 
 	# Methods
 
