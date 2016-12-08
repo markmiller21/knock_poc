@@ -18,6 +18,7 @@
 //= require bootstrap-slider
 //= require underscore
 //= require sinch.min.js
+//= require dropzone
 //= require_tree .
 
 

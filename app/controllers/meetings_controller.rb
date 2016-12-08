@@ -13,7 +13,7 @@ class MeetingsController < ApplicationController
   def show
     @message = Message.new
     # TODO: change the @knockee & @knocker references to @meeting.knockee / @meeting.knocker
-    @meeting = Meeting.with_messages.find(params[:id])
+    @meeting = Meeting.find(params[:id])
     @knockee = @meeting.knockee
     @knocker = @meeting.knocker
 
@@ -124,6 +124,15 @@ class MeetingsController < ApplicationController
       render text: 'The parameter you sent is invalid, make sure you are operating within the website.' and return
     end
     render json: "success"
+  end
+
+  def transfer_file
+    uploaded_io = params[:chat_file]
+    file_path = Rails.root.join('public', 'uploads', 'chat_files', uploaded_io.original_filename)
+    File.open(file_path, 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    FileTransferMailer.send_file(current_user, User.find(params[:target_user_id]), file_path, uploaded_io.original_filename).deliver_now
   end
 
   private 

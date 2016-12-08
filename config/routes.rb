@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'accept_call'
       get 'reject_call'
       get 'alternative_time_confirm'
+      post 'transfer_file'
       match 'alternative_time', via: [:get, :post]
       match 'reject_reason', via: [:get, :post]
     end

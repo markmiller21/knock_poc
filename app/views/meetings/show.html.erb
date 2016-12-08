@@ -160,14 +160,17 @@
                 </div>
               </div>
               <div id="message-list">
-                <% @meeting.messages.order("created_at").each do |message| %>
+                <% @meeting.messages.with_user.order("created_at").each do |message| %>
                     <%= render partial: 'messages/message', locals: {message: message}%>
                 <% end %>
               </div>
             </div>
           </div>
           <div class="portlet-footer">
-            <!--<form role="form">-->
+            <%= form_tag transfer_file_meetings_path, multipart: true, id: "chat-file", class: "dropzone" do %>
+              <%= hidden_field_tag :target_user_id, current_user.get_target_user(@knocker, @knockee).id %>
+            <% end %>
+
             <%= form_for [@meeting, @message], remote: true do |f| %>
               <div class="form-group">
                 <%= f.text_area :body, class: "form-control", placeholder: "Enter message..."%>
@@ -177,7 +180,6 @@
                 <%=f.submit :Send, class: "btn btn-default pull-right"%>
                 <div class="clearfix"></div>
               </div>
-            <!--</form>-->
             <% end %>
           </div>
         </div>
