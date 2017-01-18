@@ -24,29 +24,32 @@
 #  <<: *default
 #  database: db/production.sqlite3
 
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: knock_poc_development
   pool: 5
   username: yusong1
   password: admin
+
+development:
+  <<: *default
+  database: knock_poc_development
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: knock_poc_test
-  pool: 5
-  username: yusong1
-  password: admin
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: knock_poc_production
-  pool: 5
-  username: yusong1
-  password: admin
+
+#shabi:
+#  adapter: postgresql
+#  encoding: unicode
+#  database: eagleforce
+#  pool: 5
+#  username: yusong1
+#  password: admin
 
 
 

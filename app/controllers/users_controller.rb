@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @users = User.college_students.page(params[:page])
     @users = @users.where("id != ? ", current_user.id) if user_signed_in?
     @users = @users.per(12)
+    render stream: true
   end
 
   def edit

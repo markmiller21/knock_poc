@@ -5,6 +5,11 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  if Rails.env == 'test' || Rails.env == 'development'
+    ActiveRecord::Base.establish_connection :development
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
